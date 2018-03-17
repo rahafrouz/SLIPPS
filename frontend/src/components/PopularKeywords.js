@@ -12,9 +12,7 @@ class PopularKeywords extends Component {
 								<li><p>Keyword 1</p></li>
 								<li><p>Keyword 2</p></li>
 								<li><p>Keyword 3</p></li>
-								
 							</ul>
-							<hr></hr>
 					</div>
 				</aside> 
    	

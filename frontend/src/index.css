@@ -14780,6 +14780,7 @@ ul.treatments.checkout li.total {
   font-size: 13px;
   font-size: 0.8125rem;
   margin-bottom: 3px;
+  float: left;
 }
 .box_form .form-group {
   margin-bottom: 25px;

@@ -52,7 +52,7 @@ class Footer extends Component {
           </ul>
         </div>
         <div className="col-md-4">
-          <div id="copy">© 2017 Findoctor</div>
+          <div id="copy">© 2018 SLIPPS</div>
         </div>
       </div>
     </div>
