@@ -12805,7 +12805,7 @@ a.wish_bt:hover:after {
 .strip_list {
   margin-bottom: 25px;
   background-color: #fff;
-  padding: 20px 15px 15px 115px;
+  padding: 30px 25px 15px 25px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   -ms-border-radius: 5px;
@@ -12895,7 +12895,7 @@ a.wish_bt:hover:after {
 }
 .strip_list ul {
   border-top: 1px solid #ededed;
-  margin: 15px -15px -15px -115px;
+  margin: 15px -15px -15px -15px;
   padding: 20px 15px;
 }
 @media (max-width: 767px) {
@@ -12927,24 +12927,24 @@ a.wish_bt:hover:after {
   margin-right: 0;
 }
 .strip_list ul li:last-child a {
-  border: 2px solid #e74e84;
-  color: #e74e84;
+  color: #3f4079;
   cursor: pointer;
-  padding: 5px 20px;
+  padding: 5px 10px;
   -moz-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
   -webkit-transition: all 0.3s ease-in-out;
   -ms-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
-  -webkit-border-radius: 30px;
-  -moz-border-radius: 30px;
-  -ms-border-radius: 30px;
-  border-radius: 30px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  border-radius: 10px;
 }
 .strip_list ul li:last-child a:hover {
-  background-color: #e74e84;
+  background-color: #3f4079;
   color: white !important;
 }
+
 @media (max-width: 991px) {
   .strip_list ul li:first-child {
     /* For less than 991px */
@@ -25241,4 +25241,8 @@ text-shadow: none;
 
 .width_80 {
   width: 80%;
+}
+
+.event-text {
+  padding: 10px 20px 10px 20px;
 }

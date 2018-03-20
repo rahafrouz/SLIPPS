@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import EventSmall from './EventSmall';
 
 class UploadedDocuments extends Component {
   render() {

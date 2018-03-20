@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import EventSmall from './EventSmall';
 import PasswordChange from './PasswordChange';
 
 class UserDetails extends Component {
