@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class PopularKeywords extends Component {
   render() {
     return (
-    		<aside className="col-xl-4 col-lg-4" id="sidebar">
+    		<div className="col-xl-4 col-lg-4" id="sidebar">
 					<div className="box_general_3 booking">
 							<div className="title">
 							<h3>Popular Keywords</h3>
@@ -14,9 +14,7 @@ class PopularKeywords extends Component {
 								<li><p>Keyword 3</p></li>
 							</ul>
 					</div>
-				</aside> 
-   	
-	
+				</div> 
     );
   }
 }

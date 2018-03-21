@@ -12916,12 +12916,12 @@ a.wish_bt:hover:after {
 .strip_list ul li a:hover {
   color: #e74e84;
 }
-.strip_list ul li:first-child:after {
+/*.strip_list ul li:first-child:after {
   content: '|';
   font-weight: 400;
   margin-left: 8px;
   color: #ccc;
-}
+}*/
 .strip_list ul li:last-child {
   float: right;
   margin-right: 0;
@@ -25243,6 +25243,29 @@ text-shadow: none;
   width: 80%;
 }
 
+.width_50 {
+  width: 50%;
+  float: left;
+}
+
 .event-text {
   padding: 10px 20px 10px 20px;
+}
+
+.document_preview {
+  height: 500px;
+}
+
+.document_description {
+  background-color: #fff;
+  padding: 30px 30px 10px 30px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  border: 1px solid #e1e8ed;
+  display: block;
+  width: 100%;
+  height: 250px;
 }
