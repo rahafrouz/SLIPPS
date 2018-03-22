@@ -1,0 +1,136 @@
+﻿NOTIFICATION! sections A and B will always be just a single string!!!
+
+___Array with everything in C section. THIS WILL BE STRING IN FILE, made with JSON.stringify()
+####### place in array: 0 (field of study) #######
+Number: meaning
+>>>
+"1": "Bioanalytics"
+"2": "Nutrition"
+"3": "Nursing science"
+"4": "Medicine"
+"5": "Nursing (Nurse)"
+"6": "Nursing (Midwife)"
+"7": "Nursing (Public health nurse)"
+"8": "Nursing (Other)"
+"9": "Occupational therapy"
+"10": "First aid"
+"11": "Pharmacy"
+"12": "Physiotherapy"
+"13": "Radiographer"
+"14": "Social work (Children)"
+"15": "Social work (Adults)"
+"16": "Social work (Other)"
+"17": "Speech therapy"
+"18": "Other",
+
+####### place in array: 1 (field of study - open) #######
+>>> open answers. will always be as string.
+
+####### place in array: 2 (age) #######
+Number: meaning
+>>>
+"2": "16-20"
+"3": "21-25"
+"4": "26-30"
+"5": "31-35"
+"6": "36-40"
+"7": "41-45"
+"8": "46-50"
+"9": "51 or over",
+
+####### place in array: 3 (gender) #######
+Number: meaning
+>>>
+"2": "Man"
+"3": "Woman"
+"4": "Other"
+"5": "No answer",
+
+####### place in array: 4 (year in program) #######
+Number: meaning
+>>>
+"2": "1. academic year"
+"3": "2. academic year"
+"4": "3. academic year"
+"5": "4. academic year"
+"6": "5. academic year"
+"7": "6. academic year"
+"8": "7. academic year"
+"9": "Other",
+
+####### place in array: 5 (clinical/work placement) #######
+Number: meaning
+>>>
+"1": "Emergency duty or intensive care"
+"2": "Ambulatory setting /domiciliary care"
+"3": "Elderly care (Geriatric) ward/unit"
+"4": "Ambulatory setting /reception"
+"5": "Medical medicine unit/ward"
+"6": "Child health (Pediatric) ward/unit"
+"7": "Midwifery ward/unit"
+"8": "Neurological ward/unit"
+"9": "Orthopedic ward/unit"
+"10": "Mental health/Psychiatric ward/unit"
+"11": "Rehabilitation ward/unit"
+"12": "Respiratory ward/unit"
+"13": "Social work"
+"14": "Surgery ward/unit/theatre"
+"15": "Imaging unit"
+"16": "Outpatient unit"
+"17": "Other"
+
+####### place in array: 6 (clinical/work placement - open) #######
+>>> open answers. will always be as string.
+
+####### place in array: 7 (event was broadly related to) #######
+>>> array of numbered answers.
+Number: meaning
+>>>
+"1": "Communication"
+"2": "Confidentality"
+"3": "Checking or verification"
+"4": "Decision making"
+"5": "Food and nutrition"
+"6": "Leadership, guidance and education"
+"7": "Reporting and announcement"
+"8": "Infection prevention and control"
+"9": "Reporting and hand over/information transfer"
+"10": "Infection prevention and control"
+"11": "Invasive procedures"
+"12": "Medications"
+"13": "Moving and Handling"
+"14": "Teamwork"
+"15": "Procedure and/or treatment"
+"16": "Using technology and equipment"
+"17": "Violence",
+
+####### place in array: 8 (event was broadly related to - open) #######
+>>> open answers. will always be as string.
+
+####### place in array: 9 (type of learning event) #######
+Number: meaning
+>>>
+"2": "Good practice"
+"3": "Near miss"
+"4": "Hazard"
+"5": "Adverse event (Harmful incident)"
+
+####### place in array: 10 (if was harmful, reported?) #######
+Number: meaning
+>>> IF NO ANSWER, WILL default -1
+"2": "Yes"
+"3": "No"
+"4": "I don't know"
+
+####### place in array: 11 (if was harmful, reported? - open) #######
+>>> open answers. will always be as string.
+
+####### place in array: 12 (if was harmful, reported?) #######
+Number: meaning
+>>> IF NO ANSWER, WILL default -1
+"2": "Yes"
+"3": "No"
+"4": "I don't know"
+
+####### place in array: 13 (if was harmful, documented? - open) #######
+>>> open answers. will always be as string.
