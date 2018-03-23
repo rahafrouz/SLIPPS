@@ -1,0 +1,1658 @@
+[
+  {
+    "model": "apiserver.language",
+    "pk": 1,
+    "fields": {
+      "code_2": "aa",
+      "code_3": "aar",
+      "name": "Afar"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 2,
+    "fields": {
+      "code_2": "ab",
+      "code_3": "abk",
+      "name": "Abkhazian"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 3,
+    "fields": {
+      "code_2": "af",
+      "code_3": "afr",
+      "name": "Afrikaans"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 4,
+    "fields": {
+      "code_2": "ak",
+      "code_3": "aka",
+      "name": "Akan"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 5,
+    "fields": {
+      "code_2": "sq",
+      "code_3": "alb",
+      "name": "Albanian"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 6,
+    "fields": {
+      "code_2": "am",
+      "code_3": "amh",
+      "name": "Amharic"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 7,
+    "fields": {
+      "code_2": "ar",
+      "code_3": "ara",
+      "name": "Arabic"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 8,
+    "fields": {
+      "code_2": "an",
+      "code_3": "arg",
+      "name": "Aragonese"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 9,
+    "fields": {
+      "code_2": "hy",
+      "code_3": "arm",
+      "name": "Armenian"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 10,
+    "fields": {
+      "code_2": "as",
+      "code_3": "asm",
+      "name": "Assamese"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 11,
+    "fields": {
+      "code_2": "av",
+      "code_3": "ava",
+      "name": "Avaric"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 12,
+    "fields": {
+      "code_2": "ae",
+      "code_3": "ave",
+      "name": "Avestan"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 13,
+    "fields": {
+      "code_2": "ay",
+      "code_3": "aym",
+      "name": "Aymara"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 14,
+    "fields": {
+      "code_2": "az",
+      "code_3": "aze",
+      "name": "Azerbaijani"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 15,
+    "fields": {
+      "code_2": "ba",
+      "code_3": "bak",
+      "name": "Bashkir"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 16,
+    "fields": {
+      "code_2": "bm",
+      "code_3": "bam",
+      "name": "Bambara"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 17,
+    "fields": {
+      "code_2": "eu",
+      "code_3": "baq",
+      "name": "Basque"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 18,
+    "fields": {
+      "code_2": "be",
+      "code_3": "bel",
+      "name": "Belarusian"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 19,
+    "fields": {
+      "code_2": "bn",
+      "code_3": "ben",
+      "name": "Bengali"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 20,
+    "fields": {
+      "code_2": "bh",
+      "code_3": "bih",
+      "name": "Bihari languages"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 21,
+    "fields": {
+      "code_2": "bi",
+      "code_3": "bis",
+      "name": "Bislama"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 22,
+    "fields": {
+      "code_2": "bs",
+      "code_3": "bos",
+      "name": "Bosnian"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 23,
+    "fields": {
+      "code_2": "br",
+      "code_3": "bre",
+      "name": "Breton"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 24,
+    "fields": {
+      "code_2": "bg",
+      "code_3": "bul",
+      "name": "Bulgarian"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 25,
+    "fields": {
+      "code_2": "my",
+      "code_3": "bur",
+      "name": "Burmese"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 26,
+    "fields": {
+      "code_2": "ca",
+      "code_3": "cat",
+      "name": "Catalan; Valencian"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 27,
+    "fields": {
+      "code_2": "ch",
+      "code_3": "cha",
+      "name": "Chamorro"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 28,
+    "fields": {
+      "code_2": "ce",
+      "code_3": "che",
+      "name": "Chechen"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 29,
+    "fields": {
+      "code_2": "zh",
+      "code_3": "chi",
+      "name": "Chinese"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 30,
+    "fields": {
+      "code_2": "cu",
+      "code_3": "chu",
+      "name": "Church Slavic; Old Slavonic; Church Slavonic; Old Bulgarian; Old Church Slavonic"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 31,
+    "fields": {
+      "code_2": "cv",
+      "code_3": "chv",
+      "name": "Chuvash"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 32,
+    "fields": {
+      "code_2": "kw",
+      "code_3": "cor",
+      "name": "Cornish"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 33,
+    "fields": {
+      "code_2": "co",
+      "code_3": "cos",
+      "name": "Corsican"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 34,
+    "fields": {
+      "code_2": "cr",
+      "code_3": "cre",
+      "name": "Cree"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 35,
+    "fields": {
+      "code_2": "cs",
+      "code_3": "cze",
+      "name": "Czech"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 36,
+    "fields": {
+      "code_2": "da",
+      "code_3": "dan",
+      "name": "Danish"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 37,
+    "fields": {
+      "code_2": "dv",
+      "code_3": "div",
+      "name": "Divehi; Dhivehi; Maldivian"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 38,
+    "fields": {
+      "code_2": "nl",
+      "code_3": "dut",
+      "name": "Dutch; Flemish"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 39,
+    "fields": {
+      "code_2": "dz",
+      "code_3": "dzo",
+      "name": "Dzongkha"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 40,
+    "fields": {
+      "code_2": "en",
+      "code_3": "eng",
+      "name": "English"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 41,
+    "fields": {
+      "code_2": "eo",
+      "code_3": "epo",
+      "name": "Esperanto"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 42,
+    "fields": {
+      "code_2": "et",
+      "code_3": "est",
+      "name": "Estonian"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 43,
+    "fields": {
+      "code_2": "ee",
+      "code_3": "ewe",
+      "name": "Ewe"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 44,
+    "fields": {
+      "code_2": "fo",
+      "code_3": "fao",
+      "name": "Faroese"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 45,
+    "fields": {
+      "code_2": "fj",
+      "code_3": "fij",
+      "name": "Fijian"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 46,
+    "fields": {
+      "code_2": "fi",
+      "code_3": "fin",
+      "name": "Finnish"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 47,
+    "fields": {
+      "code_2": "fr",
+      "code_3": "fre",
+      "name": "French"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 48,
+    "fields": {
+      "code_2": "fy",
+      "code_3": "fry",
+      "name": "Western Frisian"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 49,
+    "fields": {
+      "code_2": "ff",
+      "code_3": "ful",
+      "name": "Fulah"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 50,
+    "fields": {
+      "code_2": "ka",
+      "code_3": "geo",
+      "name": "Georgian"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 51,
+    "fields": {
+      "code_2": "de",
+      "code_3": "ger",
+      "name": "German"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 52,
+    "fields": {
+      "code_2": "gd",
+      "code_3": "gla",
+      "name": "Gaelic; Scottish Gaelic"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 53,
+    "fields": {
+      "code_2": "ga",
+      "code_3": "gle",
+      "name": "Irish"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 54,
+    "fields": {
+      "code_2": "gl",
+      "code_3": "glg",
+      "name": "Galician"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 55,
+    "fields": {
+      "code_2": "gv",
+      "code_3": "glv",
+      "name": "Manx"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 56,
+    "fields": {
+      "code_2": "el",
+      "code_3": "gre",
+      "name": "Greek, Modern (1453-)"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 57,
+    "fields": {
+      "code_2": "gn",
+      "code_3": "grn",
+      "name": "Guarani"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 58,
+    "fields": {
+      "code_2": "gu",
+      "code_3": "guj",
+      "name": "Gujarati"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 59,
+    "fields": {
+      "code_2": "ht",
+      "code_3": "hat",
+      "name": "Haitian; Haitian Creole"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 60,
+    "fields": {
+      "code_2": "ha",
+      "code_3": "hau",
+      "name": "Hausa"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 61,
+    "fields": {
+      "code_2": "he",
+      "code_3": "heb",
+      "name": "Hebrew"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 62,
+    "fields": {
+      "code_2": "hz",
+      "code_3": "her",
+      "name": "Herero"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 63,
+    "fields": {
+      "code_2": "hi",
+      "code_3": "hin",
+      "name": "Hindi"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 64,
+    "fields": {
+      "code_2": "ho",
+      "code_3": "hmo",
+      "name": "Hiri Motu"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 65,
+    "fields": {
+      "code_2": "hr",
+      "code_3": "hrv",
+      "name": "Croatian"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 66,
+    "fields": {
+      "code_2": "hu",
+      "code_3": "hun",
+      "name": "Hungarian"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 67,
+    "fields": {
+      "code_2": "ig",
+      "code_3": "ibo",
+      "name": "Igbo"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 68,
+    "fields": {
+      "code_2": "is",
+      "code_3": "ice",
+      "name": "Icelandic"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 69,
+    "fields": {
+      "code_2": "io",
+      "code_3": "ido",
+      "name": "Ido"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 70,
+    "fields": {
+      "code_2": "ii",
+      "code_3": "iii",
+      "name": "Sichuan Yi; Nuosu"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 71,
+    "fields": {
+      "code_2": "iu",
+      "code_3": "iku",
+      "name": "Inuktitut"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 72,
+    "fields": {
+      "code_2": "ie",
+      "code_3": "ile",
+      "name": "Interlingue; Occidental"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 73,
+    "fields": {
+      "code_2": "ia",
+      "code_3": "ina",
+      "name": "Interlingua (International Auxiliary Language Association)"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 74,
+    "fields": {
+      "code_2": "id",
+      "code_3": "ind",
+      "name": "Indonesian"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 75,
+    "fields": {
+      "code_2": "ik",
+      "code_3": "ipk",
+      "name": "Inupiaq"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 76,
+    "fields": {
+      "code_2": "it",
+      "code_3": "ita",
+      "name": "Italian"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 77,
+    "fields": {
+      "code_2": "jv",
+      "code_3": "jav",
+      "name": "Javanese"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 78,
+    "fields": {
+      "code_2": "ja",
+      "code_3": "jpn",
+      "name": "Japanese"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 79,
+    "fields": {
+      "code_2": "kl",
+      "code_3": "kal",
+      "name": "Kalaallisut; Greenlandic"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 80,
+    "fields": {
+      "code_2": "kn",
+      "code_3": "kan",
+      "name": "Kannada"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 81,
+    "fields": {
+      "code_2": "ks",
+      "code_3": "kas",
+      "name": "Kashmiri"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 82,
+    "fields": {
+      "code_2": "kr",
+      "code_3": "kau",
+      "name": "Kanuri"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 83,
+    "fields": {
+      "code_2": "kk",
+      "code_3": "kaz",
+      "name": "Kazakh"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 84,
+    "fields": {
+      "code_2": "km",
+      "code_3": "khm",
+      "name": "Central Khmer"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 85,
+    "fields": {
+      "code_2": "ki",
+      "code_3": "kik",
+      "name": "Kikuyu; Gikuyu"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 86,
+    "fields": {
+      "code_2": "rw",
+      "code_3": "kin",
+      "name": "Kinyarwanda"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 87,
+    "fields": {
+      "code_2": "ky",
+      "code_3": "kir",
+      "name": "Kirghiz; Kyrgyz"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 88,
+    "fields": {
+      "code_2": "kv",
+      "code_3": "kom",
+      "name": "Komi"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 89,
+    "fields": {
+      "code_2": "kg",
+      "code_3": "kon",
+      "name": "Kongo"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 90,
+    "fields": {
+      "code_2": "ko",
+      "code_3": "kor",
+      "name": "Korean"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 91,
+    "fields": {
+      "code_2": "kj",
+      "code_3": "kua",
+      "name": "Kuanyama; Kwanyama"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 92,
+    "fields": {
+      "code_2": "ku",
+      "code_3": "kur",
+      "name": "Kurdish"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 93,
+    "fields": {
+      "code_2": "lo",
+      "code_3": "lao",
+      "name": "Lao"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 94,
+    "fields": {
+      "code_2": "la",
+      "code_3": "lat",
+      "name": "Latin"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 95,
+    "fields": {
+      "code_2": "lv",
+      "code_3": "lav",
+      "name": "Latvian"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 96,
+    "fields": {
+      "code_2": "li",
+      "code_3": "lim",
+      "name": "Limburgan; Limburger; Limburgish"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 97,
+    "fields": {
+      "code_2": "ln",
+      "code_3": "lin",
+      "name": "Lingala"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 98,
+    "fields": {
+      "code_2": "lt",
+      "code_3": "lit",
+      "name": "Lithuanian"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 99,
+    "fields": {
+      "code_2": "lb",
+      "code_3": "ltz",
+      "name": "Luxembourgish; Letzeburgesch"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 100,
+    "fields": {
+      "code_2": "lu",
+      "code_3": "lub",
+      "name": "Luba-Katanga"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 101,
+    "fields": {
+      "code_2": "lg",
+      "code_3": "lug",
+      "name": "Ganda"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 102,
+    "fields": {
+      "code_2": "mk",
+      "code_3": "mac",
+      "name": "Macedonian"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 103,
+    "fields": {
+      "code_2": "mh",
+      "code_3": "mah",
+      "name": "Marshallese"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 104,
+    "fields": {
+      "code_2": "ml",
+      "code_3": "mal",
+      "name": "Malayalam"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 105,
+    "fields": {
+      "code_2": "mi",
+      "code_3": "mao",
+      "name": "Maori"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 106,
+    "fields": {
+      "code_2": "mr",
+      "code_3": "mar",
+      "name": "Marathi"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 107,
+    "fields": {
+      "code_2": "ms",
+      "code_3": "may",
+      "name": "Malay"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 108,
+    "fields": {
+      "code_2": "mg",
+      "code_3": "mlg",
+      "name": "Malagasy"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 109,
+    "fields": {
+      "code_2": "mt",
+      "code_3": "mlt",
+      "name": "Maltese"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 110,
+    "fields": {
+      "code_2": "mn",
+      "code_3": "mon",
+      "name": "Mongolian"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 111,
+    "fields": {
+      "code_2": "na",
+      "code_3": "nau",
+      "name": "Nauru"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 112,
+    "fields": {
+      "code_2": "nv",
+      "code_3": "nav",
+      "name": "Navajo; Navaho"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 113,
+    "fields": {
+      "code_2": "nr",
+      "code_3": "nbl",
+      "name": "Ndebele, South; South Ndebele"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 114,
+    "fields": {
+      "code_2": "nd",
+      "code_3": "nde",
+      "name": "Ndebele, North; North Ndebele"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 115,
+    "fields": {
+      "code_2": "ng",
+      "code_3": "ndo",
+      "name": "Ndonga"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 116,
+    "fields": {
+      "code_2": "ne",
+      "code_3": "nep",
+      "name": "Nepali"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 117,
+    "fields": {
+      "code_2": "nn",
+      "code_3": "nno",
+      "name": "Norwegian Nynorsk; Nynorsk, Norwegian"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 118,
+    "fields": {
+      "code_2": "nb",
+      "code_3": "nob",
+      "name": "Bokmål, Norwegian; Norwegian Bokmål"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 119,
+    "fields": {
+      "code_2": "no",
+      "code_3": "nor",
+      "name": "Norwegian"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 120,
+    "fields": {
+      "code_2": "ny",
+      "code_3": "nya",
+      "name": "Chichewa; Chewa; Nyanja"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 121,
+    "fields": {
+      "code_2": "oc",
+      "code_3": "oci",
+      "name": "Occitan (post 1500); Provençal"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 122,
+    "fields": {
+      "code_2": "oj",
+      "code_3": "oji",
+      "name": "Ojibwa"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 123,
+    "fields": {
+      "code_2": "or",
+      "code_3": "ori",
+      "name": "Oriya"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 124,
+    "fields": {
+      "code_2": "om",
+      "code_3": "orm",
+      "name": "Oromo"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 125,
+    "fields": {
+      "code_2": "os",
+      "code_3": "oss",
+      "name": "Ossetian; Ossetic"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 126,
+    "fields": {
+      "code_2": "pa",
+      "code_3": "pan",
+      "name": "Panjabi; Punjabi"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 127,
+    "fields": {
+      "code_2": "fa",
+      "code_3": "per",
+      "name": "Persian"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 128,
+    "fields": {
+      "code_2": "pi",
+      "code_3": "pli",
+      "name": "Pali"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 129,
+    "fields": {
+      "code_2": "pl",
+      "code_3": "pol",
+      "name": "Polish"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 130,
+    "fields": {
+      "code_2": "pt",
+      "code_3": "por",
+      "name": "Portuguese"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 131,
+    "fields": {
+      "code_2": "ps",
+      "code_3": "pus",
+      "name": "Pushto; Pashto"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 132,
+    "fields": {
+      "code_2": "qu",
+      "code_3": "que",
+      "name": "Quechua"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 133,
+    "fields": {
+      "code_2": "rm",
+      "code_3": "roh",
+      "name": "Romansh"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 134,
+    "fields": {
+      "code_2": "ro",
+      "code_3": "rum",
+      "name": "Romanian; Moldavian; Moldovan"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 135,
+    "fields": {
+      "code_2": "rn",
+      "code_3": "run",
+      "name": "Rundi"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 136,
+    "fields": {
+      "code_2": "ru",
+      "code_3": "rus",
+      "name": "Russian"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 137,
+    "fields": {
+      "code_2": "sg",
+      "code_3": "sag",
+      "name": "Sango"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 138,
+    "fields": {
+      "code_2": "sa",
+      "code_3": "san",
+      "name": "Sanskrit"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 139,
+    "fields": {
+      "code_2": "si",
+      "code_3": "sin",
+      "name": "Sinhala; Sinhalese"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 140,
+    "fields": {
+      "code_2": "sk",
+      "code_3": "slo",
+      "name": "Slovak"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 141,
+    "fields": {
+      "code_2": "sl",
+      "code_3": "slv",
+      "name": "Slovenian"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 142,
+    "fields": {
+      "code_2": "se",
+      "code_3": "sme",
+      "name": "Northern Sami"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 143,
+    "fields": {
+      "code_2": "sm",
+      "code_3": "smo",
+      "name": "Samoan"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 144,
+    "fields": {
+      "code_2": "sn",
+      "code_3": "sna",
+      "name": "Shona"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 145,
+    "fields": {
+      "code_2": "sd",
+      "code_3": "snd",
+      "name": "Sindhi"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 146,
+    "fields": {
+      "code_2": "so",
+      "code_3": "som",
+      "name": "Somali"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 147,
+    "fields": {
+      "code_2": "st",
+      "code_3": "sot",
+      "name": "Sotho, Southern"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 148,
+    "fields": {
+      "code_2": "es",
+      "code_3": "spa",
+      "name": "Spanish; Castilian"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 149,
+    "fields": {
+      "code_2": "sc",
+      "code_3": "srd",
+      "name": "Sardinian"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 150,
+    "fields": {
+      "code_2": "sr",
+      "code_3": "srp",
+      "name": "Serbian"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 151,
+    "fields": {
+      "code_2": "ss",
+      "code_3": "ssw",
+      "name": "Swati"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 152,
+    "fields": {
+      "code_2": "su",
+      "code_3": "sun",
+      "name": "Sundanese"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 153,
+    "fields": {
+      "code_2": "sw",
+      "code_3": "swa",
+      "name": "Swahili"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 154,
+    "fields": {
+      "code_2": "sv",
+      "code_3": "swe",
+      "name": "Swedish"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 155,
+    "fields": {
+      "code_2": "ty",
+      "code_3": "tah",
+      "name": "Tahitian"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 156,
+    "fields": {
+      "code_2": "ta",
+      "code_3": "tam",
+      "name": "Tamil"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 157,
+    "fields": {
+      "code_2": "tt",
+      "code_3": "tat",
+      "name": "Tatar"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 158,
+    "fields": {
+      "code_2": "te",
+      "code_3": "tel",
+      "name": "Telugu"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 159,
+    "fields": {
+      "code_2": "tg",
+      "code_3": "tgk",
+      "name": "Tajik"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 160,
+    "fields": {
+      "code_2": "tl",
+      "code_3": "tgl",
+      "name": "Tagalog"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 161,
+    "fields": {
+      "code_2": "th",
+      "code_3": "tha",
+      "name": "Thai"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 162,
+    "fields": {
+      "code_2": "bo",
+      "code_3": "tib",
+      "name": "Tibetan"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 163,
+    "fields": {
+      "code_2": "ti",
+      "code_3": "tir",
+      "name": "Tigrinya"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 164,
+    "fields": {
+      "code_2": "to",
+      "code_3": "ton",
+      "name": "Tonga (Tonga Islands)"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 165,
+    "fields": {
+      "code_2": "tn",
+      "code_3": "tsn",
+      "name": "Tswana"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 166,
+    "fields": {
+      "code_2": "ts",
+      "code_3": "tso",
+      "name": "Tsonga"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 167,
+    "fields": {
+      "code_2": "tk",
+      "code_3": "tuk",
+      "name": "Turkmen"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 168,
+    "fields": {
+      "code_2": "tr",
+      "code_3": "tur",
+      "name": "Turkish"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 169,
+    "fields": {
+      "code_2": "tw",
+      "code_3": "twi",
+      "name": "Twi"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 170,
+    "fields": {
+      "code_2": "ug",
+      "code_3": "uig",
+      "name": "Uighur; Uyghur"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 171,
+    "fields": {
+      "code_2": "uk",
+      "code_3": "ukr",
+      "name": "Ukrainian"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 172,
+    "fields": {
+      "code_2": "ur",
+      "code_3": "urd",
+      "name": "Urdu"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 173,
+    "fields": {
+      "code_2": "uz",
+      "code_3": "uzb",
+      "name": "Uzbek"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 174,
+    "fields": {
+      "code_2": "ve",
+      "code_3": "ven",
+      "name": "Venda"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 175,
+    "fields": {
+      "code_2": "vi",
+      "code_3": "vie",
+      "name": "Vietnamese"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 176,
+    "fields": {
+      "code_2": "vo",
+      "code_3": "vol",
+      "name": "Volapük"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 177,
+    "fields": {
+      "code_2": "cy",
+      "code_3": "wel",
+      "name": "Welsh"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 178,
+    "fields": {
+      "code_2": "wa",
+      "code_3": "wln",
+      "name": "Walloon"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 179,
+    "fields": {
+      "code_2": "wo",
+      "code_3": "wol",
+      "name": "Wolof"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 180,
+    "fields": {
+      "code_2": "xh",
+      "code_3": "xho",
+      "name": "Xhosa"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 181,
+    "fields": {
+      "code_2": "yi",
+      "code_3": "yid",
+      "name": "Yiddish"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 182,
+    "fields": {
+      "code_2": "yo",
+      "code_3": "yor",
+      "name": "Yoruba"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 183,
+    "fields": {
+      "code_2": "za",
+      "code_3": "zha",
+      "name": "Zhuang; Chuang"
+    }
+  },
+  {
+    "model": "apiserver.language",
+    "pk": 184,
+    "fields": {
+      "code_2": "zu",
+      "code_3": "zul",
+      "name": "Zulu"
+    }
+  }
+]
