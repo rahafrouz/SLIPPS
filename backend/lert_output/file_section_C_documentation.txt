@@ -125,7 +125,7 @@ Number: meaning
 ####### place in array: 11 (if was harmful, reported? - open) #######
 >>> open answers. will always be as string.
 
-####### place in array: 12 (if was harmful, reported?) #######
+####### place in array: 12 (if was harmful, documented?) #######
 Number: meaning
 >>> IF NO ANSWER, WILL default -1
 "2": "Yes"

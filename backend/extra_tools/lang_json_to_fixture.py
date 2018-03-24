@@ -1,7 +1,9 @@
 import json
 from pprint import pprint
+import datetime;
+now = datetime.datetime.now()
 
-jsond = json.load(open('lert_output/language_3b2.json'))
+jsond = json.load(open('../lert_output/language_3b2.json'))
 file = open("lang_output.json", "w")
 i = 1
 for data in jsond:
@@ -12,7 +14,8 @@ for data in jsond:
 	file.write('"fields": {' + '\n')
 	file.write('"code_2": ' + '"' + data["alpha2"] + '",' + '\n')
 	file.write('"code_3": ' + '"' + data["alpha3-b"] + '",' + '\n')
-	file.write('"name": ' + '"' + data["English"].encode("utf-8") + '"')
+	file.write('"name": ' + '"' + data["English"].encode("utf-8") + '",' + '\n')
+	file.write('"created_at": ' + '"' + str(now) + '"')
 	file.write("}\n")
 	file.write("},\n")
 	i = i+1
