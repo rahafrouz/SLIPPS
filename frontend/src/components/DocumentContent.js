@@ -4,7 +4,7 @@ class DocumentContent extends Component {
   render() {
     return (  
     <div>
-    <h5 style={{textAlign: 'left', paddingLeft: '10px', paddingBottom: '5px'}}>Upload an attachment</h5>
+    <h5 className='box_title'>Upload an attachment</h5>
 		<div className="box_general_3 ">					
 					<div className="indent_title_in">
 						<h3>Drag file here</h3>

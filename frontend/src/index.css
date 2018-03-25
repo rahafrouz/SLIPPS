@@ -25269,3 +25269,22 @@ text-shadow: none;
   width: 100%;
   height: 250px;
 }
+
+.box_title {
+  padding-top: 10px;
+  text-align: left;
+  padding-left: 10px;
+  padding-bottom: 5px;
+}
+
+.gray_background {
+  background-color: #F5F8FA;
+}
+
+.violet_text {
+  color: #3f4079;
+}
+
+.floating_left {
+  float: left;
+}

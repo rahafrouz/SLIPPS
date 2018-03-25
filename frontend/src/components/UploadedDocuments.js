@@ -7,7 +7,7 @@ class UploadedDocuments extends Component {
         <div className="container margin_40_35">
           <div className="row">
             <div className="col-xl-6 col-lg-6">
-                <h4 style={{textAlign: 'left', paddingLeft: '10px', paddingBottom: '5px'}}>Uploaded Documents</h4>
+                <h4 className='box_title'>Uploaded Documents</h4>
                 <div className='list_home width_80'>
                   <ul>
                     <li><a>Document 1</a></li>
@@ -15,11 +15,11 @@ class UploadedDocuments extends Component {
                 </div> 
             </div>
             <div className="col-xl-6 col-lg-6">
-                <h4 style={{textAlign: 'left', paddingLeft: '10px', paddingBottom: '5px'}}>Interested In</h4>
-                <div className='tags' style={{float: 'left'}}>
+                <h4 className='box_title'>Interested In</h4>
+                <div className='tags floating_left'>
                   <ul>
                     <li><a href='#'>Category 1</a></li>
-                     <li><a href='#'>Category 2</a></li>
+                    <li><a href='#'>Category 2</a></li>
                   </ul>
                 </div>
             </div>

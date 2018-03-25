@@ -13,7 +13,7 @@ class DocumentUpload extends Component {
     return (
       <div>
        <Navigation />
-       <div style={{backgroundColor: '#F5F8FA'}}>
+       <div className='gray_background'>
        <div className="container margin_120_95">
           <div className="row">
           <div className="col-xl-7 col-lg-7">
