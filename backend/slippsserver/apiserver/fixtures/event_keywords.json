@@ -1,0 +1,92 @@
+[
+  {
+    "model": "apiserver.eventkeyword",
+    "pk": 1,
+    "fields": {
+      "event": 1,
+      "keyword": 1,
+      "created_at": "2018-03-25 08:10:38.341564"
+    }
+  },
+  {
+    "model": "apiserver.eventkeyword",
+    "pk": 2,
+    "fields": {
+      "event": 1,
+      "keyword": 2,
+      "created_at": "2018-03-25 08:10:38.341564"
+    }
+  },
+  {
+    "model": "apiserver.eventkeyword",
+    "pk": 3,
+    "fields": {
+      "event": 1,
+      "keyword": 3,
+      "created_at": "2018-03-25 08:10:38.341564"
+    }
+  },
+  {
+    "model": "apiserver.eventkeyword",
+    "pk": 4,
+    "fields": {
+      "event": 1,
+      "keyword": 5,
+      "created_at": "2018-03-25 08:10:38.341564"
+    }
+  },
+  {
+    "model": "apiserver.eventkeyword",
+    "pk": 5,
+    "fields": {
+      "event": 1,
+      "keyword": 11,
+      "created_at": "2018-03-25 08:10:38.341564"
+    }
+  },
+  {
+    "model": "apiserver.eventkeyword",
+    "pk": 6,
+    "fields": {
+      "event": 2,
+      "keyword": 46,
+      "created_at": "2018-03-25 08:10:38.341564"
+    }
+  },
+  {
+    "model": "apiserver.eventkeyword",
+    "pk": 7,
+    "fields": {
+      "event": 2,
+      "keyword": 48,
+      "created_at": "2018-03-25 08:10:38.341564"
+    }
+  },
+  {
+    "model": "apiserver.eventkeyword",
+    "pk": 8,
+    "fields": {
+      "event": 2,
+      "keyword": 50,
+      "created_at": "2018-03-25 08:10:38.341564"
+    }
+  },
+  {
+    "model": "apiserver.eventkeyword",
+    "pk": 9,
+    "fields": {
+      "event": 2,
+      "keyword": 53,
+      "created_at": "2018-03-25 08:10:38.341564"
+    }
+  },
+  {
+    "model": "apiserver.eventkeyword",
+    "pk": 10,
+    "fields": {
+      "event": 2,
+      "keyword": 74,
+      "created_at": "2018-03-25 08:10:38.341564"
+    }
+  }
+]

@@ -29,13 +29,13 @@ class Choice(models.Model):
 
     class Meta:
         unique_together = ("question", "choice_num", "choice_text")
-            
 
 class Keyword(models.Model):
     language = models.CharField(max_length=2)
-    category = models.CharField(max_length=2)
+    category = models.CharField(max_length=200)
     kw_id = models.IntegerField()
     content = models.CharField(max_length=200)
+    created_at = models.DateTimeField(auto_now_add=True)
 
 class UserAccount(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
@@ -71,11 +71,13 @@ class Event(models.Model):
 class EventKeyword(models.Model):    
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
     keyword = models.ForeignKey(Keyword, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
 
 class EventDetail(models.Model):
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
     question = models.ForeignKey(Question, on_delete = models.CASCADE)
     answer = models.ForeignKey(Choice, on_delete = models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
 
 class DownloadedDocument(models.Model):
     user = models.ForeignKey(UserAccount, on_delete=models.CASCADE)

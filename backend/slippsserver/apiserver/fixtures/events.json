@@ -1,0 +1,30 @@
+[
+	{
+		"model": "apiserver.event",
+    "pk": 1,
+    "fields": {
+      "document": null,
+      "description": "ANSWER_A_EVENT_DESCRIPTION 1",
+      "why_relevant": "ANSWER_B_WHY_RELEVANT 1",
+      "short_desc": "1 - This is a short version of description to display...",
+      "language_id": 40,
+      "country_id": 75,
+      "created_at": "2018-03-25 08:10:38.341564",
+      "updated_at": "2018-03-25 08:10:38.341564"
+    }
+	},
+  {
+    "model": "apiserver.event",
+    "pk": 2,
+    "fields": {
+      "document": null,
+      "description": "ANSWER_A_EVENT_DESCRIPTION 2",
+      "why_relevant": "ANSWER_B_WHY_RELEVANT 2",
+      "short_desc": "2 - This is a short version of description to display...",
+      "language_id": 46,
+      "country_id": 75,
+      "created_at": "2018-03-25 08:10:38.341564",
+      "updated_at": "2018-03-25 08:10:38.341564"
+    }
+  }
+]
