@@ -1,4 +1,4 @@
-/*-------- Blog.css --------*/
+margin_/*-------- Blog.css --------*/
 article.blog {
   min-height: 200px;
   margin-bottom: 30px;
@@ -912,8 +912,8 @@ mark,
 }
 
 .img-fluid {
-  max-width: 100%;
-  height: auto;
+  max-width: 210px;
+  height: 210px;
 }
 
 .img-thumbnail {
@@ -12805,7 +12805,7 @@ a.wish_bt:hover:after {
 .strip_list {
   margin-bottom: 25px;
   background-color: #fff;
-  padding: 20px 15px 15px 115px;
+  padding: 30px 25px 15px 25px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   -ms-border-radius: 5px;
@@ -12895,7 +12895,7 @@ a.wish_bt:hover:after {
 }
 .strip_list ul {
   border-top: 1px solid #ededed;
-  margin: 15px -15px -15px -115px;
+  margin: 15px -15px -15px -15px;
   padding: 20px 15px;
 }
 @media (max-width: 767px) {
@@ -12916,35 +12916,35 @@ a.wish_bt:hover:after {
 .strip_list ul li a:hover {
   color: #e74e84;
 }
-.strip_list ul li:first-child:after {
+/*.strip_list ul li:first-child:after {
   content: '|';
   font-weight: 400;
   margin-left: 8px;
   color: #ccc;
-}
+}*/
 .strip_list ul li:last-child {
   float: right;
   margin-right: 0;
 }
 .strip_list ul li:last-child a {
-  border: 2px solid #e74e84;
-  color: #e74e84;
+  color: #3f4079;
   cursor: pointer;
-  padding: 5px 20px;
+  padding: 5px 10px;
   -moz-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
   -webkit-transition: all 0.3s ease-in-out;
   -ms-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
-  -webkit-border-radius: 30px;
-  -moz-border-radius: 30px;
-  -ms-border-radius: 30px;
-  border-radius: 30px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  border-radius: 10px;
 }
 .strip_list ul li:last-child a:hover {
-  background-color: #e74e84;
+  background-color: #3f4079;
   color: white !important;
 }
+
 @media (max-width: 991px) {
   .strip_list ul li:first-child {
     /* For less than 991px */
@@ -14603,7 +14603,8 @@ a.social_bt.linkedin:before {
 
 .step {
   padding: 20px 0 0 55px;
-  margin: 0 0 0 0;
+  margin: 0 auto;
+  width: 80%;
 }
 @media (max-width: 991px) {
   .step {
@@ -14614,6 +14615,8 @@ a.social_bt.linkedin:before {
 
 .box_general_3.cart label {
   font-weight: 500;
+  float: left;
+  padding-top: 10px;
 }
 
 .message {
@@ -14821,7 +14824,7 @@ ul.treatments.checkout li.total {
 
 .box_general_3 {
   background-color: #fff;
-  padding: 30px;
+  padding: 30px 30px 10px 30px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   -ms-border-radius: 5px;
@@ -14947,6 +14950,18 @@ ul.bullets li:before {
   .margin_60_35 {
     /* For less than 767px */
     padding-top: 30px;
+    padding-bottom: 5px;
+  }
+}
+
+.margin_40_35 {
+  padding-top: 40px;
+  padding-bottom: 35px;
+}
+@media (max-width: 767px) {
+  .margin_40_35 {
+    /* For less than 767px */
+    padding-top: 20px;
     padding-bottom: 5px;
   }
 }
@@ -25224,5 +25239,52 @@ text-shadow: none;
     font-size: 2em;
   }
 
+.width_80 {
+  width: 80%;
+}
 
-  
+.width_50 {
+  width: 50%;
+  float: left;
+}
+
+.event-text {
+  padding: 10px 20px 10px 20px;
+}
+
+.document_preview {
+  height: 500px;
+}
+
+.document_description {
+  background-color: #fff;
+  padding: 30px 30px 10px 30px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  border: 1px solid #e1e8ed;
+  display: block;
+  width: 100%;
+  height: 250px;
+}
+
+.box_title {
+  padding-top: 10px;
+  text-align: left;
+  padding-left: 10px;
+  padding-bottom: 5px;
+}
+
+.gray_background {
+  background-color: #F5F8FA;
+}
+
+.violet_text {
+  color: #3f4079;
+}
+
+.floating_left {
+  float: left;
+}
