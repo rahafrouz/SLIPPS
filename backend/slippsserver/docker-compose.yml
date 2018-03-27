@@ -1,0 +1,60 @@
+version: "3.5"
+services:
+  db:
+    restart: always
+    image: postgres
+    container_name: slippsdb
+    environment:
+      POSTGRES_DB: "slippsdb"
+      POSTGRES_PASSWORD: "root"
+    ports:
+      - "8001:5432"
+  es:
+    labels:
+      com.example.service: "es"
+      com.example.description: "For searching and indexing data"
+    image: elasticsearch
+    container_name: slipps_es
+    ports:
+      - "9200:9200"
+  kibana:
+    labels:
+      com.example.service: "kibana"
+      com.example.description: "Data visualisation and for log aggregation"
+    image: kibana
+    container_name: slipps_kibana
+    ports:
+      - "5601:5601"
+    environment:
+      - ELASTICSEARCH_URL=http://es:9200
+    depends_on:
+      - es
+  logstash:
+    labels:
+      com.example.service: "logstash"
+      com.example.description: "For logging data"
+    image: logstash
+    volumes:
+      - ./:/logstash_dir
+    command: logstash -f /logstash_dir/logstash.conf
+    depends_on:
+      - es
+  django_web:
+    container_name: django_web
+    labels:
+      com.example.service: "web"
+      com.example.description: "Use for the main web process"
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: slipps_django_web:1.0
+    depends_on:
+      - db
+      - es
+      - kibana
+    command: ["/app/docker_compose/django/wait_for_it.sh", "localhost:8001", "--", "/app/docker_compose/django/start.sh"]
+    # command: ["./wait_for_postgres.sh", "db", "./start.sh"]
+    ports:
+      - "8000:8000"
+    logging:
+      driver: "json-file"
