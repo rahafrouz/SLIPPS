@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react';
 import Navigation from '../components//Navigation';
 import LoginForm from '../components/LoginForm';
@@ -8,11 +7,10 @@ class LoginPage extends Component {
   render() {
     return (
       <div>
-       <Navigation />
-       <LoginForm/>
-       <Footer />
+        <Navigation />
+        <LoginForm/>
+        <Footer />
       </div>
-    
     );
   }
 }

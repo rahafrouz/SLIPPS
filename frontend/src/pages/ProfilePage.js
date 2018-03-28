@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react';
 import SearchContainer from '../components/SearchContainer';
 import Navigation from '../components//Navigation';
@@ -11,15 +10,15 @@ class ProfilePage extends Component {
   render() {
     return (
       <div>
-       <Navigation />
-       <div style={{backgroundColor: '#F5F8FA'}}>
-	       <UserDetails/>
-	       <hr></hr>
-	       <SavedEvents/>
-	       <hr></hr>
-	       <UploadedDocuments/>
-       </div>
-       <Footer />
+        <Navigation />
+        <div style={{backgroundColor: '#F5F8FA'}}>
+          <UserDetails/>
+          <hr></hr>
+          <SavedEvents/>
+          <hr></hr>
+          <UploadedDocuments/>
+        </div>
+        <Footer />
       </div>
     
     );
