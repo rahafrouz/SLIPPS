@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 class Navigation extends Component {
   render() {
@@ -7,7 +7,7 @@ class Navigation extends Component {
   		  <div className="container">
           <div className="row">
             <div className="col-lg-3 col-6">
-    					<h1><a href="#" title="SLIPPS">SLIPPS</a></h1>
+    					<h1><a href="/" title="SLIPPS">SLIPPS</a></h1>
     				</div>
   					<nav className="col-lg-9 col-6">
     					<a className="cmn-toggle-switch cmn-toggle-switch__htx open_close" href="#0">

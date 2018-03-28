@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import Navigation from '../components//Navigation';
-import AdvancedSearchContainer from '../components/AdvancedSearchContainer';
+import AdvancedSearchResults from '../components/AdvancedSearchResults';
 import Footer from '../components/Footer';
 
-class AdvancedSearch extends Component {
+class SearchPage extends Component {
   render() {
     return (
       <div>
        <Navigation />
-       <AdvancedSearchContainer />
+       <AdvancedSearchResults />
        <Footer />
       </div>
     
@@ -16,4 +16,4 @@ class AdvancedSearch extends Component {
   }
 }
 
-export default AdvancedSearch;
+export default SearchPage;

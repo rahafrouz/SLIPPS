@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-import '../App.css';
-import MainSearch from '../pages/MainSearch';
+import "../App.css";
+import MainSearch from "../pages/MainSearch";
 
 class Home extends Component {
   render() {

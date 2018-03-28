@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+import {withRouter} from 'react-router-dom'
 
 class LoginForm extends Component {
   
   goToProfile = () => {
-    window.location = '/profile';
+    // this.context.router.transitionTo('profile')
+    this.props.history.push('/profile')
   }
 
   render() {
@@ -15,29 +17,30 @@ class LoginForm extends Component {
           <div id="login-2">
             <h1>Please login to find Learning Events!</h1>
             
-              <div className="box_form clearfix">
-                <div className="box_login">
-                  <a href="#0" className="social_bt facebook">Login with Facebook</a>
-                  <a href="#0" className="social_bt google">Login with Google</a>
-                  <a href="#0" className="social_bt linkedin">Login with Linkedin</a>
+            <div className="box_form clearfix">
+              <div className="box_login">
+                <a href="#0" className="social_bt facebook">Login with Facebook</a>
+                <a href="#0" className="social_bt google">Login with Google</a>
+                <a href="#0" className="social_bt linkedin">Login with Linkedin</a>
+              </div>
+              <div className="box_login last">
+                <div className="form-group">
+                  <input type="email" className="form-control" placeholder="Your email address"/>
                 </div>
-                <div className="box_login last">
-                  <div className="form-group">
-                    <input type="email" className="form-control" placeholder="Your email address"/>
-                  </div>
-                  <div className="form-group">
-                    <input type="password" className="form-control" placeholder="Your password"/>
-                    <a href="#0" className="forgot"><small>Forgot password?</small></a>
-                  </div>
-                  <div className="form-group">
-                    {/*<input className="btn_1" type="submit" value="Login"/>*/}
-                    <input className="btn_1" type="button" value="Login" onClick="redirect('/profile');"/>
-                    <button onClick={this.goToProfile()} className="button">Login</button>
-                  </div>
+                <div className="form-group">
+                  <input type="password" className="form-control" placeholder="Your password"/>
+                  <a href="#0" className="forgot"><small>Forgot password?</small></a>
+                </div>
+                <div className="form-group">
+                  {/*<input className="btn_1" type="submit" value="Login"/>*/}
+                  <button onClick={this.goToProfile} className="btn_1">Login</button>
                 </div>
               </div>
-            
-            <p className="text-center link_bright">Do not have an account yet? <a href="#0"><strong>Register now!</strong></a></p>
+            </div>
+            <p className="text-center link_bright">
+              Do not have an account yet?
+              <a href="/register"><strong>Register now!</strong></a>
+            </p>
           </div>
         </div>
       </div>
@@ -47,4 +50,4 @@ class LoginForm extends Component {
   }
 }
 
-export default LoginForm;
+export default withRouter(LoginForm);
