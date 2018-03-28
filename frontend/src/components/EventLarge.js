@@ -6,7 +6,7 @@ class EventLarge extends Component {
     return (
 		<div className="box_general_3 booking">					
 			<div className="indent_title_in">
-				<i className="icon-star"></i>
+				<i className="icon-star-empty"></i>
 				<h3>This is an event title</h3>
 				<p>March 2018</p>
 			</div>
