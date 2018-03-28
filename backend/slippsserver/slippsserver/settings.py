@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework'
+    'rest_framework',
+    'elasticsearch_dsl',
 ]
 
 MIDDLEWARE = [
@@ -130,11 +131,10 @@ ELASTIC_SEARCH_HOST = 'localhost'
 ELASTIC_SEARCH_PORT = "9200"
 
 # DJANGO REST FRAMEWORK SETTINGS
-REST_FRAMEWORK = {
-    # Use Django's standard `django.contrib.auth` permissions,
-    # or allow read-only access for unauthenticated users.
-    'DEFAULT_PERMISSION_CLASSES': [
-        # 'rest_framework.permissions.IsAdminUser'
-        'rest_framework.permissions.AllowAny'
-    ]
-}
+# REST_FRAMEWORK = {
+#     # Use Django's standard `django.contrib.auth` permissions,
+#     # or allow read-only access for unauthenticated users.
+#     'DEFAULT_PERMISSION_CLASSES': [
+#         'rest_framework.permissions.IsAdminUser'
+#     ]
+# }
