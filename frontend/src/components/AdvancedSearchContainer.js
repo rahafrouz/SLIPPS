@@ -83,49 +83,13 @@ class AdvancedSearchContainer extends Component {
 								</div>
 							</div>
 						</div>
-
-					<div className="row">
-							<div className="col-md-6">
-
-								
-								<div className="row">	
-									<div className="col-md-6">
-										<div className="form-group">
-										<select className="form-control" name="country" id="country">
-										<option value="">Select country</option>
-										<option value="Cardiology">Finland</option>
-										<option value="Nursery">France</option>
-										<option value="Well-being">Sweden</option>
-									</select>	
-										</div>
-									</div>
-									<div className="col-md-6">
-										<div className="form-group">
-										<select className="form-control" name="country" id="country">
-										<option value="">Select country</option>
-										<option value="Cardiology">Finland</option>
-										<option value="Nursery">France</option>
-										<option value="Well-being">Sweden</option>
-									</select>	
-										</div>
-									</div>
-								</div>
-							</div>
-							<div className="col-md-6">
-								<div className="form-group">
-									<label>Security code</label>
-									<div className="row">
-										<div className="col-md-4">
-											<div className="form-group">
-												<input type="text" id="ccv" name="ccv" className="form-control" placeholder="CCV"/>
-											</div>
-										</div>
-										
-									</div>
-								</div>
-							</div>
+						<div className="row">
+						<div className="col-md-5 col-sm-5"></div>
+						<div className="col-md-5 col-sm-5">
+							<button className='btn_1 floating_right medium'>Search</button>	
 						</div>
-
+										
+						</div>
 						
 
 				  </div>
