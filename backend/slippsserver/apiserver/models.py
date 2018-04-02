@@ -35,7 +35,7 @@ class Choice(models.Model):
         unique_together = ("question", "choice_num", "choice_text")
 
 class Keyword(models.Model):
-    language = models.CharField(max_length=2)
+    language_code = models.CharField(max_length=2)
     category = models.CharField(max_length=200)
     kw_id = models.IntegerField()
     content = models.CharField(max_length=200)
