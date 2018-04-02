@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import logo from '../icons/slipps-logo.png' // relative path to image 
 
 class Navigation extends Component {
   render() {
@@ -6,8 +7,13 @@ class Navigation extends Component {
       <header className="header_sticky">
   		  <div className="container">
           <div className="row">
-            <div className="col-lg-3 col-6">
-    					<h1><a href="/" title="SLIPPS">SLIPPS</a></h1>
+            <div className="col-lg-3 col-6 slipps-logo">
+    					<h1>
+                <a href="/" title="SLIPPS">
+                  {/*<img src="/icons/slipps-logo.png" width="94" height="100" />*/}
+                  <img src={logo} alt={"logo"} width="94" height="100" /> 
+                </a>
+              </h1>
     				</div>
   					<nav className="col-lg-9 col-6">
     					<a className="cmn-toggle-switch cmn-toggle-switch__htx open_close" href="#0">
