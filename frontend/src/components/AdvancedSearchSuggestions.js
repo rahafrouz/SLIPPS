@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import MapView from './MapView';
+// import MapView from './MapView';
 import KeywordList from './KeywordList';
-import EventLarge from './EventLarge';
+// import EventLarge from './EventLarge';
 
 class AdvancedSearchSuggestions extends Component {
   render() {

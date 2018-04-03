@@ -1,6 +1,4 @@
-
 import React, { Component } from 'react';
-import SearchContainer from '../components/SearchContainer';
 import Navigation from '../components/Navigation';
 import DocumentContent from '../components/DocumentContent';
 import DocumentDescription from '../components/DocumentDescription';

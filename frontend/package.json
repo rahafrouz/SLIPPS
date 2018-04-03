@@ -16,6 +16,8 @@
   },
   "devDependencies": {
     "eslint": "^4.19.1",
-    "eslint-plugin-react": "^7.7.0"
+    "eslint-plugin-react": "^7.7.0",
+    "node-sass": "^4.8.3",
+    "sass-loader": "^6.0.7"
   }
 }

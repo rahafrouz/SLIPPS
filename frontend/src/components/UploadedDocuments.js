@@ -18,8 +18,8 @@ class UploadedDocuments extends Component {
                 <h4 className='box_title'>Interested In</h4>
                 <div className='tags floating_left'>
                   <ul>
-                    <li><a href='#'>Category 1</a></li>
-                    <li><a href='#'>Category 2</a></li>
+                    <li><a href='#/1'>Category 1</a></li>
+                    <li><a href='#/2'>Category 2</a></li>
                   </ul>
                 </div>
             </div>
