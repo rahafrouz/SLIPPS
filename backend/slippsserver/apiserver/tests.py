@@ -3,7 +3,6 @@ from __future__ import unicode_literals
 
 from django.test import TestCase
 from rest_framework.test import APIClient, APIRequestFactory
-# from rest_framework.test import force_authenticate
 from rest_framework import status
 from django.urls import reverse
 
@@ -21,7 +20,7 @@ class ModelTestCase(TestCase):
         self.country = Country(code=self.code, name=self.name)
 
     def test_model_can_create_a_country(self):
-        """Test the bucketlist model can create a bucketlist."""
+        """Test the country model can create a country."""
         old_count = Country.objects.count()
         self.country.save()
         new_count = Country.objects.count()

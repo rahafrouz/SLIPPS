@@ -13,3 +13,10 @@ class CountrySerializer(serializers.ModelSerializer):
         model = Country
         fields = ('id', 'name', 'code', 'created_at')
         read_only_fields = (['created_at'])
+
+class SearchSerializer(serializers.Serializer):
+	description = serializers.CharField(max_length=500)
+	short_desc = serializers.CharField()
+	language = serializers.CharField(max_length=200)
+	country = serializers.CharField(max_length=200)
+	created_at = serializers.DateTimeField()

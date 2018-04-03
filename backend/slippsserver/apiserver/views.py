@@ -2,44 +2,47 @@
 from __future__ import unicode_literals
 
 from django.shortcuts import render
-from rest_framework import generics, views, status
+from rest_framework import generics
+from rest_framework.views import APIView
 from rest_framework.response import Response
+from elasticsearch_dsl import FacetedSearch, TermsFacet, Search, Q, serializer
+from elasticsearch import Elasticsearch
 
-from rest_framework.decorators import api_view
-from .serializers import CountrySerializer
+from .serializers import CountrySerializer, SearchSerializer
 from .models import Country
+from .schema import SearchResult
+from .query_builders import EventSearch
 
 class CountryList(generics.ListCreateAPIView):
     queryset = Country.objects.all()
     serializer_class = CountrySerializer
 
-# class CreateView(views.APIView):
-#     queryset = Country.objects.all()
+class SearchByKeyword(APIView):
+    # view to perform simple search with a single keyword
+    def get(self, request, format=None):
+        """
+        Return a list of all event matching keyword.
+        """
+        # Food and nutrition
 
-#     def get(self, request, format=None):
-#         countries = Country.objects.all()
-#         serializer = CountrySerializer(countries, many=True)
-#         return Response(serializer.data)
+        client = Elasticsearch()
+        s = Search(using=client, index="slipps", doc_type="event")
 
-#     @api_view(["POST"])
-#     def post(self, request, format=None):
-#         serializer = CountrySerializer(data=request.data)
-#         if serializer.is_valid():
-#             serializer.save()
-#             return Response(serializer.data, status=status.HTTP_201_CREATED)
-#         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        params = request.query_params
 
-    """This class defines the create behavior of our rest api."""
-    # serializer_class = CountrySerializer
+        q = Q('bool', must=[Q('match', short_desc="this")])
+        s = s.query(q)
 
-    # def create(self, serializer):
-    # 	print("perform_create")
-    # 	"""Save the post data when creating a new country."""
-    # 	serializer.save(country=self.request.country)
-    # 	return Response(serializer.data, status=status.HTTP_201_CREATED)
+        # print(keyword)
+        # s = s.query("multi_match", query = params['kw'], type='event', fields=['keywords', 'content.raw'])
+        # Match(title={"query": params['kw'], "type": "event"})
+        # s = s.query("match", title={"query": params['kw'], "type": "choice"})
+        # s = s.query("multi_match", query=params['kw'], type="event")
+        response = s.execute()
+        # es = EventSearch(params['kw'])
+        # response = es.execute()
 
-    # def perform_create(self, serializer):
-    # 	print("perform_create")
-    # 	"""Save the post data when creating a new country."""
-    # 	serializer.save(country=self.request.country)
-    # 	return Response(serializer.data, status=status.HTTP_201_CREATED)
+        # print(response)
+
+        # serializer = SearchSerializer()
+        return Response(response.to_dict())
