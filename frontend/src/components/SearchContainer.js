@@ -2,8 +2,14 @@ import React, { Component } from "react";
 import {withRouter} from "react-router-dom";
 
 class SearchContainer extends Component {
+  constructor(props) {
+    super(props);
+    this.goToSearch = this.goToSearch.bind(this);
+  }
+
   goToSearch() {
     this.props.history.push("/search");
+    // browserHistory.push("/search");
   }
 
   render() {

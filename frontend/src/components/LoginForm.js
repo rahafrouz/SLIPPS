@@ -2,9 +2,12 @@ import React, { Component } from "react";
 import {withRouter} from "react-router-dom";
 
 class LoginForm extends Component {
+  constructor(props) {
+    super(props);
+    this.goToProfile = this.goToProfile.bind(this);
+  }
   
   goToProfile() {
-    // this.context.router.transitionTo("profile")
     this.props.history.push("/profile");
   }
 

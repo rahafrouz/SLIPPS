@@ -2,9 +2,12 @@ import React, { Component } from "react";
 import {withRouter} from "react-router-dom";
 
 class RegisterForm extends Component {
+  constructor(props) {
+    super(props);
+    this.goToLogin = this.goToLogin.bind(this);
+  }
 
   goToLogin() {
-    // this.context.router.transitionTo("profile")
     this.props.history.push("/login");
   }
 
