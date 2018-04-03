@@ -1,16 +1,16 @@
 import React, { Component } from "react";
-import {withRouter} from 'react-router-dom'
+import {withRouter} from "react-router-dom";
 
 class RegisterForm extends Component {
 
-  goToLogin = () => {
-    // this.context.router.transitionTo('profile')
-    this.props.history.push('/login')
+  goToLogin() {
+    // this.context.router.transitionTo("profile")
+    this.props.history.push("/login");
   }
 
   render() {
     return (
-	   <div>
+      <div>
         <main>
           <div className="bg_color_2">
             <div className="container margin_60_35">
@@ -57,7 +57,7 @@ class RegisterForm extends Component {
             </div>
           </div>
         </main>
-	   </div>   
+      </div>   
     );
   }
 }

@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import {withRouter} from 'react-router-dom'
+import {withRouter} from "react-router-dom";
 
 class SearchContainer extends Component {
-  goToSearch = () => {
-    this.props.history.push('/search')
+  goToSearch() {
+    this.props.history.push("/search");
   }
 
   render() {
@@ -21,7 +21,7 @@ class SearchContainer extends Component {
               {/*<input type="submit" className="btn_search" value="Search"/>*/}
               <input type="submit" onClick={this.goToSearch} className="btn_search" value="Search" />
             </div>
-            <ul><li><a href="/advanced-search" className='advanced-search-link'> Advanced Search </a></li></ul>
+            <ul><li><a href="/advanced-search" className="advanced-search-link"> Advanced Search </a></li></ul>
           </div>
         
         </div>

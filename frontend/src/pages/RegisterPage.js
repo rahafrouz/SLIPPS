@@ -10,7 +10,7 @@ class RegisterPage extends Component {
         <Navigation />
         <RegisterForm/>
         <Footer />
-        </div>  
+      </div>  
     );
   }
 }

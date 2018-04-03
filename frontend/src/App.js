@@ -1,15 +1,15 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
-import './App.css';
-import Home from './pages/Home';
-import AdvancedSearch from './pages/AdvancedSearch';
-import SearchPage from './pages/SearchPage';
-import LoginPage from './pages/LoginPage';
-import ProfilePage from './pages/ProfilePage';
-// import EventDescription from './pages/EventDescription';
-import DocumentUpload from './pages/DocumentUpload';
-import RegisterPage from './pages/RegisterPage';
+import "./App.scss";
+import Home from "./pages/Home";
+import AdvancedSearch from "./pages/AdvancedSearch";
+import SearchPage from "./pages/SearchPage";
+import LoginPage from "./pages/LoginPage";
+import ProfilePage from "./pages/ProfilePage";
+// import EventDescription from "./pages/EventDescription";
+import DocumentUpload from "./pages/DocumentUpload";
+import RegisterPage from "./pages/RegisterPage";
 
 class App extends Component {
   render() {

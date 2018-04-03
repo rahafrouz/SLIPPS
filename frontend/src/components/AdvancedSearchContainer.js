@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import {withRouter} from 'react-router-dom'
+import {withRouter} from "react-router-dom";
 
 class AdvancedSearchContainer extends Component {
-  goToSearch = () => {
-    this.props.history.push('/search')
+  goToSearch() {
+    this.props.history.push("/search");
   }
 
   render() {
@@ -11,14 +11,12 @@ class AdvancedSearchContainer extends Component {
       <main>
         <div className="bg_color_2">
           <div className="container margin_60_35">
-              <div className="col-xl-12 col-lg-12">
+            <div className="col-xl-12 col-lg-12">
               <div className="box_general_3 cart">
-                  <div className="form_title">
+                <div className="form_title">
                   <h3>Advanced Search</h3>
-                  </div>
-
-            
-                  <div className="step">    
+                </div>
+                <div className="step">    
                   <div className="row">
                     <div className="col-md-5 col-sm-5">
                       <div className="form-group">
@@ -58,11 +56,11 @@ class AdvancedSearchContainer extends Component {
                     <div className="col-md-5 col-sm-5">
                       <label>Operator</label>
                       <div className="form-group">
-                                    <select className="form-control" name="operator" id="operator">
+                        <select className="form-control" name="operator" id="operator">
                           <option value="">AND</option>
                           <option value="Cardiology">OR</option>
                         </select>   
-                                  </div>
+                      </div>
                     </div>
                   </div>
 
@@ -104,7 +102,7 @@ class AdvancedSearchContainer extends Component {
                         <div className="col-md-6">
                           <div className="form-group">
                             <select className="form-control" name="to-year" id="to_year">
-                             <option value="">To year</option>
+                              <option value="">To year</option>
                               <option value="2016">2016</option>
                               <option value="2017">2017</option>
                               <option value="2018">2018</option>
@@ -121,9 +119,9 @@ class AdvancedSearchContainer extends Component {
                       </div>
                     </div>
                   </div>
-                  </div>
+                </div>
               </div>
-              </div>    
+            </div>    
           </div>
         </div>
       </main>   

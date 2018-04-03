@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import "../App.css";
+import "../App.scss";
 import MainSearch from "../pages/MainSearch";
 
 class Home extends Component {
