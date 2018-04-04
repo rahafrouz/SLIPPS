@@ -1,18 +1,66 @@
-import React, { Component } from "react";
+import React from "react";
 
-class MapView extends Component {
+import { compose, withProps } from "recompose";
+import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps";
+
+
+const MyMapComponent = compose(
+  withProps({
+    googleMapURL: "https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places",
+    loadingElement: <div style={{ height: "100%" }} />,
+    containerElement: <div style={{ height: "400px" }} />,
+    mapElement: <div style={{ height: "100%" }} />,
+  }),
+  withScriptjs,
+  withGoogleMap
+)((props) =>
+  <GoogleMap
+    defaultZoom={8}
+    defaultCenter={{ lat: -34.397, lng: 150.644 }}
+  >
+    {props.isMarkerShown && <Marker position={{ lat: -34.397, lng: 150.644 }} onClick={props.onMarkerClick} />}
+  </GoogleMap>
+);
+
+
+
+
+class MapView extends React.PureComponent {
+  state = {
+    isMarkerShown: false,
+  }
+
+  componentDidMount() {
+    this.delayedShowMarker();
+  }
+
+  delayedShowMarker = () => {
+    setTimeout(() => {
+      this.setState({ isMarkerShown: true });
+    }, 3000);
+  }
+
+  handleMarkerClick = () => {
+    this.setState({ isMarkerShown: false });
+    this.delayedShowMarker();
+  }
+
+
+
+
   render() {
     return (
       <div> 
         <hr></hr>
-        <div className="container margin_120_95">
-          <div className="main_title">
-            <h2>Discover learning events all around the world!</h2>
-            <div className='col-lg-15'>Placeholder for Map View</div>
-          </div>
+        <div className="main_title">
+          <MyMapComponent
+            isMarkerShown={this.state.isMarkerShown}
+            onMarkerClick={this.handleMarkerClick}
+          />
         </div>
       </div>      
     );
   }
 }
 export default MapView;
+

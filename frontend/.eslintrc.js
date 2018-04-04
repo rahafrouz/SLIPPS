@@ -4,6 +4,8 @@ module.exports = {
     "es6": true
   },
   "extends": "eslint:recommended",
+  "parser": "babel-eslint",
+
   "parserOptions": {
     "ecmaFeatures": {
       "experimentalObjectRestSpread": true,
@@ -15,6 +17,10 @@ module.exports = {
     "react"
   ],
   "rules": {
+    "no-console": [
+      "error", 
+      { allow: ["warn", "error"] }
+    ],
     "indent": [
       "error",
       2

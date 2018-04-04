@@ -1,13 +1,17 @@
 import React, { Component } from "react";
-import EventLarge from "./EventLarge";
+import EventList from "./EventList";
 // import KeywordList from "./KeywordList";
 import AdvancedSearchSuggestions from "./AdvancedSearchSuggestions";
 
 class AdvancedSearchResults extends Component {
   render() {
+    var NumberOfResult = this.props.results.hits.total;
+    var Hits = this.props.results.hits.hits;
     return (
       <main>
+        {console.error(NumberOfResult)}
         <div className="bg_color_2">
+          <h1>{NumberOfResult}</h1>
           <div className="container margin_60_35">
             <div className="row">
               <div className="col-xl-12 col-lg-12">
@@ -38,7 +42,8 @@ class AdvancedSearchResults extends Component {
                   <strong> 100 </strong>
                   results
                 </h5>
-                <EventLarge />
+                <EventList Hits={Hits} />
+                {/*<EventLarge />*/}
               </div>
               <div className="col-xl-4 col-lg-4">
                 <AdvancedSearchSuggestions />
