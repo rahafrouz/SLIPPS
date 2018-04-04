@@ -13,9 +13,10 @@ class SearchPage extends Component {
       testResult: {}
     };
   }
+
   render() {
-    const result = this.state.testResult.hits ? (
-      <AdvancedSearchResults keyword={this.props.match.params.keyword} results={this.state.testResult} />
+    var result = this.state.testResult.hits ? (
+      <AdvancedSearchResults keyword={this.props.match.params.keyword} results={this.state.testResult}  />
     ) : (<strong>you need to enter a keyword</strong>);
     return (
       <div>

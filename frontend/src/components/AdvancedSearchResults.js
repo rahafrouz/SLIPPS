@@ -21,33 +21,35 @@ class AdvancedSearchResults extends Component {
       AdvancedSearchisHidden: !this.state.AdvancedSearchisHidden
     });
   }
+
   render() {
     var NumberOfResult = this.props.results.hits.total;
     var Hits = this.props.results.hits.hits;
+    var Keywords = this.props.results.hits.hits["0"]?this.props.results.hits.hits["0"]._source.keywords:{};
     console.warn(this.props);
     return (
       <main>
         <div className="bg_color_2">
           <div className="container margin_60_35">
             <div className="row">
-              <div className="col-xl-12 col-lg-12">
+              {/*     <div className="col-xl-12 col-lg-12">
                 {this.state.AdvancedSearchisHidden && (<div className="box_general_3 cart" >
                   <div className="form-group">
                     <p className="left">{this.props.keyword}</p>
                   </div>
                 </div>)}
-              </div>
+              </div>*/}
               <div className="col-xl-2 col-lg-2">
                 <ul>
                   <li>
-                    <button onClick={this.toggleHidden.bind(this)}>
-                      <a  className='' > Advanced Search </a>
+                    <button className="advanced-search-link" onClick={this.toggleHidden.bind(this)}>
+                      <a>Advanced Search</a>
                     </button>
                   </li>
                 </ul>
               </div>
               <div className="col-xl-12 col-lg-12" >
-                {!this.state.AdvancedSearchisHidden && <AdvancedSearchContainer />}
+                {!this.state.AdvancedSearchisHidden && <AdvancedSearchContainer  />}
               </div>
             </div>
           </div>
@@ -69,7 +71,7 @@ class AdvancedSearchResults extends Component {
                 </h5>
               </div>
               <div className="col-xl-4 col-lg-4">
-                <AdvancedSearchSuggestions />
+                <AdvancedSearchSuggestions Keywords={Keywords} />
               </div>
             </div>
           </div>

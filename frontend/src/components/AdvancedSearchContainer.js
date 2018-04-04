@@ -13,7 +13,7 @@ class AdvancedSearchContainer extends Component {
     var keyword = this.state.keyword_1;
     this.props.history.push("/search/"+keyword);
     this.setState({"keyword_1": keyword});
-    this.forceUpdate();
+    window.location.reload();
   }
   HandleKeywords(e){
     this.setState({"keyword_1": e.target.value});

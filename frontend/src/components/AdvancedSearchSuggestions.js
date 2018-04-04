@@ -6,10 +6,8 @@ class AdvancedSearchSuggestions extends Component {
   render() {
     return (
       <div>
-        <h6 className="box_title">Same keyword in other languages</h6>
-        <KeywordList />
-        <h6 className="box_title">Keywords of the same category</h6>
-        <KeywordList />
+        <h6 className="box_title">Similiar Keywords</h6>
+        <KeywordList Keywords={this.props.Keywords}/>
       </div>
     );
   }
