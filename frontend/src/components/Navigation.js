@@ -14,7 +14,7 @@ class Navigation extends Component {
                 </a>
               </h1>
             </div>
-            <nav className="col-lg-9 col-6">
+            {/*<nav className="col-lg-9 col-6">
               <a className="cmn-toggle-switch cmn-toggle-switch__htx open_close" href="#0">
                 <span>Menu mobile</span>
               </a>
@@ -31,7 +31,7 @@ class Navigation extends Component {
                   </li>
                 </ul>
               </div>
-            </nav>
+            </nav>*/}
           </div>
         </div>
       </header>   

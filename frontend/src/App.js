@@ -24,6 +24,7 @@ class App extends Component {
           <Route path="/advanced-search" component={AdvancedSearch} />
           <Route path="/search/:keyword" component={SearchPage} />
           <Route path="/upload" component={DocumentUpload} />
+          <Route path="/event/:eventid" component={EventDescription} />
           <Route path="/desc" component={EventDescription} />
 
         </div>

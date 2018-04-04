@@ -5,7 +5,10 @@ class AdvancedSearchContainer extends Component {
   constructor(props) {
     super(props);
     this.goToSearch = this.goToSearch.bind(this);
-    this.state={"keyword_1":""};
+    this.state={
+      "keyword_1":"",
+      "enableSearch": false
+    };
     this.HandleKeywords= this.HandleKeywords.bind(this);
   }
 
@@ -17,6 +20,7 @@ class AdvancedSearchContainer extends Component {
   }
   HandleKeywords(e){
     this.setState({"keyword_1": e.target.value});
+    this.setState({"enableSearch": true});
   }
   render() {
     return (
@@ -125,7 +129,7 @@ class AdvancedSearchContainer extends Component {
                     <div className="col-md-6">
                       <div className="row"> 
                         <div className="col-md-12">
-                          <button onClick={this.goToSearch} className="btn_1 left">Search</button>
+                          <button onClick={this.goToSearch} className="btn_1 left" disabled={!this.state.enableSearch}>Search</button>
                         </div>
                       </div>
                     </div>
