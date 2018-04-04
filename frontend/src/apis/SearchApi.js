@@ -7,13 +7,13 @@ import request from "superagent";
  * @return {SuperAgent}
  */
 class SearchApi {
-  searchByKeyword({kw}) {
+  searchByKeyword(kw) {
     return (
       request
         .get("/api/search")
         .query({ "kw": kw }) // query string
     );
-  }  
+  }
 }
 
 export default SearchApi;
