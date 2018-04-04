@@ -1,18 +1,21 @@
 import React, { Component } from "react";
-
 class KeywordList extends Component {
+
   render() {
-    return (	
-      <div className="box_general_3">					
-        <ul >
-          <li><p>Keyword 1</p></li>
-          <hr></hr>
-          <li><p>Keyword 2</p></li>
-          <hr></hr>
-          <li><p>Keyword 3</p></li>
-        </ul>
-      </div>		
-    );
+    if(this.props.Keywords)
+    {
+      return (  
+        <div className="box_general_3">         
+          <ul >
+            {!(Object.keys(this.props.Keywords).length === 0)?this.props.Keywords.map((kw)=>{return (<li><a href={"/search/"+kw.content}>{kw.content}</a><hr></hr></li>);}):"nothing"}
+          </ul>
+        </div>    
+      );
+    }else
+    {
+      return "nothing";
+    }
+
   }
 }
 export default KeywordList;

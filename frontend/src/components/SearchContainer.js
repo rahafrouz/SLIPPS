@@ -15,8 +15,9 @@ class SearchContainer extends Component {
     this.setState({ keyword: e.target.value });
   }
 
-  goToSearch() {
-    this.props.history.push("/search/" + this.state.keyword);
+  goToSearch(e) {
+    e.preventDefault();
+    this.state.keyword?this.props.history.push("/search/" + this.state.keyword):{};
     // browserHistory.push("/search");
   }
 
@@ -30,11 +31,11 @@ class SearchContainer extends Component {
           </p>
         
           <div id="custom-search-input">
-            <div className="input-group">
+            <form className="input-group" onSubmit={this.goToSearch}>
               <input type="text" className=" search-query" placeholder="Ex. Well-being, Nursery, Healthcare..." onChange={this.enterKeyword}/>
               {/*<input type="submit" className="btn_search" value="Search"/>*/}
               <input type="submit" onClick={this.goToSearch} className="btn_search" value="Search" />
-            </div>
+            </form>
             <ul><li><a href="/advanced-search" className="advanced-search-link"> Advanced Search </a></li></ul>
           </div>
         
