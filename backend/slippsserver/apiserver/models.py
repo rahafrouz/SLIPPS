@@ -66,14 +66,14 @@ class UploadedDocument(models.Model):
 class Event(models.Model):
     document = models.ForeignKey(UploadedDocument, on_delete=models.SET_NULL, null=True)
     # ANSWER_A_EVENT_DESCRIPTION
-    description = models.CharField(max_length=500)
+    description = models.TextField()
     # ANSWER_B_WHY_RELEVANT
-    why_relevant = models.CharField(max_length=500)
+    why_relevant = models.TextField()
     short_desc = models.TextField()
     language = models.ForeignKey(Language, on_delete=models.SET_NULL, null=True)
     country = models.ForeignKey(Country, on_delete=models.SET_NULL, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+    updated_at = models.DateTimeField(auto_now=True, null=True)
     deleted_at = models.DateTimeField(null=True)
 
 class EventKeyword(models.Model):    
