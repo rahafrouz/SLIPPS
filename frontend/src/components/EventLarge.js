@@ -7,7 +7,8 @@ class EventLarge extends Component {
       <div className="box_general_3 booking">					
         <div className="indent_title_in">
           <i className="icon-star-empty"></i>
-          {/*<h3>{this.props.EventDetail._source.description}</h3>*/}
+
+          <h3>{this.props.EventDetail?this.props.EventDetail._source.description:"something"}</h3>
           <p>March 2018</p>
         </div>
         <div className="wrapper_indent">

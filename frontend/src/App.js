@@ -10,6 +10,7 @@ import ProfilePage from "./pages/ProfilePage";
 // import EventDescription from "./pages/EventDescription";
 import DocumentUpload from "./pages/DocumentUpload";
 import RegisterPage from "./pages/RegisterPage";
+import EventDescription from "./pages/EventDescription";
 
 class App extends Component {
   render() {
@@ -23,6 +24,8 @@ class App extends Component {
           <Route path="/advanced-search" component={AdvancedSearch} />
           <Route path="/search/:keyword" component={SearchPage} />
           <Route path="/upload" component={DocumentUpload} />
+          <Route path="/desc" component={EventDescription} />
+
         </div>
       </Router>
     );

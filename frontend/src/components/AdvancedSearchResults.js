@@ -1,31 +1,53 @@
 import React, { Component } from "react";
+// import ReactDOM from "react-dom";
 import EventList from "./EventList";
 // import KeywordList from "./KeywordList";
 import AdvancedSearchSuggestions from "./AdvancedSearchSuggestions";
+import AdvancedSearchContainer from "./AdvancedSearchContainer";
+
+
+
+
 
 class AdvancedSearchResults extends Component {
+  constructor () {
+    super();
+    this.state = {
+      AdvancedSearchisHidden: true
+    };
+  }
+  toggleHidden () {
+    this.setState({
+      AdvancedSearchisHidden: !this.state.AdvancedSearchisHidden
+    });
+  }
   render() {
     var NumberOfResult = this.props.results.hits.total;
     var Hits = this.props.results.hits.hits;
+    console.warn(this.props);
     return (
       <main>
         <div className="bg_color_2">
-          <h1>{NumberOfResult}</h1>
           <div className="container margin_60_35">
             <div className="row">
               <div className="col-xl-12 col-lg-12">
-                <div className="box_general_3 cart" style={{padding: 30 + "px"}}>
+                {this.state.AdvancedSearchisHidden && (<div className="box_general_3 cart" >
                   <div className="form-group">
-                    <p className="left">You search for: KEYWORD == {this.props.keyword} AND COUNTRY == "Finland"</p>
+                    <p className="left">{this.props.keyword}</p>
                   </div>
-                </div>
+                </div>)}
               </div>
               <div className="col-xl-2 col-lg-2">
                 <ul>
                   <li>
-                    <a href="/advanced-search" className=''> Advanced Search </a>
+                    <button onClick={this.toggleHidden.bind(this)}>
+                      <a  className='' > Advanced Search </a>
+                    </button>
                   </li>
                 </ul>
+              </div>
+              <div className="col-xl-12 col-lg-12" >
+                {!this.state.AdvancedSearchisHidden && <AdvancedSearchContainer />}
               </div>
             </div>
           </div>
@@ -35,14 +57,16 @@ class AdvancedSearchResults extends Component {
             <div className="row">
               <div className="col-xl-8 col-lg-8">
                 <h5 className='box_title'>
+                  <strong>You search for: KEYWORD == {this.props.keyword} AND COUNTRY == "Finland"</strong>
+                  <hr />
+                  <EventList Hits={Hits} />
+
                   Showing 
-                  <strong className='violet_text'> 10 </strong> 
+                  <strong className='violet_text'> {NumberOfResult} </strong> 
                   of 
-                  <strong> 100 </strong>
+                  <strong> {NumberOfResult} </strong>
                   results
                 </h5>
-                <EventList Hits={Hits} />
-                {/*<EventLarge />*/}
               </div>
               <div className="col-xl-4 col-lg-4">
                 <AdvancedSearchSuggestions />

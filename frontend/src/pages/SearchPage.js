@@ -16,7 +16,7 @@ class SearchPage extends Component {
   render() {
     const result = this.state.testResult.hits ? (
       <AdvancedSearchResults keyword={this.props.match.params.keyword} results={this.state.testResult} />
-    ) : (<div></div>);
+    ) : (<strong>you need to enter a keyword</strong>);
     return (
       <div>
         <Navigation />
@@ -33,7 +33,7 @@ class SearchPage extends Component {
   // if we have more than one component on the page 
   componentWillMount() {
     request
-      .get("http://127.0.0.1:8000/api/search")
+      .get("http://157.24.191.55:8000/api/search")
       .query({ kw: this.props.match.params.keyword }) // sends a JSON post body
       .set("content-type", "json")
       .end((err, res) => {

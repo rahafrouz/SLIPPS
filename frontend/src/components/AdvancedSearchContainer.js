@@ -5,12 +5,19 @@ class AdvancedSearchContainer extends Component {
   constructor(props) {
     super(props);
     this.goToSearch = this.goToSearch.bind(this);
+    this.state={"keyword_1":""};
+    this.HandleKeywords= this.HandleKeywords.bind(this);
   }
 
   goToSearch() {
-    this.props.history.push("/search");
+    var keyword = this.state.keyword_1;
+    this.props.history.push("/search/"+keyword);
+    this.setState({"keyword_1": keyword});
+    this.forceUpdate();
   }
-
+  HandleKeywords(e){
+    this.setState({"keyword_1": e.target.value});
+  }
   render() {
     return (
       <main>
@@ -39,7 +46,7 @@ class AdvancedSearchContainer extends Component {
                     <div className="col-md-5 col-sm-5">
                       <div className="form-group adv-search-label">
                         <label >Keyword 1</label>
-                        <input type="text" id="keyword_1" name="keyword_1" className="form-control" placeholder="keyword 1"/>
+                        <input type="text" id="keyword_1" name="keyword_1" className="form-control" placeholder="keyword 1" onChange={this.HandleKeywords}/>
                       </div>
                     </div>
                   </div>
