@@ -96,9 +96,8 @@ class AdvancedSearchContainer extends Component {
                       <div className="row"> 
                         <div className="col-md-6">
                           <div className="form-group">
-                            <select className="form-control" name="from-year" id="from_year">
+                            <select className="form-control" name="from-year" id="from_year" disabled>
                               <option value="">From year</option>
-                              <option value="2015">2015</option>
                               <option value="2016">2016</option>
                               <option value="2017">2017</option>
                             </select>   
@@ -106,7 +105,7 @@ class AdvancedSearchContainer extends Component {
                         </div>
                         <div className="col-md-6">
                           <div className="form-group">
-                            <select className="form-control" name="to-year" id="to_year">
+                            <select className="form-control" name="to-year" id="to_year" disabled>
                               <option value="">To year</option>
                               <option value="2016">2016</option>
                               <option value="2017">2017</option>

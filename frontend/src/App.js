@@ -21,7 +21,7 @@ class App extends Component {
           <Route path="/register" component={RegisterPage} />
           <Route path="/profile" component={ProfilePage} />
           <Route path="/advanced-search" component={AdvancedSearch} />
-          <Route path="/search" component={SearchPage} />
+          <Route path="/search/:keyword" component={SearchPage} />
           <Route path="/upload" component={DocumentUpload} />
         </div>
       </Router>

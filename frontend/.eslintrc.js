@@ -3,7 +3,7 @@ module.exports = {
     "browser": true,
     "es6": true
   },
-  "extends": "eslint:recommended",
+  "extends": ["eslint:recommended"],
   "parserOptions": {
     "ecmaFeatures": {
       "experimentalObjectRestSpread": true,
@@ -12,7 +12,8 @@ module.exports = {
     "sourceType": "module"
   },
   "plugins": [
-    "react"
+    "react",
+    "prettier"
   ],
   "rules": {
     "indent": [
@@ -33,5 +34,6 @@ module.exports = {
     ],
     "react/jsx-uses-react": "error",
     "react/jsx-uses-vars": "error"
+    // "prettier/prettier": "error"
   }
 };

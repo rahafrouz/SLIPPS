@@ -5,10 +5,18 @@ class SearchContainer extends Component {
   constructor(props) {
     super(props);
     this.goToSearch = this.goToSearch.bind(this);
+    this.enterKeyword = this.enterKeyword.bind(this);
+    this.state = { 
+      keyword: ""
+    };
+  }
+
+  enterKeyword(e) {
+    this.setState({ keyword: e.target.value });
   }
 
   goToSearch() {
-    this.props.history.push("/search");
+    this.props.history.push("/search/" + this.state.keyword);
     // browserHistory.push("/search");
   }
 
@@ -23,7 +31,7 @@ class SearchContainer extends Component {
         
           <div id="custom-search-input">
             <div className="input-group">
-              <input type="text" className=" search-query" placeholder="Ex. Well-being, Nursery, Healthcare..."/>
+              <input type="text" className=" search-query" placeholder="Ex. Well-being, Nursery, Healthcare..." onChange={this.enterKeyword}/>
               {/*<input type="submit" className="btn_search" value="Search"/>*/}
               <input type="submit" onClick={this.goToSearch} className="btn_search" value="Search" />
             </div>

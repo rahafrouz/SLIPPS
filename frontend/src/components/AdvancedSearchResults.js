@@ -13,7 +13,7 @@ class AdvancedSearchResults extends Component {
               <div className="col-xl-12 col-lg-12">
                 <div className="box_general_3 cart" style={{padding: 30 + "px"}}>
                   <div className="form-group">
-                    <p className="left">You search for: KEYWORD == "your entered keywords" AND COUNTRY == "Finland"</p>
+                    <p className="left">You search for: KEYWORD == {this.props.keyword} AND COUNTRY == "Finland"</p>
                   </div>
                 </div>
               </div>
