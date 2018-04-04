@@ -23,8 +23,6 @@ const MyMapComponent = compose(
 );
 
 
-
-
 class MapView extends React.PureComponent {
   state = {
     isMarkerShown: false,

@@ -9,7 +9,6 @@ class AdvancedSearchResults extends Component {
     var Hits = this.props.results.hits.hits;
     return (
       <main>
-        {console.error(NumberOfResult)}
         <div className="bg_color_2">
           <h1>{NumberOfResult}</h1>
           <div className="container margin_60_35">
