@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'elasticsearch_dsl',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -50,7 +51,13 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
+
+CORS_ORIGIN_WHITELIST = (
+    'localhost:3000',
+    '127.0.0.1:3000'
+)
 
 ROOT_URLCONF = 'slippsserver.urls'
 
