@@ -9,12 +9,15 @@ class EventLarge extends Component {
     // this.props.history.push()
   }
   NavigateToEvent(){
-    this.props.history.push({
-      pathname: "/event/"+this.props.EventDetail._id,
-      state: {
-        EventDetail:this.props.EventDetail
-      }
-    });
+    if(this.props.EventDetail)
+    { 
+      this.props.history.push({
+        pathname: "/event/"+this.props.EventDetail._id,
+        state: {
+          EventDetail:this.props.EventDetail
+        }
+      });
+    }
   }
   render() {
     return (
