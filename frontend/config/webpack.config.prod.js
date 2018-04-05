@@ -229,6 +229,12 @@ module.exports = {
           },
           // ** STOP ** Are you adding a new loader?
           // Make sure to add the new loader(s) before the "file" loader.
+          // "scss" loader
+          {
+            test: /\.scss$/,
+            include: paths.appSrc,
+            loaders: ["style", "css", "sass"]
+          },
         ],
       },
     ],
@@ -266,7 +272,7 @@ module.exports = {
       "process.env": {
         NODE_ENV: JSON.stringify("production")
       }
-    });
+    }),
     // Minify the code.
     new webpack.optimize.UglifyJsPlugin({
       compress: {

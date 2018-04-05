@@ -18,7 +18,6 @@ class SearchContainer extends Component {
   goToSearch(e) {
     e.preventDefault();
     this.state.keyword?this.props.history.push("/search/" + this.state.keyword):{};
-    // browserHistory.push("/search");
   }
 
   render() {

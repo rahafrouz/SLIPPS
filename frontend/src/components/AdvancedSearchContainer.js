@@ -47,11 +47,12 @@ class AdvancedSearchContainer extends Component {
                         </div>
                       </div>
                     </div>
-                    <div className="col-md-5 col-sm-5">
+                    <div className="col-md-5 col-sm-5 adv-search-kw">
                       <div className="form-group adv-search-label">
                         <label >Keyword 1</label>
                         <input type="text" id="keyword_1" name="keyword_1" className="form-control" placeholder="keyword 1" onChange={this.HandleKeywords}/>
                       </div>
+                      <span className="error_message">* Please enter a keyword</span>
                     </div>
                   </div>
 

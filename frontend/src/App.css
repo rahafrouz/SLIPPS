@@ -30,6 +30,14 @@
   float: right;
 }
 
+.adv-search-kw .error_message {
+  margin: 0;
+}
+
+.advanced-search-link.toggle {
+  background: #ffffff;
+}
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }

@@ -6,9 +6,6 @@ import AdvancedSearchSuggestions from "./AdvancedSearchSuggestions";
 import AdvancedSearchContainer from "./AdvancedSearchContainer";
 
 
-
-
-
 class AdvancedSearchResults extends Component {
   constructor () {
     super();
@@ -42,7 +39,7 @@ class AdvancedSearchResults extends Component {
               <div className="col-xl-2 col-lg-2">
                 <ul>
                   <li>
-                    <button className="advanced-search-link" onClick={this.toggleHidden.bind(this)}>
+                    <button className="advanced-search-link toggle" onClick={this.toggleHidden.bind(this)}>
                       <a>Advanced Search</a>
                     </button>
                   </li>
@@ -59,7 +56,7 @@ class AdvancedSearchResults extends Component {
             <div className="row">
               <div className="col-xl-8 col-lg-8">
                 <h5 className='box_title'>
-                  <strong>You search for: KEYWORD == {this.props.keyword} AND COUNTRY == "Finland"</strong>
+                  <strong>You search for: KEYWORD == {this.props.keyword}</strong>
                   <hr />
                   <EventList Hits={Hits} />
 
