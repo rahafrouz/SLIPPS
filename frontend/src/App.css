@@ -42,6 +42,13 @@
   background-color: #e74e84;
 }
 
+.message {
+  margin-top: 10px;
+  display: block;
+  color: #e97d68;
+  font-weight: 600;
+}
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
