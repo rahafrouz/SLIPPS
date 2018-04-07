@@ -1,22 +1,39 @@
 import React, { Component } from "react";
-// import ReactDOM from "react-dom";
+import { connect } from "react-redux";
+
 import EventList from "./EventList";
-// import KeywordList from "./KeywordList";
 import AdvancedSearchSuggestions from "./AdvancedSearchSuggestions";
 import AdvancedSearchContainer from "./AdvancedSearchContainer";
+import { TOGGLE_ADVANCED_SEARCH } from "../constants/actionTypes";
 
+const mapStateToProps = state => {
+  return {
+    keyword: state.search.keyword,
+    results: state.search.searchResult,
+    isAvancedSearchHidden: state.search.isAvancedSearchHidden,
+  };
+};
+
+const mapDispatchToProps = dispatch => ({
+  toggleAdvancedSearch: (payload) =>
+    dispatch({ type: TOGGLE_ADVANCED_SEARCH, payload })
+});
 
 class AdvancedSearchResults extends Component {
-  constructor () {
+  constructor() {
     super();
-    this.state = {
-      AdvancedSearchisHidden: true
-    };
+    this.toggleHidden = this.toggleHidden.bind(this);
+  // this.setState({
+  //   AdvancedSearchisHidden: true
+  // });
   }
-  toggleHidden () {
-    this.setState({
-      AdvancedSearchisHidden: !this.state.AdvancedSearchisHidden
-    });
+
+  toggleHidden(e) {
+    e.preventDefault();
+    this.props.toggleAdvancedSearch({ isAvancedSearchHidden: !this.props.isAvancedSearchHidden});
+    // this.setState({
+    //   isAvancedSearchHidden: !this.props.isAvancedSearchHidden
+    // });
   }
 
   render() {
@@ -39,14 +56,14 @@ class AdvancedSearchResults extends Component {
               <div className="col-xl-2 col-lg-2">
                 <ul>
                   <li>
-                    <button className="advanced-search-link toggle" onClick={this.toggleHidden.bind(this)}>
+                    <button className="advanced-search-link toggle" onClick={this.toggleHidden}>
                       <a>Advanced Search</a>
                     </button>
                   </li>
                 </ul>
               </div>
               <div className="col-xl-12 col-lg-12" >
-                {!this.state.AdvancedSearchisHidden && <AdvancedSearchContainer  />}
+                {!this.props.isAvancedSearchHidden && <AdvancedSearchContainer  />}
               </div>
             </div>
           </div>
@@ -56,15 +73,14 @@ class AdvancedSearchResults extends Component {
             <div className="row">
               <div className="col-xl-8 col-lg-8">
                 <h5 className='box_title'>
-                  <strong>You search for: KEYWORD == {this.props.keyword}</strong>
+                  <strong>You search for keyword: "{this.props.keyword}"</strong>
                   <hr />
-                  <EventList Hits={Hits} />
-
                   Showing 
                   <strong className='violet_text'> {NumberOfResult} </strong> 
                   of 
                   <strong> {NumberOfResult} </strong>
                   results
+                  <EventList Hits={Hits} />
                 </h5>
               </div>
               <div className="col-xl-4 col-lg-4">
@@ -78,4 +94,4 @@ class AdvancedSearchResults extends Component {
   }
 }
 
-export default AdvancedSearchResults;
+export default connect(mapStateToProps, mapDispatchToProps)(AdvancedSearchResults);

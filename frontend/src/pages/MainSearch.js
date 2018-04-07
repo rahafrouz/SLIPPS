@@ -8,7 +8,7 @@ class MainSearch extends Component {
   render() {
     return (
       <div>
-        {<Navigation />}
+        <Navigation />
         <SearchContainer />
         <MainPageNews />
         <Footer />

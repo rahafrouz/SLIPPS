@@ -1,8 +1,6 @@
 import React, { Component } from "react";
-import MapView from "./MapView";
 import KeywordList from "./KeywordList";
 import EventLarge from "./EventLarge";
-
 
 class MainPageNews extends Component {
   render() {
@@ -21,7 +19,6 @@ class MainPageNews extends Component {
             </div>
           </div>
         </div>
-        <MapView />
       </div>
   
     );

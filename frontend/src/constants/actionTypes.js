@@ -1,0 +1,9 @@
+export const LOGIN = "LOGIN";
+export const LOGOUT = "LOGOUT";
+export const REDIRECT = "REDIRECT";
+export const REGISTER = "REGISTER";
+export const ASYNC_START = "ASYNC_START";
+export const ASYNC_END = "ASYNC_END";
+export const SEARCH_BY_KEYWORD = "SEARCH_BY_KEYWORD";
+export const SET_KEYWORD = "SET_KEYWORD";
+export const TOGGLE_ADVANCED_SEARCH = "TOGGLE_ADVANCED_SEARCH";

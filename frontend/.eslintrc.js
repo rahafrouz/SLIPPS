@@ -17,10 +17,7 @@ module.exports = {
     "prettier"
   ],
   "rules": {
-    "no-console": [
-      "error", 
-      { allow: ["warn", "error"] }
-    ],
+    "no-console": 0,
     "indent": [
       "error",
       2
@@ -37,6 +34,7 @@ module.exports = {
       "error",
       "always"
     ],
+    "no-unused-vars": 0,
     "react/jsx-uses-react": "error",
     "react/jsx-uses-vars": "error"
     // "prettier/prettier": "error"
