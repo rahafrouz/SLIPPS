@@ -1,0 +1,48 @@
+{
+	"took": 24,
+	"timed_out": false,
+	"_shards": {
+		"total": 5,
+		"successful": 5,
+		"skipped": 0,
+		"failed": 0
+	},
+	"hits": {
+		"total": 1,
+		"max_score": 0.98382175,
+		"hits":[
+			{
+				"_index":"slipps",
+				"_type":"event",
+				"_id":"1",
+				"_score":0.98382175,
+				"_source": {
+					"why_relevant": "ANSWER_B_WHY_RELEVANT 1",
+					"country": { "name": "Finland", "code": "FI" },
+					"@timestamp": "2018-04-02T18:54:16.815Z",
+					"keywords": [
+						{
+							"kw_pkey": 1,
+							"language_code": "en",
+							"category": "basic",
+							"kw_id": 1,
+							"content": "Key word in English 1"
+						},
+						{
+							"kw_pkey": 2,
+							"language_code": "en",
+							"category": "basic",
+							"kw_id": 2,
+							"content": "Key word in English 2"
+						}
+					],
+					"@version": "1",
+					"description": "ANSWER_A_EVENT_DESCRIPTION 1",
+					"language": { "name": "English", "code": "en" },
+					"id": 1,
+					"short_desc": "1 - This is a short version of description to display..."
+				}
+			}
+		]
+	}
+}

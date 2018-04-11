@@ -6,7 +6,7 @@ from rest_framework.test import APIClient, APIRequestFactory
 from rest_framework import status
 from django.urls import reverse
 
-from .models import Country
+# from .models import Country
 
 # Create your tests here.
 
@@ -27,19 +27,35 @@ class ModelTestCase(TestCase):
         self.assertNotEqual(old_count, new_count)
 
 
-class ViewTestCase(TestCase):
-    """Test suite for the api views."""
+# class ViewTestCase(TestCase):
+#     """Test suite for the api views."""
 
-    def setUp(self):
-        """Define the test client and other test variables."""
-        client = APIClient()
-        client.login(username='lauren', password='secret')
-        self.country_data = {'name': 'My ab country', 'code': '00'}
-        self.response = client.post('/countries/', 
-            self.country_data,
-            format="json"
-        )
+#     def setUp(self):
+#         """Define the test client and other test variables."""
+#         client = APIClient()
+#         client.login(username="lauren", password="secret")
+#         self.country_data = {"name": "My ab country", "code": "00"}
+#         self.response = client.post("/countries/", 
+#             self.country_data,
+#             format="json"
+#         )
 
-    def test_api_can_create_a_country(self):
-        """Test the api has country creation capability."""
-        self.assertEqual(self.response.status_code, status.HTTP_201_CREATED)
+#     def test_api_can_create_a_country(self):
+#         """Test the api has country creation capability."""
+#         self.assertEqual(self.response.status_code, status.HTTP_201_CREATED)
+
+
+# class SearchTestCase(TestCase):
+#     """Test suite for the api views."""
+
+#     def setUp(self):
+#         """Define the test client and other test variables."""
+#         self.client = APIClient()
+#         self.client.login(username="lauren", password="secret")
+#         self.keyword = "food"
+
+#     def test_api_search_by_keyword(self):
+#         """Test the api has country creation capability."""
+#         self.response = self.client.get("/api/search?kw=" + self.keyword, format="json")
+#         self.assertEqual(self.response.status_code, status.HTTP_200_OK)
+#         self.assertEqual(response.data.hits.total, "1")
