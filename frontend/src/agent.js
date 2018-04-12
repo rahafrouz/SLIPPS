@@ -1,6 +1,5 @@
 import _superagent from "superagent";
 import superagentPromise from "superagent-promise";
-// import root from "window-or-global";
 
 /**
  * Builds a `superagent` request object to get an item by Id
@@ -29,18 +28,6 @@ const requests = {
 const Search = {
   byKeyword(keyword) {
     return requests.get(`/search?kw=${keyword}`);
-    // return (
-    //   request
-    //     .get(API_ROOT + "/search")
-    //     .query({ kw: this.props.match.params.keyword }) // sends a JSON post body
-    //     .set("content-type", "json")
-    // .end((err, res) => {
-    //   this.setState({
-    //     testResult: res.body
-    //   });
-    //   this.forceUpdate();
-    // });
-    // );
   },
 };
 
