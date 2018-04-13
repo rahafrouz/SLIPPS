@@ -2,13 +2,22 @@
 from __future__ import unicode_literals
 
 from django.shortcuts import render
-from rest_framework import generics
+# from rest_framework import generics
+from rest_framework import generics, viewsets, status
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticatedOrReadOnly, AllowAny
+# from rest_framework.decorators import api_view, permission_classes, action
+from rest_framework.decorators import detail_route, list_route
+
 from elasticsearch_dsl import Search, Q, serializer
 from elasticsearch import Elasticsearch
 
+from .serializers import UserSerializer
+from .models import UserAccount
+
 class SearchByKeyword(APIView):
+    permission_classes = (IsAuthenticatedOrReadOnly,)
 
     def get(self, request, format=None):
         """
@@ -30,6 +39,7 @@ class SearchByKeyword(APIView):
 
 
 class AdvancedSearch(APIView):
+    permission_classes = (IsAuthenticatedOrReadOnly,)
 
     def get(self, request, format=None):
         """
@@ -44,7 +54,6 @@ class AdvancedSearch(APIView):
             { "_score": { "order": "desc" }},
             { "id": { "order" : "asc" }},
         )
-
 
         # Filter request format
         # &country = 'country_code'
@@ -117,3 +126,26 @@ class AdvancedSearch(APIView):
         response = s.execute()
 
         return Response(response.to_dict())
+
+
+class UserViewSet(viewsets.ModelViewSet):
+    """
+    A viewset for viewing and editing user instances.
+    """
+    serializer_class = UserSerializer
+    queryset = UserAccount.objects.all()
+    permission_classes = [AllowAny]
+
+    # # @list_route(methods=['post'], permission_classes=[AllowAny])
+    # def create(self, request, pk=None):
+    #     print("Entering create!!!")
+    #     print(request.data)
+    #     user = self.get_object()
+    #     serializer = UserSerializer(data=request.DATA)
+    #     if serializer.is_valid():
+    #         # user.set_password(serializer.data['password'])
+    #         user.create()
+    #         return Response({'status': 'password set'})
+    #     else:
+    #         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
