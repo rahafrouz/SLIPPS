@@ -1,5 +1,23 @@
 import React, { Component } from "react";
 import {withRouter} from "react-router-dom";
+import SingleKeywordWithOperation from "./SingleKeywordWithOperation.js";
+import { connect } from "react-redux";
+import { TOGGLE_ADVANCED_SEARCH } from "../../constants/actionTypes";
+import KeywordsTagged from "./KeywordsTagged.js";
+
+
+const mapStateToProps = state => {
+  // state.AdvancedSearch?
+  // return {
+  //   keywords: state.AdvancedSearch.KeyWords,
+  // };
+};
+
+const mapDispatchToProps = dispatch => ({
+  toggleAdvancedSearch: (payload) =>
+    dispatch({ type: TOGGLE_ADVANCED_SEARCH, payload })
+});
+
 
 class AdvancedSearchContainer extends Component {
   constructor(props) {
@@ -50,7 +68,8 @@ class AdvancedSearchContainer extends Component {
                     <div className="col-md-5 col-sm-5 adv-search-kw">
                       <div className="form-group adv-search-label">
                         <label >Keyword 1</label>
-                        <input type="text" id="keyword_1" name="keyword_1" className="form-control" placeholder="keyword 1" onChange={this.HandleKeywords}/>
+                        <input type="text" id="keyword_1" name="keyword_1" 
+                          className="form-control" placeholder="keyword 1" onChange={this.HandleKeywords}/>
                       </div>
                       <span className="error_message">* Please enter a keyword</span>
                     </div>
@@ -135,6 +154,12 @@ class AdvancedSearchContainer extends Component {
                       </div>
                     </div>
                   </div>
+
+                  <SingleKeywordWithOperation Operator="and" ErrorMessage="true" KeywordId="3" />
+                  <div className="col-md-2 col-sm-2">
+                    <button className="btn_1 left" style={{"margin-top":"40px"}}>Add</button>
+                  </div>
+                  <KeywordsTagged type="any"/>
                 </div>
               </div>
             </div>    
@@ -145,4 +170,5 @@ class AdvancedSearchContainer extends Component {
   }
 }
 
-export default withRouter(AdvancedSearchContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(AdvancedSearchContainer));
+

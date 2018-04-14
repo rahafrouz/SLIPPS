@@ -34,6 +34,7 @@ class SearchContainer extends Component {
 
   handleKeywordChanged(e) {
     this.props.setKeyword({ keyword: e.target.value });
+    // console.log("keyword changed");
   }
 
   goToSearch(e) {

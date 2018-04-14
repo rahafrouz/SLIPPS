@@ -7,3 +7,4 @@ export const ASYNC_END = "ASYNC_END";
 export const SEARCH_BY_KEYWORD = "SEARCH_BY_KEYWORD";
 export const SET_KEYWORD = "SET_KEYWORD";
 export const TOGGLE_ADVANCED_SEARCH = "TOGGLE_ADVANCED_SEARCH";
+export const SET_TAG = "SET_TAG";

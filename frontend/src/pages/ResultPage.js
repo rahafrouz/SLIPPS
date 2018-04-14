@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 import agent from "../agent";
 import Navigation from "../components//Navigation";
-import AdvancedSearchResults from "../components/AdvancedSearchResults";
+import AdvancedSearchResults from "../components/AdvancedSearch/AdvancedSearchResults";
 import Footer from "../components/Footer";
 
 import { SET_KEYWORD, SEARCH_BY_KEYWORD } from "../constants/actionTypes";

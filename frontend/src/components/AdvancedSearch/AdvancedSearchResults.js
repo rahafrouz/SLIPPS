@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import EventList from "./EventList";
+import EventList from "../EventList";
 import AdvancedSearchSuggestions from "./AdvancedSearchSuggestions";
 import AdvancedSearchContainer from "./AdvancedSearchContainer";
-import { TOGGLE_ADVANCED_SEARCH } from "../constants/actionTypes";
+import { TOGGLE_ADVANCED_SEARCH } from "../../constants/actionTypes";
 
 const mapStateToProps = state => {
   return {
