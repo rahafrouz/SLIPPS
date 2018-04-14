@@ -1,7 +1,13 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+import hashlib
+
+from django.conf import settings
 from django.db import models
+from django.utils.crypto import get_random_string
+from datetime import datetime, timedelta
+from django.db.models.signals import post_save, pre_save
 
 class Language(models.Model):
     code_2 = models.CharField(max_length=2, unique=True)
@@ -44,16 +50,37 @@ class Keyword(models.Model):
 
 class UserAccount(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
-    email = models.EmailField()
+    email = models.EmailField(unique=True)
     hashed_pass = models.CharField(max_length=500)
     first_name = models.CharField(max_length=200)
     last_name = models.CharField(max_length=200)
-    dob = models.DateTimeField("date of birth")
-    gender = models.CharField(max_length=50)
+    dob = models.DateTimeField("date of birth", null=True, blank=True)
+    gender = models.CharField(max_length=50, null=True, blank=True)
     occupation = models.CharField(max_length=200)
     work_place = models.CharField(max_length=200)
-    phone = models.CharField(max_length=20)
+    phone = models.CharField(max_length=20, null=True, blank=True)
+    is_active = models.BooleanField(default=False)
+    verification_code = models.CharField(max_length=200)
+    verification_code_expired = models.DateTimeField(null=True)
     deleted_at = models.DateTimeField(null=True)
+
+    def is_deleted(self):
+        return self.deleted_at is None
+
+    def is_verification_code_expired(self):
+        return datetime.now() > self.verification_code_expired
+
+def generate_verification_code(sender, instance, **kwargs):
+    if not instance.pk:
+        # Execute for newly created user only
+        hash_input = (get_random_string(8) + instance.email).encode('utf-8')
+        instance.verification_code = hashlib.sha1(hash_input).hexdigest()
+        instance.verification_code_expired = datetime.now() + timedelta(
+            getattr(settings, 'VERIFICATION_CODE_EXPIRE_DAYS')
+        )
+        # instance.save
+
+pre_save.connect(generate_verification_code, sender=UserAccount)
 
 class UploadedDocument(models.Model):
     user = models.ForeignKey(UserAccount, on_delete=models.CASCADE)

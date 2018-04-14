@@ -70,11 +70,7 @@ class Choice(DocType):
         return super().save(** kwargs)
 
 class TaggedKeyword(DocType):
-    language = Nested(
-        properties = {
-            'lang_code': Text(),
-            'lang_name': Text()
-        })
+    language = Nested(Language)
     category = Text(fields={'raw': Keyword()})
     kw_id = Integer()
     content = Text(fields={'raw': Keyword()})
@@ -96,6 +92,8 @@ class Event(DocType):
     short_desc = Text()
     language = Nested(Language)
     country = Nested(Country)
+    field_of_study = Text(fields={'raw': Keyword()})
+    
     details = Nested(
         properties = {
             'question_id': Integer(),
