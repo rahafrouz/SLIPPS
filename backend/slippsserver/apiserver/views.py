@@ -2,21 +2,25 @@
 from __future__ import unicode_literals
 
 from django.shortcuts import render
+from django.contrib.auth import get_user_model
+
 # from rest_framework import generics
 from rest_framework import generics, viewsets, status
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework.permissions import IsAuthenticatedOrReadOnly, AllowAny
+from rest_framework.permissions import IsAuthenticatedOrReadOnly, AllowAny, IsAuthenticated, IsAdminUser
 # from rest_framework.decorators import api_view, permission_classes, action
 from rest_framework.decorators import detail_route, list_route
 
 from elasticsearch_dsl import Search, Q, serializer
 from elasticsearch import Elasticsearch
 
-from .serializers import UserSerializer
+from .serializers import UserRegistrationSerializer, UserLoginSerializer
 from .models import UserAccount
 
-class SearchByKeyword(APIView):
+User = get_user_model()
+
+class SearchByKeywordView(APIView):
     permission_classes = (IsAuthenticatedOrReadOnly,)
 
     def get(self, request, format=None):
@@ -38,7 +42,7 @@ class SearchByKeyword(APIView):
         return Response(response.to_dict())
 
 
-class AdvancedSearch(APIView):
+class AdvancedSearchView(APIView):
     permission_classes = (IsAuthenticatedOrReadOnly,)
 
     def get(self, request, format=None):
@@ -128,24 +132,42 @@ class AdvancedSearch(APIView):
         return Response(response.to_dict())
 
 
-class UserViewSet(viewsets.ModelViewSet):
+class UserRegistrationView(generics.CreateAPIView):
     """
     A viewset for viewing and editing user instances.
     """
-    serializer_class = UserSerializer
-    queryset = UserAccount.objects.all()
+    serializer_class = UserRegistrationSerializer
+    queryset = User.objects.all()
     permission_classes = [AllowAny]
 
-    # # @list_route(methods=['post'], permission_classes=[AllowAny])
-    # def create(self, request, pk=None):
-    #     print("Entering create!!!")
-    #     print(request.data)
-    #     user = self.get_object()
-    #     serializer = UserSerializer(data=request.DATA)
-    #     if serializer.is_valid():
-    #         # user.set_password(serializer.data['password'])
-    #         user.create()
-    #         return Response({'status': 'password set'})
+    # def post(self, request):
+    #     self.serializer.create(data=request.data)
+    #     pass
+
+    # def get_permissions(self):
+    #     """
+    #     Instantiates and returns the list of permissions that this view requires.
+    #     """
+    #     if self.action == 'list':
+    #         permission_classes = [IsAdminUser]
+    #     elif self.action == 'create':
+    #         permission_classes = [AllowAny]
     #     else:
-    #         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    #         permission_classes = [IsAuthenticated]
+    #     return [permission() for permission in permission_classes]
+
+# class UserLoginAPIView(APIView):
+#     """
+#     Endpoint for user login. Returns authentication token on success.
+#     """
+
+#     permission_classes = (AllowAny, )
+#     serializer_class = UserLoginSerializer
+
+#     def post(self, request):
+#         serializer = self.serializer_class(data=request.data)
+#         if serializer.is_valid(raise_exception=True):
+#             return Response(serializer.data, status=status.HTTP_200_OK)
+
+#         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 

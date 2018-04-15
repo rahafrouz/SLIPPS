@@ -4,10 +4,14 @@ from __future__ import unicode_literals
 import hashlib
 
 from django.conf import settings
-from django.db import models
+from django.db import models, transaction
 from django.utils.crypto import get_random_string
 from datetime import datetime, timedelta
 from django.db.models.signals import post_save, pre_save
+from django.contrib.auth import get_user_model
+
+# from django.contrib.auth.models import AbstractUser
+User = get_user_model()
 
 class Language(models.Model):
     code_2 = models.CharField(max_length=2, unique=True)
@@ -48,27 +52,96 @@ class Keyword(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     deleted_at = models.DateTimeField(null=True)
 
+class UserRegistrationManager(models.Manager):
+    @transaction.atomic
+    def create_user(self, data, is_active=False):
+        """
+        Create a new user and its associated ``UserProfile``.
+        Also, send user account activation (verification) email.
+
+        """
+
+        password = data.pop('password')
+        user = User(
+            email = data['email'],
+            username = data['email'],
+            first_name = data['first_name'],
+            last_name = data['last_name'],
+        )
+        user.is_active = is_active
+        user.set_password(password)
+        user.save()
+
+        user_account = self.create_account(
+            user = user,
+            data = data
+        )
+
+        # if send_email:
+        #     user_profile.send_activation_email(site)  # To be made asynchronous in production
+
+        return user
+
+    def create_account(self, user, data):
+        """
+        Create UserProfile for give user.
+        Returns created user profile on success.
+
+        """
+
+        hash_input = (get_random_string(8) + user.email).encode('utf-8')
+        verification_code = hashlib.sha1(hash_input).hexdigest()
+        verification_code_expired = datetime.now() + timedelta(
+            getattr(settings, 'VERIFICATION_CODE_EXPIRE_DAYS', 4)
+        )
+
+        if not 'dob' in data:
+            data['dob'] = None
+        if not 'gender' in data:
+            data['gender'] = None
+        if not 'phone' in data:
+            data['phone'] = None
+
+        account = self.create(
+            user = user,
+            dob = data['dob'],
+            gender = data['gender'],
+            occupation = data['occupation'],
+            work_place = data['work_place'],
+            phone = data['phone'],
+            verification_code = verification_code,
+            verification_code_expired = verification_code_expired
+        )
+
+        return account
+
+
 class UserAccount(models.Model):
-    created_at = models.DateTimeField(auto_now_add=True)
-    email = models.EmailField(unique=True)
-    hashed_pass = models.CharField(max_length=500)
-    first_name = models.CharField(max_length=200)
-    last_name = models.CharField(max_length=200)
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+
+    # email = models.EmailField(unique=True)
+    # hashed_pass = models.CharField(max_length=500)
+    # first_name = models.CharField(max_length=200)
+    # last_name = models.CharField(max_length=200)
     dob = models.DateTimeField("date of birth", null=True, blank=True)
     gender = models.CharField(max_length=50, null=True, blank=True)
     occupation = models.CharField(max_length=200)
     work_place = models.CharField(max_length=200)
     phone = models.CharField(max_length=20, null=True, blank=True)
-    is_active = models.BooleanField(default=False)
+    # is_active = models.BooleanField(default=False)
     verification_code = models.CharField(max_length=200)
     verification_code_expired = models.DateTimeField(null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
     deleted_at = models.DateTimeField(null=True)
 
-    def is_deleted(self):
-        return self.deleted_at is None
+    objects = UserRegistrationManager()
+    # last_login = models.DateTimeField(null=True)
 
-    def is_verification_code_expired(self):
-        return datetime.now() > self.verification_code_expired
+    # def is_deleted(self):
+    #     return self.deleted_at is None
+
+    # def is_verification_code_expired(self):
+    #     return datetime.now() > self.verification_code_expired
 
 def generate_verification_code(sender, instance, **kwargs):
     if not instance.pk:
@@ -76,14 +149,23 @@ def generate_verification_code(sender, instance, **kwargs):
         hash_input = (get_random_string(8) + instance.email).encode('utf-8')
         instance.verification_code = hashlib.sha1(hash_input).hexdigest()
         instance.verification_code_expired = datetime.now() + timedelta(
-            getattr(settings, 'VERIFICATION_CODE_EXPIRE_DAYS')
+            getattr(settings, 'VERIFICATION_CODE_EXPIRE_DAYS', 4)
         )
         # instance.save
 
-pre_save.connect(generate_verification_code, sender=UserAccount)
+        # TODO: Currently, activate user when register
+        # Update: activate after verify email.
+        instance.is_active = True
+
+# pre_save.connect(generate_verification_code, sender=UserAccount)
+
+# class UserToken(models.Model):
+#     created_at = models.DateTimeField(auto_now_add=True)
+#     key = models.TextField()
+#     user = models.ForeignKey(UserAccount, on_delete=models.CASCADE)
 
 class UploadedDocument(models.Model):
-    user = models.ForeignKey(UserAccount, on_delete=models.CASCADE)
+    user_account = models.ForeignKey(UserAccount, on_delete=models.CASCADE)
     uploaded_at = models.DateTimeField(auto_now_add=True)
     filename = models.CharField(max_length=200)
     file_url = models.CharField(max_length=200)
@@ -118,6 +200,6 @@ class EventDetail(models.Model):
     deleted_at = models.DateTimeField(null=True)
 
 class DownloadedDocument(models.Model):
-    user = models.ForeignKey(UserAccount, on_delete=models.CASCADE)
+    user_account = models.ForeignKey(UserAccount, on_delete=models.CASCADE)
     downloaded_at = models.DateTimeField('date downloaded')
     deleted_at = models.DateTimeField(null=True)
