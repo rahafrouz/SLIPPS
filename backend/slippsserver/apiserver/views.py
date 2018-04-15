@@ -2,9 +2,8 @@
 from __future__ import unicode_literals
 
 from django.shortcuts import render
+from django.conf import settings
 from django.contrib.auth import get_user_model
-
-# from rest_framework import generics
 from rest_framework import generics, viewsets, status
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -15,8 +14,26 @@ from rest_framework.decorators import detail_route, list_route
 from elasticsearch_dsl import Search, Q, serializer
 from elasticsearch import Elasticsearch
 
-from .serializers import UserRegistrationSerializer, UserLoginSerializer
-from .models import UserAccount
+from .serializers import (
+    UserRegistrationSerializer,
+    UserLoginSerializer,
+    KeywordHitsSerializer,
+    CountrySerializer,
+    LanguageSerializer,
+    ChoiceSerializer,
+    KeywordSerializer,
+)
+
+from .models import (
+    UserAccount,
+    KeywordHits,
+    Keyword,
+    Event,
+    Country,
+    Language,
+    Choice,
+    Keyword,
+)
 
 User = get_user_model()
 
@@ -31,16 +48,19 @@ class SearchByKeywordView(APIView):
         s = Search(using=client, index="slipps", doc_type="event")
 
         params = request.query_params
+        kw = params["kw"].lower()
 
-        q = Q("nested", path="keywords", query=Q("match", **{"keywords.content": params["kw"].lower()}))
+        q = Q("nested", path="keywords", query=Q("match", **{"keywords.content": kw}))
         s = s.query(q)
         response = s.execute()
+
+        # Count number of times a keyword is searched.
+        KeywordHits.objects.save_keyword_hit(kw=kw)
 
         # TODO: Filter results based on user authentication
         # Authenticated users: full details
         # Guest users: restricted data
         return Response(response.to_dict())
-
 
 class AdvancedSearchView(APIView):
     permission_classes = (IsAuthenticatedOrReadOnly,)
@@ -125,12 +145,40 @@ class AdvancedSearchView(APIView):
         per_page = int(params["per_page"])
         page = int(params["page"])
         s = s[(page-1)*per_page:page*per_page]
-        print(s.to_dict())
 
         response = s.execute()
 
+        for kw in (and_kws+or_kws):
+            KeywordHits.objects.save_keyword_hit(kw=kw)
+
         return Response(response.to_dict())
 
+class InitializeView(APIView):
+    # serializer_class = KeywordHitsSerializer
+    permission_classes = (AllowAny,)
+
+    def get(self, request, format=None):
+        """
+        Return a list of all info needed to start client app.
+        """
+        # Get most searched keyword, limit 20 first records by default.
+        kw_hits = KeywordHits.objects.get_popular_kws()
+
+        # List languages, countries for advanced search dropdown
+        countries = Country.objects.raw('SELECT * FROM apiserver_country WHERE id in (SELECT DISTINCT country_id FROM apiserver_event)')
+        languages = Language.objects.raw('SELECT * FROM apiserver_language WHERE id in (SELECT DISTINCT language_id FROM apiserver_event)')
+
+        # List available categories from events to search for.
+        category_id = getattr(settings, 'SLIPPS_CATEGORY_QUESTION_ID', 1)
+        categories = Choice.objects.filter(question_id=category_id).distinct('choice_text')
+
+        return Response({
+            "keyword_hits": KeywordHitsSerializer(kw_hits, many=True).data,
+            "countries": CountrySerializer(countries, many=True).data,
+            "languages": LanguageSerializer(languages, many=True).data,
+            "categories": ChoiceSerializer(categories, many=True).data,
+            "all_keywords": KeywordSerializer(Keyword.objects.all(), many=True).data,
+        })
 
 class UserRegistrationView(generics.CreateAPIView):
     """
@@ -139,35 +187,3 @@ class UserRegistrationView(generics.CreateAPIView):
     serializer_class = UserRegistrationSerializer
     queryset = User.objects.all()
     permission_classes = [AllowAny]
-
-    # def post(self, request):
-    #     self.serializer.create(data=request.data)
-    #     pass
-
-    # def get_permissions(self):
-    #     """
-    #     Instantiates and returns the list of permissions that this view requires.
-    #     """
-    #     if self.action == 'list':
-    #         permission_classes = [IsAdminUser]
-    #     elif self.action == 'create':
-    #         permission_classes = [AllowAny]
-    #     else:
-    #         permission_classes = [IsAuthenticated]
-    #     return [permission() for permission in permission_classes]
-
-# class UserLoginAPIView(APIView):
-#     """
-#     Endpoint for user login. Returns authentication token on success.
-#     """
-
-#     permission_classes = (AllowAny, )
-#     serializer_class = UserLoginSerializer
-
-#     def post(self, request):
-#         serializer = self.serializer_class(data=request.data)
-#         if serializer.is_valid(raise_exception=True):
-#             return Response(serializer.data, status=status.HTTP_200_OK)
-
-#         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-

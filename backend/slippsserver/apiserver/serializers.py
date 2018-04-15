@@ -7,8 +7,14 @@ from django.db.models import Q
 from datetime import datetime, timezone
 from django.contrib.auth import get_user_model
 
-
-from .models import UserAccount
+from .models import (
+    UserAccount,
+    KeywordHits,
+    Country,
+    Language,
+    Choice,
+    Keyword,
+)
 
 BCRYPT_SALT = b'$2b$12$hPhtNvTYULuTMEFZHC0m/e-ThisIsOurSalt'
 User = get_user_model()
@@ -34,17 +40,6 @@ class UserRegistrationSerializer(serializers.Serializer):
     occupation = serializers.CharField()
     work_place = serializers.CharField()
     phone = serializers.CharField(allow_blank=True, required=False)
-
-    # def get_is_deleted(self, obj):
-    #     return obj.deleted_at is None
-
-    # def get_is_verification_code_expired(self, obj):
-    #     return datetime.now(timezone.utc) > obj.verification_code_expired
-
-    # def validate_email(self, value):
-    #     if User.objects.filter(email=value).exists():
-    #         raise serializers.ValidationError("Email already exists.")
-    #     return value
 
     def validate_username(self, value):
         if User.objects.filter(username=value).exists():
@@ -77,25 +72,12 @@ class UserRegistrationSerializer(serializers.Serializer):
     def create(self, validated_data):
         print("Entering create!!!")
         print(self)
-        # raw_password = validated_data["hashed_pass"].encode('utf8')
-        # hashed_pass = bcrypt.hashpw(raw_password, BCRYPT_SALT)
         validated_data["email"] = validated_data['username']
 
         user_account = UserAccount.objects.create_user(
             data=validated_data,
             is_active=True, #TODO: verify email
         )
-
-        print(validated_data)
-
-        # user = User.objects.create(
-        #     email = validated_data['user.email'],
-        #     username = validated_data['user.email'],
-        #     first_name = validated_data['user.first_name'],
-        #     last_name = validated_data['last_name'],
-        #     password = validated_data['password']
-        # )
-                
         return user_account
 
     # def update(self, instance, validated_data):
@@ -165,4 +147,29 @@ class UserDetailsSerializer(serializers.Serializer):
         model = User
         fields = ('id', 'email', 'first_name', 'last_name')
         read_only_fields = ('email', )
-        
+
+class KeywordHitsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = KeywordHits
+        fields = '__all__'
+        read_only_fields = ('id', 'text', 'hits_count', 'is_new', 'keyword_id')
+
+class CountrySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Country
+        fields = '__all__'
+
+class LanguageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Language
+        fields = '__all__'
+
+class ChoiceSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Choice
+        fields = '__all__'
+
+class KeywordSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Keyword
+        fields = '__all__'

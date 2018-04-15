@@ -10,6 +10,8 @@ from datetime import datetime, timedelta
 from django.db.models.signals import post_save, pre_save
 from django.contrib.auth import get_user_model
 
+from .doctypes import Event as EventDoc
+
 # from django.contrib.auth.models import AbstractUser
 User = get_user_model()
 
@@ -115,7 +117,6 @@ class UserRegistrationManager(models.Manager):
 
         return account
 
-
 class UserAccount(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
@@ -135,34 +136,22 @@ class UserAccount(models.Model):
     deleted_at = models.DateTimeField(null=True)
 
     objects = UserRegistrationManager()
-    # last_login = models.DateTimeField(null=True)
 
-    # def is_deleted(self):
-    #     return self.deleted_at is None
+# def generate_verification_code(sender, instance, **kwargs):
+#     if not instance.pk:
+#         # Execute for newly created user only
+#         hash_input = (get_random_string(8) + instance.email).encode('utf-8')
+#         instance.verification_code = hashlib.sha1(hash_input).hexdigest()
+#         instance.verification_code_expired = datetime.now() + timedelta(
+#             getattr(settings, 'VERIFICATION_CODE_EXPIRE_DAYS', 4)
+#         )
+#         # instance.save
 
-    # def is_verification_code_expired(self):
-    #     return datetime.now() > self.verification_code_expired
-
-def generate_verification_code(sender, instance, **kwargs):
-    if not instance.pk:
-        # Execute for newly created user only
-        hash_input = (get_random_string(8) + instance.email).encode('utf-8')
-        instance.verification_code = hashlib.sha1(hash_input).hexdigest()
-        instance.verification_code_expired = datetime.now() + timedelta(
-            getattr(settings, 'VERIFICATION_CODE_EXPIRE_DAYS', 4)
-        )
-        # instance.save
-
-        # TODO: Currently, activate user when register
-        # Update: activate after verify email.
-        instance.is_active = True
+#         # TODO: Currently, activate user when register
+#         # Update: activate after verify email.
+#         instance.is_active = True
 
 # pre_save.connect(generate_verification_code, sender=UserAccount)
-
-# class UserToken(models.Model):
-#     created_at = models.DateTimeField(auto_now_add=True)
-#     key = models.TextField()
-#     user = models.ForeignKey(UserAccount, on_delete=models.CASCADE)
 
 class UploadedDocument(models.Model):
     user_account = models.ForeignKey(UserAccount, on_delete=models.CASCADE)
@@ -171,6 +160,14 @@ class UploadedDocument(models.Model):
     file_url = models.CharField(max_length=200)
     description = models.TextField()
     deleted_at = models.DateTimeField(null=True)
+
+class EventManager(models.Manager):
+    def publish_to_es(self):
+        # create and save and article
+        event_doc = EventDoc(meta={'id': self.id}, title=self.description[0:50])
+        event_doc.published_at = datetime.now()
+        event_doc.save()
+        # pass
 
 class Event(models.Model):
     document = models.ForeignKey(UploadedDocument, on_delete=models.SET_NULL, null=True)
@@ -184,6 +181,9 @@ class Event(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True, null=True)
     deleted_at = models.DateTimeField(null=True)
+    published_at = models.DateTimeField(null=True)
+
+    objects = EventManager()
 
 class EventKeyword(models.Model):    
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
@@ -203,3 +203,40 @@ class DownloadedDocument(models.Model):
     user_account = models.ForeignKey(UserAccount, on_delete=models.CASCADE)
     downloaded_at = models.DateTimeField('date downloaded')
     deleted_at = models.DateTimeField(null=True)
+
+class KeywordHitsManager(models.Manager):
+    def save_keyword_hit(self, kw):
+        keyword = Keyword.objects.filter(content__iexact=kw).first()
+        if keyword:
+            kw_hits, _ = self.get_or_create(
+                keyword = keyword,
+                text = kw,
+                is_new = False
+            )
+        else:
+            kw_hits, _ = self.get_or_create(
+                keyword = None,
+                text = kw,
+                is_new = True
+            )
+        print(kw_hits)
+        kw_hits.hits_count += 1
+        kw_hits.save()
+
+        return kw_hits
+
+    def sync_to_es(self):
+        pass
+
+    def get_popular_kws(self, limit=20):
+        return self.all().order_by('-hits_count')[:limit]
+
+class KeywordHits(models.Model):
+    keyword = models.ForeignKey(Keyword, on_delete=models.SET_NULL, null=True)
+    text = models.CharField(max_length=200)
+    is_new = models.BooleanField(default=False)
+    hits_count = models.IntegerField(default=0)
+
+    objects = KeywordHitsManager()
+
+    
