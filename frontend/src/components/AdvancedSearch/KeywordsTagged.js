@@ -6,9 +6,8 @@ import {SET_TAG} from "../../constants/actionTypes.js";
 import "react-tagsinput/react-tagsinput.css"; // If using WebPack and style-loader.
 
 const mapStateToProps= (state,ownProps) =>{
-  console.warn("ownprops:::::::",ownProps.type);
   return{
-    CurrentTags: state.advancedsearch.tags.type
+    CurrentTags: state.advancedsearch.tags[ownProps.type]
   };
 };
 const mapDispatchToProps= dispatch =>({
@@ -17,7 +16,6 @@ const mapDispatchToProps= dispatch =>({
 });
 
 class KeywordsTagged extends React.Component {
-
   constructor() {
     super();
     // this.props.tags = [];
@@ -31,12 +29,12 @@ class KeywordsTagged extends React.Component {
   // }
   handleChange(tags) {
     // this.setState({tags});
-    this.props.setTag({"type":this.props.type,
+    console.warn("inside handleChangee, here are tags:",tags);
+    this.props.setTag({"TagType":this.props.type,
       tags});
   }
 
   render() {
-    // return <TagsInput value={this.props.tags} onChange={this.handleChange}  />;
     return <TagsInput value={this.props.CurrentTags} onChange={this.handleChange} /> ;
   }
 }

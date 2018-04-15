@@ -7,10 +7,10 @@ import KeywordsTagged from "./KeywordsTagged.js";
 
 
 const mapStateToProps = state => {
-  // state.AdvancedSearch?
-  // return {
-  //   keywords: state.AdvancedSearch.KeyWords,
-  // };
+  //state.AdvancedSearch?
+  return {
+    // keywords: state.AdvancedSearch.KeyWords,
+  };
 };
 
 const mapDispatchToProps = dispatch => ({
@@ -157,7 +157,7 @@ class AdvancedSearchContainer extends Component {
 
                   <SingleKeywordWithOperation Operator="and" ErrorMessage="true" KeywordId="3" />
                   <div className="col-md-2 col-sm-2">
-                    <button className="btn_1 left" style={{"margin-top":"40px"}}>Add</button>
+                    <button className="btn_1 left" style={{marginTop:"40px"}}>Add</button>
                   </div>
                   <KeywordsTagged type="any"/>
                 </div>
