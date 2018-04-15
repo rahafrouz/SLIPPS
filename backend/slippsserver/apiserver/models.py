@@ -36,6 +36,9 @@ class Question(models.Model):
     deleted_at = models.DateTimeField(null=True)
 
 class Choice(models.Model):
+    """
+    Stores a single choice entry, related to :model:`question` and
+    """
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
     choice_num = models.IntegerField()
     choice_text = models.CharField(max_length=200)
@@ -161,12 +164,7 @@ class UploadedDocument(models.Model):
     description = models.TextField()
     deleted_at = models.DateTimeField(null=True)
 
-class EventManager(models.Manager):
-    def publish_to_es(self):
-        # create and save and article
-        event_doc = EventDoc(meta={'id': self.id}, title=self.description[0:50])
-        event_doc.published_at = datetime.now()
-        event_doc.save()
+# class EventManager(models.Manager):
         # pass
 
 class Event(models.Model):
@@ -183,7 +181,13 @@ class Event(models.Model):
     deleted_at = models.DateTimeField(null=True)
     published_at = models.DateTimeField(null=True)
 
-    objects = EventManager()
+    # objects = EventManager()
+
+    def publish_to_es(self):
+        # create and save and article
+        event_doc = EventDoc(meta={'id': self.id}, title=self.description[0:50])
+        event_doc.published_at = datetime.now()
+        event_doc.save()
 
 class EventKeyword(models.Model):    
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
