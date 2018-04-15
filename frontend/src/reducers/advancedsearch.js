@@ -15,19 +15,15 @@ const defaultState = {
 
 export default (state = defaultState, action) => {
   switch (action.type) {
-  case SET_TAG:
-    console.warn("this is inside reducer: SET_TAG ",action);
-    return{
+  case SET_KEYWORD:
+    return {
       ...state,
-      keywords: true,
-      tags:{
-        any:{
-          tags:["doodooli"]
-        },
-        all:{
-          tags:["dkdjfklajds"]
-        }
-      }
+      keyword: action.payload.keyword
+    };
+  case SET_TAG:
+    console.error(action);
+    return{
+      ...state
     };
   default:
     return state;
