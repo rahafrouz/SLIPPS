@@ -2,7 +2,10 @@ import React, { Component } from "react";
 import {withRouter} from "react-router-dom";
 import SingleKeywordWithOperation from "./SingleKeywordWithOperation.js";
 import { connect } from "react-redux";
-import { TOGGLE_ADVANCED_SEARCH } from "../../constants/actionTypes";
+import { 
+  TOGGLE_ADVANCED_SEARCH,
+  ENABLE_SEARCH_BUTTON,
+} from "../../constants/actionTypes";
 import KeywordsTagged from "./KeywordsTagged.js";
 
 
@@ -10,12 +13,14 @@ const mapStateToProps = state => {
   //state.AdvancedSearch?
   return {
     // keywords: state.AdvancedSearch.KeyWords,
+    single_keyword: state.search.keyword,
+    enableSearch: state.advancedsearch.enableSearch
   };
 };
 
 const mapDispatchToProps = dispatch => ({
-  toggleAdvancedSearch: (payload) =>
-    dispatch({ type: TOGGLE_ADVANCED_SEARCH, payload })
+  enableSearchButton: (payload) => 
+    dispatch({ type: ENABLE_SEARCH_BUTTON, payload }),
 });
 
 
@@ -23,11 +28,11 @@ class AdvancedSearchContainer extends Component {
   constructor(props) {
     super(props);
     this.goToSearch = this.goToSearch.bind(this);
-    this.state={
-      "keyword_1":"",
-      "enableSearch": false
-    };
-    this.HandleKeywords= this.HandleKeywords.bind(this);
+    // this.state={
+    //   "keyword_1":"",
+    //   "enableSearch": false
+    // };
+    this.handleKeywords= this.handleKeywords.bind(this);
   }
 
   goToSearch() {
@@ -36,10 +41,13 @@ class AdvancedSearchContainer extends Component {
     this.setState({"keyword_1": keyword});
     window.location.reload();
   }
-  HandleKeywords(e){
-    this.setState({"keyword_1": e.target.value});
-    this.setState({"enableSearch": true});
+
+  handleKeywords(e) {
+    // this.setState({"keyword_1": e.target.value});
+    // this.setState({"enableSearch": true});
+    this.props.enableSearchButton({ "enableSearch": e.target.value != "" });
   }
+
   render() {
     return (
       <main>
@@ -68,8 +76,8 @@ class AdvancedSearchContainer extends Component {
                     <div className="col-md-5 col-sm-5 adv-search-kw">
                       <div className="form-group adv-search-label">
                         <label >Keyword 1</label>
-                        <input type="text" id="keyword_1" name="keyword_1" 
-                          className="form-control" placeholder="keyword 1" onChange={this.HandleKeywords}/>
+                        <input type="text" id="single_keyword" name="single_keyword" 
+                          className="form-control" placeholder="keyword 1" onChange={this.handleKeywords}/>
                       </div>
                       <span className="error_message">* Please enter a keyword</span>
                     </div>
@@ -149,13 +157,13 @@ class AdvancedSearchContainer extends Component {
                     <div className="col-md-6">
                       <div className="row"> 
                         <div className="col-md-12">
-                          <button onClick={this.goToSearch} className="btn_1 left" disabled={!this.state.enableSearch}>Search</button>
+                          <button onClick={this.goToSearch} className="btn_1 left" disabled={!this.props.enableSearch}>Search</button>
                         </div>
                       </div>
                     </div>
                   </div>
 
-                  <SingleKeywordWithOperation Operator="and" ErrorMessage="true" KeywordId="3" />
+                  {/*<SingleKeywordWithOperation Operator="and" ErrorMessage="true" KeywordId="3" />*/}
                   <div className="col-md-2 col-sm-2">
                     <button className="btn_1 left" style={{marginTop:"40px"}}>Add</button>
                   </div>
