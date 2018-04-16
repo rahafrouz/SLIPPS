@@ -1,19 +1,37 @@
 import React, { Component } from "react";
+import {connect} from "react-redux";
+import {withRouter} from "react-router-dom";
+
+
+
+
+const mapStateToProps = state => {
+  return {
+    EventDetail: state.search.eventFull
+  };
+};
 
 class EventDescriptionContent extends Component {
   constructor(props){
     super(props);
   }
   render() {
+    console.warn(this.props);
     return (
       <div>
         <div className="container margin_60_35">
           <div className="row">
             <div className="col-lg-12">
               <div className="strip_list">
-                <h3>{ this.props.EventDetail._source.description}</h3>
+                <h3>
+                  { 
+                    this.props.EventDetail._source.description
+                  }
+                </h3>
                 <p className='event-text'>
-                  {this.props.EventDetail._source.short_desc}
+                  {
+                    this.props.EventDetail._source.short_desc
+                  }
                 </p>
                 <ul >
                   <li><a href="#0">Please log in to see full detail</a></li>
@@ -31,4 +49,5 @@ class EventDescriptionContent extends Component {
   }
 }
 
-export default EventDescriptionContent;
+export default connect(mapStateToProps, null)(withRouter(EventDescriptionContent));
+

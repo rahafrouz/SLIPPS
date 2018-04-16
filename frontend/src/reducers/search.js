@@ -6,6 +6,7 @@ import {
   ENABLE_SEARCH_BUTTON,
   DO_ADVANCED_SEARCH,
   SET_SEARCH_PARAMS,
+  SELECT_FULL_EVENT,
 } from "../constants/actionTypes";
 
 const defaultState = {
@@ -20,7 +21,8 @@ const defaultState = {
     }
   },
   enableSearch: false,
-  searchParams: {}
+  searchParams: {},
+  eventFull:{}
 };
 
 export default (state = defaultState, action) => {
@@ -61,6 +63,11 @@ export default (state = defaultState, action) => {
     return {
       ...state,
       searchParams: action.payload.searchParams
+    };
+  case SELECT_FULL_EVENT:
+    return{
+      ...state,
+      eventFull:action.payload
     };
   default:
     return state;
