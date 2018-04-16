@@ -63,7 +63,7 @@ class Navigation extends Component {
             <div className="col-lg-3 col-6 slipps-logo">
               <h1>
                 <a href="/" title="SLIPPS">
-                  <img src={logo} alt={"logo"} width="70" height="75" /> 
+                  <img src={logo} alt={"logo"} width="50" height="55" /> 
                 </a>
               </h1>
             </div>

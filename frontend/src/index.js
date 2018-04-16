@@ -16,6 +16,8 @@ import ProfilePage from "./pages/ProfilePage";
 import DocumentUpload from "./pages/DocumentUpload";
 import RegisterPage from "./pages/RegisterPage";
 import EventDescription from "./pages/EventDescription";
+import About from "./pages/About";
+
 
 import "./index.css";
 import "./App.scss";
@@ -38,6 +40,7 @@ ReactDOM.render(
             <Route path="/upload" component={DocumentUpload} />
             <Route path="/event/:eventid" component={EventDescription} />
             <Route path="/desc" component={EventDescription} />
+            <Route path="/about" component={About} />
           </Switch>
         </div>
       </Router>

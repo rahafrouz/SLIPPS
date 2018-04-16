@@ -25288,3 +25288,17 @@ text-shadow: none;
 .floating_left {
   float: left;
 }
+
+.about-title {
+  text-align: left;
+  margin-left: 40px;
+  margin-top: 50px;
+  color: #187DC1;
+}
+
+.about-content {
+  text-align: left;
+  margin-left: 40px;
+  margin-right: 40px;
+  color: #5A5A5A;
+}
