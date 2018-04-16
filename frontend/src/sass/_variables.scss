@@ -1,0 +1,33 @@
+//-------------------- Base Colors --------------------//
+$body-color: 					#f5f8fa;
+$body-text-color:               #555;
+$heading-color:                 #333;
+
+$primary-color: 				#3f4079;
+$secondary-color: 				#e74e84;
+$third-color: 					#74d1c6;
+$fourth-color: 					#fff02a;
+
+$border-color: 			        #ededed;
+$border-color-2: 			    #e1e8ed;
+
+//-------------------- Line Height Variables --------------------//
+$line-height-base:              1.4;
+$line-height-large:           	1.8;
+$line-height-none:           	1;
+
+//-------------------- Font Families --------------------//
+$font-main: 					'Poppins', Helvetica, sans-serif;
+
+//-------------------- Pricing tables -------------------- //
+$pt-number: 3; // number of pricing tables
+$header-mobile-height: 80px;
+$pt-margin: 0.015; // distance between tables - percentage value
+$pt-features-number: 6;
+$pt-feature-mobile-width: 100px;
+
+//-------------------- Responsive sizes -------------------- //
+$large-device-width: 1199px; // Large devices (desktops, less than 1119px)
+$medium-device-width: 991px; // Medium devices (tablets, less than 991px)
+$small-device-width: 767px;	// Small devices (landscape phones, less than 767px)
+$extra-small-device-width: 575px; // Extra small devices (portrait phones, less than 575px)

@@ -20,7 +20,7 @@ import About from "./pages/About";
 
 
 import "./index.css";
-import "./App.scss";
+import "./sass/App.scss";
 
 const history = createHistory();
 // const Promise = root.Promise;

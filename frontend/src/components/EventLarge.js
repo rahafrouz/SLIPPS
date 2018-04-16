@@ -42,33 +42,54 @@ class EventLarge extends Component {
     };
 
     const description = this.props.currentUser ? detail.description : detail.short_desc;
+    // return (
+    //   <div className="box_general_3 booking" onClick={this.navigateToEvent}>					
+    //     <div className="indent_title_in">
+    //       {star}
+    //       <h3>
+    //         <a className="title">
+    //           {
+    //             detail.title
+    //           }
+    //         </a>
+    //       </h3>
+    //     </div>
+    //     <div className="description">
+    //       <p>
+    //         {description}
+    //       </p>
+    //     </div>
+    //     <p>Country: {detail.country.name}</p>
+    //     <p>Category: {detail.field_of_study}</p>
+    //     <p>Language: {detail.language.name}</p>
+    //     <p className="event-created-at">{detail.created_at}</p>
+    //     <ul>
+    //       {
+    //         detail.keywords.map(function(name, index){
+    //           return <li key={ index }>{name.category}: {name.content}</li>;
+    //         })
+            
+    //       }
+    //     </ul>
+    //   </div>
+    // );
+
+
     return (
-      <div className="box_general_3 booking" onClick={this.navigateToEvent}>					
-        <div className="indent_title_in">
-          {star}
-          <h3>
-            <a className="title">
-              {
-                detail.title
-              }
-            </a>
-          </h3>
-        </div>
-        <div className="description">
-          <p>
-            {description}
-          </p>
-        </div>
-        <p>Country: {detail.country.name}</p>
-        <p>Category: {detail.field_of_study}</p>
-        <p>Language: {detail.language.name}</p>
-        <p className="event-created-at">{detail.created_at}</p>
+      <div class="strip_list wow fadeIn" style={{visibility:"visible"}}>
+        <a href="#0" class="wish_bt">{detail.country.name}</a>
+        <figure>
+          <a href="detail-page.html"><img src="http://via.placeholder.com/565x565.jpg" alt="" /></a>
+        </figure>
+        <small>{detail.created_at}</small>
+        <h3>{detail.field_of_study}</h3>
+        <p style={{fontWeight:"300"}}>{detail.title}{description}</p>
+        <span class="rating"><small>{detail.language.name}</small></span>
         <ul>
           {
             detail.keywords.map(function(name, index){
               return <li key={ index }>{name.category}: {name.content}</li>;
             })
-            
           }
         </ul>
       </div>
