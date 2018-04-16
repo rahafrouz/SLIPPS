@@ -31,6 +31,13 @@ class EventLarge extends Component {
       created_at: "12/04/2018",
       description: "This is a typical description",
       short_desc: "This is a short description",
+      country: {
+        name: "Finland"
+      },
+      language: {
+        name: "English"
+      },
+      category: ""
     };
 
     const description = this.props.currentUser ? detail.description : detail.short_desc;
@@ -52,6 +59,9 @@ class EventLarge extends Component {
             {description}
           </p>
         </div>
+        <p>Country: {detail.country.name}</p>
+        <p>Category: {detail.field_of_study}</p>
+        <p>Language: {detail.language.name}</p>
       </div>
     );
   }
