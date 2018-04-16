@@ -7,7 +7,8 @@ import "react-tagsinput/react-tagsinput.css"; // If using WebPack and style-load
 
 const mapStateToProps= (state, ownProps) => {
   return {
-    currentTags: state.advancedsearch.tags[ownProps.type].tags
+    currentTags: state.advancedsearch.tags[ownProps.type],
+    tagsToReturn: state.advancedsearch.tags,
   };
 };
 const mapDispatchToProps= dispatch => ({
@@ -18,27 +19,34 @@ const mapDispatchToProps= dispatch => ({
 class KeywordsTagged extends React.Component {
   constructor() {
     super();
-    // this.props.tags = [];
-    // this.state = {tags: []};
     this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange(tags) {
-    // this.setState({tags});
     console.warn("inside handleChangee, here are tags:", tags);
     var tag_arr = [];
-    tag_arr[this.props.type] = tags;
+    // tag_arr=this.props.tagsToReturn;
+    tag_arr={ 
+      any: { 
+        "tags":[
+        ],
+      },
+      "all": [
+        tags: [
+        ]
+      ]
+    };
+
+    tag_arr[this.props.type].tags = tags;
     this.props.setTag({
-      // "tagType": this.props.type,
       "tags": tag_arr
     });
   }
 
   render() {
-    return <TagsInput value={this.props.currentTags} onChange={this.handleChange} />;
+    return <div style={{paddingTop:"35px"}}><TagsInput value={Object.values(this.props.currentTags)} onChange={this.handleChange} className="form-control tagsinput" /> </div>;
   }
 }
 
-// export default connect(mapStateToProps, mapDispatchToProps)with(KeywordsTagged);
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(KeywordsTagged));
-//
+

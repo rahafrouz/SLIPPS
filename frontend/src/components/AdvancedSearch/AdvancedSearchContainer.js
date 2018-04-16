@@ -58,8 +58,26 @@ class AdvancedSearchContainer extends Component {
                 <div className="form_title">
                   <h3>Advanced Search</h3>
                 </div>
-                <div className="step">    
-                  <div className="row">
+
+
+                <div className="row step">
+
+                  <div className="col-md-10 col-sm-10 adv-search-kw">
+                    <label >Contain ANY of these keywords: (Hit TAB to enter new keyword)</label>
+                    <div className="form-group">
+                      <KeywordsTagged type="any" className="amiri form-group"/>
+                    </div>  
+                  </div>
+                  <div className="col-md-10 col-sm-10 adv-search-kw">
+                    <label >Contain ALL of these keywords: (Hit TAB to enter new keyword)</label>
+                    <div className="form-group">
+                      <KeywordsTagged type="all" className="amiri form-group"/>
+                    </div>  
+                  </div>
+                </div>  
+
+                <div className="step">  
+                  <div className="row"> 
                     <div className="col-md-5 col-sm-5">
                       <div className="form-group">
                         <label>Category</label>
@@ -73,17 +91,6 @@ class AdvancedSearchContainer extends Component {
                         </div>
                       </div>
                     </div>
-                    <div className="col-md-5 col-sm-5 adv-search-kw">
-                      <div className="form-group adv-search-label">
-                        <label >Keyword 1</label>
-                        <input type="text" id="single_keyword" name="single_keyword" 
-                          className="form-control" placeholder="keyword 1" onChange={this.handleKeywords}/>
-                      </div>
-                      <span className="error_message">* Please enter a keyword</span>
-                    </div>
-                  </div>
-
-                  <div className="row">
                     <div className="col-md-5 col-sm-5">
                       <div className="form-group">
                         <label>Language</label>
@@ -97,16 +104,8 @@ class AdvancedSearchContainer extends Component {
                         </div>
                       </div>
                     </div>
-                    <div className="col-md-5 col-sm-5">
-                      <label>Operator</label>
-                      <div className="form-group">
-                        <select className="form-control" name="operator" id="operator">
-                          <option value="">AND</option>
-                          <option value="Cardiology">OR</option>
-                        </select>   
-                      </div>
-                    </div>
                   </div>
+
 
                   <div className="row">
                     <div className="col-md-5 col-sm-5">
@@ -122,19 +121,13 @@ class AdvancedSearchContainer extends Component {
                         </div>
                       </div>
                     </div>
-                    <div className="col-md-5 col-sm-5">
-                      <div className="form-group">
-                        <label>Keyword 2</label>
-                        <input type="text" id="keyword_2" name="keyword_2" className="form-control" placeholder="keyword 2"/>
-                      </div>
-                    </div>
-                  </div>
 
-                  <div className="row">
                     <div className="col-md-5">
                       <div className="row"> 
                         <div className="col-md-6">
                           <div className="form-group">
+                            <label>From</label>
+
                             <select className="form-control" name="from-year" id="from_year" disabled>
                               <option value="">From year</option>
                               <option value="2016">2016</option>
@@ -144,6 +137,8 @@ class AdvancedSearchContainer extends Component {
                         </div>
                         <div className="col-md-6">
                           <div className="form-group">
+                            <label>To</label>
+
                             <select className="form-control" name="to-year" id="to_year" disabled>
                               <option value="">To year</option>
                               <option value="2016">2016</option>
@@ -162,12 +157,6 @@ class AdvancedSearchContainer extends Component {
                       </div>
                     </div>
                   </div>
-
-                  {/*<SingleKeywordWithOperation Operator="and" ErrorMessage="true" KeywordId="3" />*/}
-                  <div className="col-md-2 col-sm-2">
-                    <button className="btn_1 left" style={{marginTop:"40px"}}>Add</button>
-                  </div>
-                  <KeywordsTagged type="any"/>
                 </div>
               </div>
             </div>    

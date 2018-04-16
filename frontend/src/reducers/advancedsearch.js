@@ -26,16 +26,16 @@ export default (state = defaultState, action) => {
     return {
       ...state,
       keywords: true,
-      tags: {
-        any: {
-          tags: action.payload.tags["any"]
-          // tags:["doodooli"]
-        },
-        all: {
-          tags: action.payload.tags["all"]
-          // tags:["dkdjfklajds"]
-        }
-      }
+      tags: action.payload.tags
+      //   any: {
+      //     tags: action.payload.tags["any"]
+      //     // tags:["doodooli"]
+      //   },
+      //   all: {
+      //     tags: action.payload.tags["all"]
+      //     // tags:["dkdjfklajds"]
+      //   }
+      // }
     };
   case ENABLE_SEARCH_BUTTON:
     return {
