@@ -75,6 +75,7 @@
   position: relative;
   @include box-shadow (0px 0px 15px 0px rgba(0, 0, 0, 0.05));
   a.wish_bt {
+    font-size:0.7em;
     @include rgba(bg, #000, 0.05);
     @include border-radius(3px);
     &:after {

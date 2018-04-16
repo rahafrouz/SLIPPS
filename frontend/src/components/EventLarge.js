@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import {withRouter} from "react-router-dom";
 import { connect } from "react-redux";
+import {  SELECT_FULL_EVENT} from "../constants/actionTypes";
 
 const mapStateToProps = state => {
   return {
@@ -8,12 +9,21 @@ const mapStateToProps = state => {
   };
 };
 
+
+const mapDispatchToProps = dispatch => ({
+  selectFullEvent: (payload) =>
+    dispatch({ type: SELECT_FULL_EVENT, payload })
+});
+
+
+
 class EventLarge extends Component {
   constructor(props){
     super(props);
     this.navigateToEvent = this.navigateToEvent.bind(this);
   }
   navigateToEvent() {
+    this.props.selectFullEvent(this.props.eventDetail);
     if(this.props.eventDetail)
     { 
       this.props.history.push({
@@ -79,12 +89,12 @@ class EventLarge extends Component {
       <div class="strip_list wow fadeIn" style={{visibility:"visible"}}>
         <a href="#0" class="wish_bt">{detail.country.name}</a>
         <figure>
-          <a href="detail-page.html"><img src="http://via.placeholder.com/565x565.jpg" alt="" /></a>
+          <a href="detail-page.html"><span className="pe-7s-glasses" style={{fontSize:"77px"}}></span></a>
         </figure>
-        <small>{detail.created_at}</small>
-        <h3>{detail.field_of_study}</h3>
-        <p style={{fontWeight:"300"}}>{detail.title}{description}</p>
-        <span class="rating"><small>{detail.language.name}</small></span>
+        <small>{detail.language.name}</small>
+        <h3 onClick={this.navigateToEvent}>{detail.field_of_study}</h3>
+        <p onClick={this.navigateToEvent} style={{fontWeight:"300",fontSize:"0.8em"}}>{detail.title}{description}</p>
+        <span class="rating"><small>{detail.created_at}</small></span>
         <ul>
           {
             detail.keywords.map(function(name, index){
@@ -97,4 +107,4 @@ class EventLarge extends Component {
   }
 }
 
-export default connect(mapStateToProps, null)(withRouter(EventLarge));
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(EventLarge));
