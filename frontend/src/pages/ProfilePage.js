@@ -5,7 +5,7 @@ import UploadedDocuments from "../components//UploadedDocuments";
 import SavedEvents from "../components//SavedEvents";
 import Footer from "../components/Footer";
 import { connect } from "react-redux";
-
+import { LOGOUT } from "../constants/actionTypes.js";
 import { Link } from "react-router-dom";
 
 const mapStateToProps = state => {
@@ -14,6 +14,10 @@ const mapStateToProps = state => {
   };
 };
 
+const mapDispatchToProps = dispatch => ({
+  onClickLogout: () => dispatch({ type: LOGOUT }),
+});
+
 class ProfilePage extends Component {
   render() {
     if (this.props.currentUser) {
@@ -21,6 +25,12 @@ class ProfilePage extends Component {
         <div>
           <Navigation currentUser={this.props.currentUser} />
           <div style={{backgroundColor: "#F5F8FA"}}>
+            <button
+              className="btn btn-outline-danger"
+              onClick={this.props.onClickLogout}>
+                Click here to logout.
+            </button>
+
             <UserDetails/>
             <hr></hr>
             <SavedEvents/>
@@ -50,4 +60,4 @@ class ProfilePage extends Component {
   }
 }
 
-export default connect(mapStateToProps, null)(ProfilePage);
+export default connect(mapStateToProps, mapDispatchToProps)(ProfilePage);

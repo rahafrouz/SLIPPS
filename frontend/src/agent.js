@@ -41,13 +41,29 @@ const Auth = {
     requests.put(`/users/${user.id}`, { user })
 };
 
+const Common = {
+  getData() {
+    return requests.get("/init");
+  }
+};
+
 const Search = {
   byKeyword(keyword) {
     return requests.get(`/search?kw=${keyword}`);
   },
+  advanceSearch(paramsJson) {
+    // let params = "keywords_and=" + paramsJson["keywords_and"] + "&keywords_or=" + paramsJson["keywords_or"];
+    let paramsStr = "";
+    Object.keys(paramsJson).map(function(key) {
+      paramsStr += `&${key}=${paramsJson[key]}`;
+    });
+    console.warn(paramsStr);
+    return requests.get(`/advanced-search?${paramsStr}`);
+  }
 };
 
 export default {
+  Common,
   Search,
   Auth,
   setToken: _token => { token = _token; }

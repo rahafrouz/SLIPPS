@@ -1,11 +1,17 @@
 import React, { Component } from "react";
 import {withRouter} from "react-router-dom";
+import { connect } from "react-redux";
+
+const mapStateToProps = state => {
+  return {
+    currentUser: state.app.currentUser,
+  };
+};
 
 class EventLarge extends Component {
   constructor(props){
     super(props);
     this.NavigateToEvent = this.NavigateToEvent.bind(this);
-    // this.props.history.push()
   }
   NavigateToEvent(){
     if(this.props.EventDetail)
@@ -19,27 +25,36 @@ class EventLarge extends Component {
     }
   }
   render() {
+    const star = this.props.currentUser ? (<i className="icon-star-empty"></i>) : (<i></i>);
+    const detail = this.props.EventDetail ? this.props.EventDetail._source : {
+      title: "Sample title",
+      created_at: "12/04/2018",
+      description: "This is a typical description",
+      short_desc: "This is a short description",
+    };
+
+    const description = this.props.currentUser ? detail.description : detail.short_desc;
     return (
       <div className="box_general_3 booking" onClick={this.NavigateToEvent}>					
         <div className="indent_title_in">
-          <i className="icon-star-empty"></i>
+          {star}
           <h3>
-            <a>
+            <a className="title">
               {
-                this.props.EventDetail ?
-                  this.props.EventDetail._source.description : 
-                  "something"
+                detail.title
               }
             </a>
           </h3>
-          <p>March 2018</p>
+          <p className="event-created-at">{detail.created_at}</p>
         </div>
-        <div className="wrapper_indent">
-          <p>Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. Lorem ipsum dolor sit amet, consectetuer adipiscing elit... </p>
+        <div className="description">
+          <p>
+            {description}
+          </p>
         </div>
       </div>
     );
   }
 }
 
-export default withRouter(EventLarge);
+export default connect(mapStateToProps, null)(withRouter(EventLarge));

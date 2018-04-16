@@ -34,7 +34,6 @@ class SearchContainer extends Component {
 
   handleKeywordChanged(e) {
     this.props.setKeyword({ keyword: e.target.value });
-    // console.log("keyword changed");
   }
 
   goToSearch(e) {
@@ -43,11 +42,7 @@ class SearchContainer extends Component {
     var promise = Promise.all(agent.Search.byKeyword(keyword));
 
     this.props.searchByKeyword(promise);
-
     this.props.history.push(`/search/${keyword}`);
-
-    // this.state.keyword?this.props.history.push("/search/" + this.state.keyword):{};
-    // dispatch(searchByKeyword, rootReducer);
   }
 
   render() {

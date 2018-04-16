@@ -38,7 +38,7 @@ from .models import (
 User = get_user_model()
 
 class SearchByKeywordView(APIView):
-    permission_classes = (IsAuthenticatedOrReadOnly,)
+    permission_classes = (AllowAny,)
 
     def get(self, request, format=None):
         """
@@ -63,7 +63,7 @@ class SearchByKeywordView(APIView):
         return Response(response.to_dict())
 
 class AdvancedSearchView(APIView):
-    permission_classes = (IsAuthenticatedOrReadOnly,)
+    permission_classes = (AllowAny,)
 
     def get(self, request, format=None):
         """
@@ -173,11 +173,13 @@ class InitializeView(APIView):
         categories = Choice.objects.filter(question_id=category_id).distinct('choice_text')
 
         return Response({
-            "keyword_hits": KeywordHitsSerializer(kw_hits, many=True).data,
-            "countries": CountrySerializer(countries, many=True).data,
-            "languages": LanguageSerializer(languages, many=True).data,
-            "categories": ChoiceSerializer(categories, many=True).data,
-            "all_keywords": KeywordSerializer(Keyword.objects.all(), many=True).data,
+            "body": {
+                "keyword_hits": KeywordHitsSerializer(kw_hits, many=True).data,
+                "countries": CountrySerializer(countries, many=True).data,
+                "languages": LanguageSerializer(languages, many=True).data,
+                "categories": ChoiceSerializer(categories, many=True).data,
+                "all_keywords": KeywordSerializer(Keyword.objects.all(), many=True).data,
+            }
         })
 
 class UserRegistrationView(generics.CreateAPIView):

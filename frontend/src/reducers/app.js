@@ -3,15 +3,16 @@ import {
   LOGOUT,
   APP_LOAD,
   LOGIN,
-  REGISTER
+  REGISTER,
+  APP_INIT
 } from "../constants/actionTypes";
 
 const defaultState = {
   keyword: "",
-  searchResult: {},
   redirectTo: null,
   appName: "slipps",
   token: null,
+  initData: {}
 };
 
 export default (state = defaultState, action) => {
@@ -21,7 +22,8 @@ export default (state = defaultState, action) => {
       ...state,
       token: action.token || null,
       appLoaded: true,
-      currentUser: action.payload ? action.payload : null
+      currentUser: action.payload ? action.payload : null,
+      // initData: action.payload.initData
     };
   case REDIRECT:
     return { ...state, redirectTo: null };

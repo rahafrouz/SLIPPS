@@ -39,7 +39,9 @@ class ResultPage extends Component {
   render() {
     var searchResult = this.props.searchResult;
     var result = searchResult != undefined && searchResult.hits ?
-      (<AdvancedSearchResults /> ) :
+      (
+        <AdvancedSearchResults showButton="True" />
+      ) :
       (<strong>you need to enter a keyword</strong>);
     return (
       <div>
