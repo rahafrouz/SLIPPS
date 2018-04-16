@@ -3,14 +3,14 @@ import logger from "redux-logger";
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import reducer from "./reducer";
 import { routerMiddleware } from "react-router-redux";
-import { promiseMiddleware } from "./middleware";
+import { promiseMiddleware, localStorageMiddleware } from "./middleware";
 
 
 // Build the middleware for intercepting and dispatching navigation actions
 const myRouterMiddleware = routerMiddleware(history);
 
 const getMiddleware = () => {
-  return applyMiddleware(myRouterMiddleware, promiseMiddleware, logger);
+  return applyMiddleware(myRouterMiddleware, promiseMiddleware, localStorageMiddleware, logger);
   // if (process.env.NODE_ENV === "production") {
   //   return applyMiddleware(myRouterMiddleware);
   // } else {

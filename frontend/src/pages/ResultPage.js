@@ -13,7 +13,8 @@ import { SET_KEYWORD, SEARCH_BY_KEYWORD } from "../constants/actionTypes";
 const mapStateToProps = state => {
   return {
     keyword: state.search.keyword,
-    searchResult: state.search.searchResult
+    searchResult: state.search.searchResult,
+    currentUser: state.app.currentUser
   };
 };
 
@@ -42,7 +43,7 @@ class ResultPage extends Component {
       (<strong>you need to enter a keyword</strong>);
     return (
       <div>
-        <Navigation />
+        <Navigation currentUser={this.props.currentUser} />
         {result}
         <Footer />
       </div>

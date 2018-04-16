@@ -1,5 +1,22 @@
 .App {
   text-align: center;
+
+  .adv-search-kw .error_message {
+    margin: 0;
+  }
+
+  .advanced-search-link.toggle {
+    background: #ffffff;
+  }
+
+  .advanced-search-link.toggle:hover {
+    background-color: #e74e84;
+  }
+
+  .error-messages {
+    color: red;
+  }
+
 }
 
 .App-logo {
@@ -30,17 +47,6 @@
   float: right;
 }
 
-.adv-search-kw .error_message {
-  margin: 0;
-}
-
-.advanced-search-link.toggle {
-  background: #ffffff;
-}
-
-.advanced-search-link.toggle:hover {
-  background-color: #e74e84;
-}
 
 .message {
   margin-top: 10px;

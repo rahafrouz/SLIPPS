@@ -3,11 +3,19 @@ import Navigation from "../components//Navigation";
 import RegisterForm from "../components/RegisterForm";
 import Footer from "../components/Footer";
 
+import { connect } from "react-redux";
+
+const mapStateToProps = state => {
+  return {
+    currentUser: state.app.currentUser,
+  };
+};
+
 class RegisterPage extends Component {
   render() {
     return (
       <div>
-        <Navigation />
+        <Navigation currentUser={this.props.currentUser} />
         <RegisterForm/>
         <Footer />
       </div>  
@@ -15,4 +23,4 @@ class RegisterPage extends Component {
   }
 }
 
-export default RegisterPage;
+export default connect(mapStateToProps, null)(RegisterPage);

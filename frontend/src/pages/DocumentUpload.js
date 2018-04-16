@@ -5,12 +5,19 @@ import DocumentDescription from "../components/DocumentDescription";
 import TermsAgreement from "../components/TermsAgreement";
 import DocumentPreview from "../components//DocumentPreview";
 import Footer from "../components/Footer";
+import { connect } from "react-redux";
+
+const mapStateToProps = state => {
+  return {
+    currentUser: state.app.currentUser,
+  };
+};
 
 class DocumentUpload extends Component {
   render() {
     return (
       <div>
-        <Navigation />
+        <Navigation currentUser={this.props.currentUser} />
         <div className="gray_background">
           <div className="container margin_120_95">
             <div className="row">
@@ -31,4 +38,4 @@ class DocumentUpload extends Component {
   }
 }
 
-export default DocumentUpload;
+export default connect(mapStateToProps, null)(DocumentUpload);
