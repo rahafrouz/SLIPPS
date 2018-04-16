@@ -44,14 +44,9 @@ class AdvancedSearchContainer extends Component {
   goToSearch() {
     this.props.searchParams["keywords_and"] = this.props.keywordTags["all"].tags.join(",");
     this.props.searchParams["keywords_or"] = this.props.keywordTags["any"].tags.join(",");
-    // let params = {
-    //   "keywords_and": this.props.keywordTags["all"].tags.join(","),
-    //   "keywords_or": this.props.keywordTags["any"].tags.join(","),
-    // };
+    
     let promise = Promise.all([agent.Search.advanceSearch(this.props.searchParams)]);
     this.props.doAdvancedSearch(promise);
-
-    
     this.props.setSearchParams({ searchParams: this.props.searchParams });
   }
 

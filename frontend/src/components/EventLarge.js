@@ -11,22 +11,22 @@ const mapStateToProps = state => {
 class EventLarge extends Component {
   constructor(props){
     super(props);
-    this.NavigateToEvent = this.NavigateToEvent.bind(this);
+    this.navigateToEvent = this.navigateToEvent.bind(this);
   }
-  NavigateToEvent(){
-    if(this.props.EventDetail)
+  navigateToEvent() {
+    if(this.props.eventDetail)
     { 
       this.props.history.push({
-        pathname: "/event/"+this.props.EventDetail._id,
+        pathname: "/event/"+this.props.eventDetail._id,
         state: {
-          EventDetail:this.props.EventDetail
+          eventDetail:this.props.eventDetail
         }
       });
     }
   }
   render() {
     const star = this.props.currentUser ? (<i className="icon-star-empty"></i>) : (<i></i>);
-    const detail = this.props.EventDetail ? this.props.EventDetail._source : {
+    const detail = this.props.eventDetail ? this.props.eventDetail._source : {
       title: "Sample title",
       created_at: "12/04/2018",
       description: "This is a typical description",
@@ -37,12 +37,13 @@ class EventLarge extends Component {
       language: {
         name: "English"
       },
-      category: ""
+      category: "",
+      keywords: []
     };
 
     const description = this.props.currentUser ? detail.description : detail.short_desc;
     return (
-      <div className="box_general_3 booking" onClick={this.NavigateToEvent}>					
+      <div className="box_general_3 booking" onClick={this.navigateToEvent}>					
         <div className="indent_title_in">
           {star}
           <h3>
@@ -52,7 +53,6 @@ class EventLarge extends Component {
               }
             </a>
           </h3>
-          <p className="event-created-at">{detail.created_at}</p>
         </div>
         <div className="description">
           <p>
@@ -62,6 +62,15 @@ class EventLarge extends Component {
         <p>Country: {detail.country.name}</p>
         <p>Category: {detail.field_of_study}</p>
         <p>Language: {detail.language.name}</p>
+        <p className="event-created-at">{detail.created_at}</p>
+        <ul>
+          {
+            detail.keywords.map(function(name, index){
+              return <li key={ index }>{name.category}: {name.content}</li>;
+            })
+            
+          }
+        </ul>
       </div>
     );
   }
