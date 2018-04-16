@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 const mapStateToProps = state => {
   return {
-    popularKeywords: state.app.initData,
+    popularKeywords: state.app.initData["keyword_hits"] || [],
   };
 };
 
@@ -11,31 +11,26 @@ class KeywordList extends Component {
 
   render() {
     const keywords = this.props.popularKeywords;
-    if (keywords) {
-      return (  
-        <div className="box_general_3">         
-          <ul>
-            {
-              !(Object.keys(keywords).length === 0) ? 
-                keywords.map((kw) => {
+    return (  
+      <div className="box_general_3">         
+        {
+          (keywords && keywords.length > 0) ? 
+            (<ul>
+              {
+                keywords.map((kw, ind) => {
                   return (
                     <li>
-                      <a href={"/search/" + kw.content}>{kw.content}</a>
+                      <a href={"/search/" + kw.text}>{kw.text}</a>
                       <hr></hr>
                     </li>
                   );
-                }) :
-                (<span className="message">No keyword to show</span>)
-            }
-          </ul>
-        </div>    
-      );
-    } else {
-      return (
-        <span className="message">No keyword to show</span>
-      );
-    }
-
+                })
+              }
+            </ul> ) : (<span className="message">No keyword to show</span>
+            )
+        }
+      </div>    
+    );
   }
 }
 export default connect(mapStateToProps, null)(KeywordList);

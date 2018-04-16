@@ -232,7 +232,7 @@ class KeywordHitsManager(models.Manager):
     def sync_to_es(self):
         pass
 
-    def get_popular_kws(self, limit=20):
+    def get_popular_kws(self, limit=10):
         return self.all().order_by('-hits_count')[:limit]
 
 class KeywordHits(models.Model):

@@ -96,15 +96,15 @@ class Event(DocType):
     country = Nested(Country)
     field_of_study = Text(fields={'raw': Keyword()})
     
-    details = Nested(
-        properties = {
-            'question_id': Integer(),
-            'question_text': Text(),
-            'question_pos': Integer(),
-            'answer_id': Integer(),
-            'answer_num': Integer(),
-            'answer_text': Text()
-        })
+    # details = Nested(
+    #     properties = {
+    #         'question_id': Integer(),
+    #         'question_text': Text(),
+    #         'question_pos': Integer(),
+    #         'answer_id': Integer(),
+    #         'answer_num': Integer(),
+    #         'answer_text': Text()
+    #     })
 
     keywords = Nested(TaggedKeyword)
     created_at = Date()
@@ -118,3 +118,21 @@ class Event(DocType):
     def save(self, ** kwargs):
         self.updated_at = datetime.now()
         return super().save(** kwargs)
+
+print("==== COUNTRY =====")
+Country.init()
+
+print("==== LANGUAGE =====")
+Language.init()
+
+print("==== QUESTION =====")
+Question.init()
+
+print("==== CHOICE =====")
+Choice.init()
+
+print("==== KEYWORD =====")
+TaggedKeyword.init()
+
+print("==== EVENT =====")
+Event.init()

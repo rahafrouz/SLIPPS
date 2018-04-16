@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { push } from "react-router-redux";
 import { store } from "../store";
 import agent from "../agent";
-import { APP_LOAD, REDIRECT, APP_INIT} from "../constants/actionTypes";
+import { APP_LOAD, REDIRECT} from "../constants/actionTypes";
 
 const mapStateToProps = state => {
   return {
@@ -18,8 +18,6 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => ({
   onLoad: (payload, token) =>
     dispatch({ type: APP_LOAD, payload, token }),
-  onInit: (payload) =>
-    dispatch({ type: APP_INIT, payload }),
 });
 
 class App extends Component {
@@ -29,19 +27,24 @@ class App extends Component {
       agent.setToken(token);
     }
 
+    let promises = Promise.all([
+      token ? agent.Auth.current() : null, 
+      agent.Common.getData()
+    ]);
+
 
     // let payload = {
     //   "user": token ? agent.Auth.current() : null,
     //   "initData": promise
     // };
 
-    this.props.onLoad(token ? agent.Auth.current() : null, token);
+    this.props.onLoad(promises, token);
   }
 
   componentDidMount() {
     // let promise = Promise.all(agent.Common.getData());
 
-    // this.props.onInit(promise);
+    // this.props.onInit(Promise.all(agent.Common.getData()));
   }
 
   render() {

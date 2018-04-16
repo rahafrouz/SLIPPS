@@ -14,6 +14,7 @@ from .models import (
     Language,
     Choice,
     Keyword,
+    Event
 )
 
 BCRYPT_SALT = b'$2b$12$hPhtNvTYULuTMEFZHC0m/e-ThisIsOurSalt'
@@ -91,53 +92,50 @@ class UserRegistrationSerializer(serializers.Serializer):
     #     instance.save()
     #     return instance
 
-class UserLoginSerializer(serializers.Serializer):
-    email = serializers.EmailField()
+# class UserLoginSerializer(serializers.Serializer):
+#     email = serializers.EmailField()
+#     password = serializers.CharField(
+#         write_only=True,
+#         style={'input_type': 'password'}
+#     )
 
-    # token = serializers.CharField(allow_blank=True, read_only=True)
+#     class Meta(object):
+#         model = User
 
-    password = serializers.CharField(
-        write_only=True,
-        style={'input_type': 'password'}
-    )
+#     def validate(self, data):
+#         email = data.get('email', None)
+#         password = data.get('password', None).encode('utf8')
 
-    class Meta(object):
-        model = User
+#         if not email:
+#             raise serializers.ValidationError("Please enter email to login.")
 
-    def validate(self, data):
-        email = data.get('email', None)
-        password = data.get('password', None).encode('utf8')
+#         user = UserAccount.objects.filter(
+#             Q(email=email)
+#         ).exclude(
+#             email__isnull=True
+#         ).exclude(
+#             email__iexact=''
+#         ).exclude(
+#             deleted_at__isnull=False
+#         ).distinct()
 
-        if not email:
-            raise serializers.ValidationError("Please enter email to login.")
+#         if user.exists() and user.count() == 1:
+#             user_obj = user.first()
+#         else:
+#             raise serializers.ValidationError("This email is not valid.")
 
-        user = UserAccount.objects.filter(
-            Q(email=email)
-        ).exclude(
-            email__isnull=True
-        ).exclude(
-            email__iexact=''
-        ).exclude(
-            deleted_at__isnull=False
-        ).distinct()
+#         if user_obj:
+#             validate_pass = str(bcrypt.hashpw(password, BCRYPT_SALT)) == str(user_obj.hashed_pass)
+#             if not validate_pass:
+#                 raise serializers.ValidationError("Invalid credentials.")
 
-        if user.exists() and user.count() == 1:
-            user_obj = user.first()
-        else:
-            raise serializers.ValidationError("This email is not valid.")
+#         if user_obj.is_active:
+#             data['user'] = user_obj
+#         else:
+#             raise serializers.ValidationError("User not active.")
 
-        if user_obj:
-            validate_pass = str(bcrypt.hashpw(password, BCRYPT_SALT)) == str(user_obj.hashed_pass)
-            if not validate_pass:
-                raise serializers.ValidationError("Invalid credentials.")
-
-        if user_obj.is_active:
-            data['user'] = user_obj
-        else:
-            raise serializers.ValidationError("User not active.")
-
-        print(data)
-        return data
+#         print(data)
+#         return data
 
 class UserDetailsSerializer(serializers.Serializer):
     """
@@ -173,3 +171,14 @@ class KeywordSerializer(serializers.ModelSerializer):
     class Meta:
         model = Keyword
         fields = '__all__'
+
+class EventSerializer(serializers.ModelSerializer):
+    title = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Event
+        fields = ('id', 'title', 'short_desc', 'created_at')
+
+    def get_title(self, obj):
+        return obj.description[:50] + '...'
+

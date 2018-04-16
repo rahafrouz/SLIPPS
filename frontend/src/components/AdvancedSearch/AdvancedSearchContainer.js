@@ -78,7 +78,7 @@ class AdvancedSearchContainer extends Component {
     var searchResult = this.props.searchResult;
     var result = searchResult != undefined && searchResult.hits ?
       (<AdvancedSearchResults /> ) :
-      (<strong>No events to show!</strong>);
+      (<div></div>);
     return (
       <main>
         <div className="bg_color_2">
@@ -110,10 +110,10 @@ class AdvancedSearchContainer extends Component {
                   <div className="row"> 
                     <div className="col-md-5 col-sm-5">
                       <div className="form-group">
-                        <label>Category</label>
+                        <label>Field of Study</label>
                         <div className="form-group">
                           <select className="form-control" name="category" id="category" onChange={this.categoryChange}>
-                            <option value="">Select category</option>
+                            <option value="">Select field of study</option>
                             <option value="Bioanalytics">Bioanalytics</option>
                             <option value="Nutrition">Nutrition</option>
                             <option value="Nursing science">Nursing science</option>

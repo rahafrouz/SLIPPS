@@ -4,7 +4,6 @@ import {
   APP_LOAD,
   LOGIN,
   REGISTER,
-  APP_INIT
 } from "../constants/actionTypes";
 
 const defaultState = {
@@ -22,8 +21,8 @@ export default (state = defaultState, action) => {
       ...state,
       token: action.token || null,
       appLoaded: true,
-      currentUser: action.payload ? action.payload : null,
-      // initData: action.payload.initData
+      currentUser: action.payload[0] ? action.payload[0] : null,
+      initData: action.payload[1]
     };
   case REDIRECT:
     return { ...state, redirectTo: null };

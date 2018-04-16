@@ -16,12 +16,13 @@ from elasticsearch import Elasticsearch
 
 from .serializers import (
     UserRegistrationSerializer,
-    UserLoginSerializer,
+    # UserLoginSerializer,
     KeywordHitsSerializer,
     CountrySerializer,
     LanguageSerializer,
     ChoiceSerializer,
     KeywordSerializer,
+    EventSerializer,
 )
 
 from .models import (
@@ -161,8 +162,13 @@ class InitializeView(APIView):
         """
         Return a list of all info needed to start client app.
         """
-        # Get most searched keyword, limit 20 first records by default.
-        kw_hits = KeywordHits.objects.get_popular_kws()
+        # Get most searched keyword, limit 10 first records by default.
+        params = {
+            "limit_result": 10
+        }
+        params.update(request.query_params.dict())
+
+        kw_hits = KeywordHits.objects.get_popular_kws(params["limit_result"])
 
         # List languages, countries for advanced search dropdown
         countries = Country.objects.raw('SELECT * FROM apiserver_country WHERE id in (SELECT DISTINCT country_id FROM apiserver_event)')
@@ -173,13 +179,12 @@ class InitializeView(APIView):
         categories = Choice.objects.filter(question_id=category_id).distinct('choice_text')
 
         return Response({
-            "body": {
-                "keyword_hits": KeywordHitsSerializer(kw_hits, many=True).data,
-                "countries": CountrySerializer(countries, many=True).data,
-                "languages": LanguageSerializer(languages, many=True).data,
-                "categories": ChoiceSerializer(categories, many=True).data,
-                "all_keywords": KeywordSerializer(Keyword.objects.all(), many=True).data,
-            }
+            "keyword_hits": KeywordHitsSerializer(kw_hits, many=True).data,
+            "countries": CountrySerializer(countries, many=True).data,
+            "languages": LanguageSerializer(languages, many=True).data,
+            "categories": ChoiceSerializer(categories, many=True).data,
+            "all_keywords": KeywordSerializer(Keyword.objects.all(), many=True).data,
+            "recent_events": EventSerializer(Event.objects.order_by("-created_at")[:5], many=True).data
         })
 
 class UserRegistrationView(generics.CreateAPIView):
