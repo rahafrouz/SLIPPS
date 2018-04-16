@@ -4,6 +4,7 @@ import {
   APP_LOAD,
   LOGIN,
   REGISTER,
+  UPLOAD_DOCUMENT,
 } from "../constants/actionTypes";
 
 const defaultState = {
@@ -39,6 +40,11 @@ export default (state = defaultState, action) => {
     return {
       ...state,
       redirectTo: action.error ? null : "/login"
+    };
+  case UPLOAD_DOCUMENT:
+    return {
+      ...state,
+      redirectTo: action.error ? null : "/profile",
     };
   default:
     return state;

@@ -8,6 +8,7 @@ from .views import (
 	AdvancedSearchView,
 	UserRegistrationView,
 	InitializeView,
+	DocumentUploadView,
 )
 
 router = SimpleRouter()
@@ -18,6 +19,7 @@ urlpatterns = {
     url(r'^api/search$', SearchByKeywordView.as_view()),
     url(r'^api/advanced-search$', AdvancedSearchView.as_view()),
     url(r'^api/users/register', UserRegistrationView.as_view()),
+    url(r'^api/users/upload/(?P<filename>[^/]+)$', DocumentUploadView.as_view()),
     url(r'^api/auth/', include('rest_auth.urls')),
 }
 

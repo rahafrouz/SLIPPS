@@ -158,8 +158,8 @@ REST_FRAMEWORK = {
     ],
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
-        # 'rest_framework.authentication.TokenAuthentication',
-        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+        # 'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.BasicAuthentication',
     ),
 }
@@ -185,3 +185,4 @@ REST_USE_JWT=True
 # USER DEFINED SETTINGS
 VERIFICATION_CODE_EXPIRE_DAYS = 4
 SLIPPS_CATEGORY_QUESTION_ID = 1
+MEDIA_ROOT = 'media/files/'

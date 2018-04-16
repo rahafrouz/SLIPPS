@@ -119,20 +119,20 @@ class Event(DocType):
         self.updated_at = datetime.now()
         return super().save(** kwargs)
 
-print("==== COUNTRY =====")
-Country.init()
+# print("==== COUNTRY =====")
+# Country.init()
 
-print("==== LANGUAGE =====")
-Language.init()
+# print("==== LANGUAGE =====")
+# Language.init()
 
-print("==== QUESTION =====")
-Question.init()
+# print("==== QUESTION =====")
+# Question.init()
 
-print("==== CHOICE =====")
-Choice.init()
+# print("==== CHOICE =====")
+# Choice.init()
 
-print("==== KEYWORD =====")
-TaggedKeyword.init()
+# print("==== KEYWORD =====")
+# TaggedKeyword.init()
 
-print("==== EVENT =====")
-Event.init()
+# print("==== EVENT =====")
+# Event.init()

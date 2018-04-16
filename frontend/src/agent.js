@@ -42,9 +42,16 @@ const Auth = {
 };
 
 const Common = {
-  getData() {
-    return requests.get("/init");
-  }
+  getData: () =>
+    requests.get("/init"),
+  uploadDoc: (data, filename) =>
+    // requests.post("/users/upload", { data: data })
+    superagent.put(`${API_ROOT}/users/upload/${filename}`)
+      .set("Content-Type", "multipart/form-data")
+      .send(data)
+      .use(tokenPlugin)
+      .then(responseBody),
+
 };
 
 const Search = {

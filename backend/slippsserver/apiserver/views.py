@@ -1,13 +1,20 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
+import csv
+import os
 
 from django.shortcuts import render
 from django.conf import settings
 from django.contrib.auth import get_user_model
+from django.core.files.storage import default_storage
+from django.core.files.base import ContentFile
+
 from rest_framework import generics, viewsets, status
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticatedOrReadOnly, AllowAny, IsAuthenticated, IsAdminUser
+from rest_framework.parsers import FileUploadParser
+
 # from rest_framework.decorators import api_view, permission_classes, action
 from rest_framework.decorators import detail_route, list_route
 
@@ -186,6 +193,35 @@ class InitializeView(APIView):
             "all_keywords": KeywordSerializer(Keyword.objects.all(), many=True).data,
             "recent_events": EventSerializer(Event.objects.order_by("-created_at")[:5], many=True).data
         })
+
+class DocumentUploadView(APIView):
+    # TODO: Remove this afterwards.
+    permission_classes = (AllowAny,)
+    parser_classes = (FileUploadParser,)
+
+    def put(self, request, filename, format=None):
+        file_obj = request.data['file']
+
+
+        lines = file_obj.readlines()
+        lines = lines[4:-6]
+
+        content = ""
+
+        for line in lines:
+            content += line.decode('utf-8')
+
+        path = default_storage.save('tmp/{0}'.format(filename), ContentFile(content))
+        media_root = getattr(settings, 'MEDIA_ROOT', '/')
+        tmp_file = os.path.join(media_root, path)
+
+
+        # ...
+        # do some stuff with uploaded file
+        # ...
+        # pass
+        return Response(status=204)
+        
 
 class UserRegistrationView(generics.CreateAPIView):
     """
