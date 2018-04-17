@@ -11,7 +11,7 @@ class RegisterForm extends Component {
     this.props.history.push("/login");
   }
 
-  render() {
+  bbrender() {
     return (
       <div>
         <main>
@@ -63,6 +63,85 @@ class RegisterForm extends Component {
       </div>   
     );
   }
+
+  render(){
+    return(
+      <main>
+        <div id="hero_register">
+          <div className="container margin_120_95">     
+            <div className="row">
+              <div className="col-lg-6">
+                <h1>Its time to get involved!</h1>
+                <p className="lead">Register as a user to enjoy the full benefits of this platform. Becoming a registered user gives you access to multiple features not available to regular users. As a registered user, you can:</p>
+                <div className="box_feat_2">
+                  <i className="pe-7s-map-2" />
+                  <h3>Share your Experience!</h3>
+                  <p>Upload your own experiences to the platform to become a source of knowledge for others</p>
+                </div>
+                <div className="box_feat_2">
+                  <i className="pe-7s-date" />
+                  <h3>Gain access to other learning events</h3>
+                  <p>Have access to the complete details of learning events uploaded by other users</p>
+                </div>
+                <div className="box_feat_2">
+                  <i className="pe-7s-phone" />
+                  <h3>Instantly via Mobile</h3>
+                  <p>You can access learning events any time, any where, on any device.</p>
+                </div>
+              </div>
+              {/* /col */}
+              <div className="col-lg-5 ml-auto">
+                <div className="box_form">
+                  <div className="form-group">
+                    <label>Name</label>
+                    <input type="text" className="form-control" placeholder="Your name"/>
+                  </div>
+                  <div className="form-group">
+                    <label>Last name</label>
+                    <input type="text" className="form-control" placeholder="Your last name"/>
+                  </div>
+                  <div className="form-group">
+                    <label>Email</label>
+                    <input type="email" className="form-control" placeholder="Your email address"/>
+                  </div>
+                  <div className="form-group">
+                    <label>Password</label>
+                    <input type="password" className="form-control" id="password1" placeholder="Your password"/>
+                  </div>
+                  <div className="form-group">
+                    <label>Confirm password</label>
+                    <input type="password" className="form-control" id="password2" placeholder="Confirm password"/>
+                  </div>
+                  <div id="pass-info" className="clearfix"></div>
+                  <div className="checkbox-holder text-left">
+                    <div className="checkbox_2">
+                      <input type="checkbox" value="accept_2" id="check_2" name="check_2" checked/>
+                      <label for="check_2"><span>I Agree to the <strong>Terms &amp; Conditions</strong></span></label>
+                    </div>
+                  </div>
+                  <div className="form-group text-center add_top_30">
+                    {/*<input className="btn_1" type="submit" value="Submit"/>*/}
+                    <button onClick={this.goToLogin} className="btn_1">Submit</button>
+                  </div>
+                </div>
+                {/* /box_form */}
+              </div>
+              {/* /col */}
+            </div>
+            {/* /row */}
+          </div>
+          {/* /container */}
+        </div>
+        {/* /hero_register */}
+      </main>);
+  }
+
+
+
+
+
+
+
 }
 
 export default withRouter(RegisterForm);
