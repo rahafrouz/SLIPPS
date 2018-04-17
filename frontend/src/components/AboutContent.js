@@ -32,44 +32,44 @@ Stronger collaboration is needed to improve the culture of safety in clinical te
           <div className="row">
             <div className="col-lg-4">
               <div className="box_badges">
-                <div id="badge_level_2" className="disabled_badge"><img src="img/badges/badge_3.svg" alt="" width="100" height="100"/></div>
-                <h3>User 1</h3>
+                <div><img src="img/badges/badge_3.svg" alt="" width="100" height="100"/></div>
+                <h3>Amir RAHAFROUZ</h3>
                 <p>Lorem ipsum dolor sit amet, pro id zril molestie, cum ne omittam quaestio. Pri delectus conclusionemque te.</p>
               </div>
             </div>
             <div className="col-lg-4">
               <div className="box_badges">
-                <div id="badge_level_2" className="disabled_badge"><img src="img/badges/badge_3.svg" alt="" width="100" height="100"/><i className="icon-lock"></i></div>
-                <h3>User 2</h3>
+                <div><img src="img/badges/badge_3.svg" alt="" width="100" height="100"/></div>
+                <h3>An PHAM</h3>
                 <p>Lorem ipsum dolor sit amet, pro id zril molestie, cum ne omittam quaestio. Pri delectus conclusionemque te.</p>
               </div>
             </div>
             <div className="col-lg-4">
               <div className="box_badges">
-                <div id="badge_level_3" className="disabled_badge"><img src="img/badges/badge_3.svg" alt="" width="100" height="100"/><i className="icon-lock"></i></div>
-                <h3>User 3</h3>
+                <img src="http://res.cloudinary.com/merunur/image/upload/v1523997982/nastya.png" alt="Nastya" width="150" height="180"/>
+                <h3 className="padd-top-20">Anastasiia GRISHINA</h3>
+                <p><i>Expressing creative ideas of the group members in an exact and formal way has taught me to be attentive and extract relevant information from every meeting.</i></p>
+              </div>
+            </div>
+            <div className="col-lg-4">
+              <div className="box_badges">
+                <div><img src="img/badges/badge_3.svg" alt="" width="100" height="100"/></div>
+                <h3>Ijlal Ahmed NIAZI</h3>
                 <p>Lorem ipsum dolor sit amet, pro id zril molestie, cum ne omittam quaestio. Pri delectus conclusionemque te.</p>
               </div>
             </div>
             <div className="col-lg-4">
               <div className="box_badges">
-                <div id="badge_level_3" className="disabled_badge"><img src="img/badges/badge_3.svg" alt="" width="100" height="100"/><i className="icon-lock"></i></div>
-                <h3>User 4</h3>
-                <p>Lorem ipsum dolor sit amet, pro id zril molestie, cum ne omittam quaestio. Pri delectus conclusionemque te.</p>
+                <div><img src="img/badges/badge_3.svg" alt="" width="100" height="100"/></div>
+                <h3>Meruyert NURGAZY</h3>
+                <p><i>Here should be some cool text</i></p>
               </div>
             </div>
             <div className="col-lg-4">
               <div className="box_badges">
-                <div id="badge_level_3" className="disabled_badge"><img src="img/badges/badge_3.svg" alt="" width="100" height="100"/><i className="icon-lock"></i></div>
-                <h3>User 5</h3>
-                <p>Lorem ipsum dolor sit amet, pro id zril molestie, cum ne omittam quaestio. Pri delectus conclusionemque te.</p>
-              </div>
-            </div>
-            <div className="col-lg-4">
-              <div className="box_badges">
-                <div id="badge_level_3" className="disabled_badge"><img src="img/badges/badge_3.svg" alt="" width="100" height="100"/><i className="icon-lock"></i></div>
-                <h3>User 6</h3>
-                <p>Lorem ipsum dolor sit amet, pro id zril molestie, cum ne omittam quaestio. Pri delectus conclusionemque te.</p>
+                <div><img src="http://res.cloudinary.com/merunur/image/upload/v1523998232/sunnat.jpg" alt="" width="150" height="180"/></div>
+                <h3 className="padd-top-20">Sunnatillo SAMADOV</h3>
+                <p><i>During the development process I have gained a wide range of experience and improved group working skills.</i></p>  
               </div>
             </div>
           </div>
