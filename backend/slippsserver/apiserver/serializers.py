@@ -14,11 +14,19 @@ from .models import (
     Language,
     Choice,
     Keyword,
-    Event
+    Event,
+    EventDetail,
+    Question
 )
 
 BCRYPT_SALT = b'$2b$12$hPhtNvTYULuTMEFZHC0m/e-ThisIsOurSalt'
 User = get_user_model()
+
+class UserAccountSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserAccount
+        fields = ('id', 'user_id', 'created_at', 'deleted_at', 'dob', 'gender', 'occupation', 'work_place', 'phone', 'verification_code', 'verification_code_expired')
+        read_only_fields = (['id', 'user_id', 'created_at', 'deleted_at', 'verification_code', 'verification_code_expired'])
 
 class UserRegistrationSerializer(serializers.Serializer):
     # is_deleted = serializers.SerializerMethodField()
@@ -33,14 +41,16 @@ class UserRegistrationSerializer(serializers.Serializer):
     first_name = serializers.CharField()
     last_name = serializers.CharField()
     username = serializers.CharField()
-    deleted_at = serializers.DateField(read_only=True, required=False)
-    verification_code = serializers.CharField(read_only=True, required=False)
-    verification_code_expired = serializers.DateField(read_only=True, required=False)
-    dob = serializers.CharField(allow_blank=True, required=False)
-    gender = serializers.CharField(allow_blank=True, required=False)
-    occupation = serializers.CharField()
-    work_place = serializers.CharField()
-    phone = serializers.CharField(allow_blank=True, required=False)
+
+    user_account = UserAccountSerializer()
+    # deleted_at = serializers.DateField(read_only=True, required=False)
+    # verification_code = serializers.CharField(read_only=True, required=False)
+    # verification_code_expired = serializers.DateField(read_only=True, required=False)
+    # dob = serializers.CharField(allow_blank=True, required=False)
+    # gender = serializers.CharField(allow_blank=True, required=False)
+    # occupation = serializers.CharField()
+    # work_place = serializers.CharField()
+    # phone = serializers.CharField(allow_blank=True, required=False)
 
     def validate_username(self, value):
         if User.objects.filter(username=value).exists():
@@ -49,30 +59,28 @@ class UserRegistrationSerializer(serializers.Serializer):
 
     class Meta:
         """Meta class to map serializer's fields with the model fields."""
-        # model = User
-        fields = (
-            'id',
-            'username',
-            'email',
-            'first_name',
-            'last_name',
-            'deleted_at',
-            'verification_code',
-            'verification_code_expired'
-            'created_at',
-            'dob',
-            'gender',
-            'occupation', 
-            'work_place',
-            'phone'
-        )
-        # exclude = ('verification_code',)
-        read_only_fields = (['id', 'created_at', 'is_active', 'deleted_at', 'verification_code', 'verification_code_expired'])
-        # extra_kwargs = {'hashed_pass': {'write_only': True}}
+        model = User
+        fields = ('id', 'username', 'email', 'password', 'first_name', 'last_name')
+        read_only_fields = (['id'])
+    #     fields = (
+    #         'id',
+    #         'username',
+    #         'email',
+    #         'first_name',
+    #         'last_name',
+    #         'deleted_at',
+    #         'verification_code',
+    #         'verification_code_expired'
+    #         'created_at',
+    #         'dob',
+    #         'gender',
+    #         'occupation',
+    #         'work_place',
+    #         'phone'
+    #     )
+    #     read_only_fields = (['id', 'created_at', 'is_active', 'deleted_at', 'verification_code', 'verification_code_expired'])
 
     def create(self, validated_data):
-        print("Entering create!!!")
-        print(self)
         validated_data["email"] = validated_data['username']
 
         user_account = UserAccount.objects.create_user(
@@ -81,16 +89,22 @@ class UserRegistrationSerializer(serializers.Serializer):
         )
         return user_account
 
-    # def update(self, instance, validated_data):
-    #     instance.first_name = validated_data.get('first_name', instance.first_name)
-    #     instance.last_name = validated_data.get('last_name', instance.last_name)
-    #     instance.dob = validated_data.get('dob', instance.dob)
-    #     instance.gender = validated_data.get('gender', instance.gender)
-    #     instance.occupation = validated_data.get('occupation', instance.occupation)
-    #     instance.work_place = validated_data.get('work_place', instance.work_place)
-    #     instance.phone = validated_data.get('phone', instance.phone)
-    #     instance.save()
-    #     return instance
+    def update(self, instance, validated_data):
+        account_data = validated_data.pop('account')
+        user_account = instance.user_account
+
+        instance.first_name = validated_data.get('first_name', instance.first_name)
+        instance.last_name = validated_data.get('last_name', instance.last_name)
+        instance.save()
+
+        user_account.dob = validated_data.get('dob', user_account.dob)
+        user_account.gender = validated_data.get('gender', user_account.gender)
+        user_account.occupation = validated_data.get('occupation', user_account.occupation)
+        user_account.work_place = validated_data.get('work_place', user_account.work_place)
+        user_account.phone = validated_data.get('phone', user_account.phone)
+        user_account.save()
+
+        return instance
 
 # class UserLoginSerializer(serializers.Serializer):
 #     email = serializers.EmailField()
@@ -137,14 +151,14 @@ class UserRegistrationSerializer(serializers.Serializer):
 #         print(data)
 #         return data
 
-class UserDetailsSerializer(serializers.Serializer):
-    """
-    User model w/o password
-    """
-    class Meta:
-        model = User
-        fields = ('id', 'email', 'first_name', 'last_name')
-        read_only_fields = ('email', )
+# class UserDetailsSerializer(serializers.Serializer):
+#     """
+#     User model w/o password
+#     """
+#     class Meta:
+#         model = User
+#         fields = ('id', 'email', 'first_name', 'last_name')
+#         read_only_fields = ('email', )
 
 class KeywordHitsSerializer(serializers.ModelSerializer):
     class Meta:
@@ -162,6 +176,11 @@ class LanguageSerializer(serializers.ModelSerializer):
         model = Language
         fields = '__all__'
 
+class QuestionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Question
+        fields = '__all__'
+
 class ChoiceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Choice
@@ -172,12 +191,33 @@ class KeywordSerializer(serializers.ModelSerializer):
         model = Keyword
         fields = '__all__'
 
+class EventDetailSerializer(serializers.ModelSerializer):
+    questions = QuestionSerializer(many=True)
+    choices = serializers.SerializerMethodField()
+
+    class Meta:
+        model = EventDetail
+        fields = '__all__'
+
+    def get_choices(self, obj):
+        print(obj)
+        queryset = Choice.objects.filter(choice_text = obj.answer)
+        return ChoiceSerializer(queryset, many=True)
+        
+
 class EventSerializer(serializers.ModelSerializer):
     title = serializers.SerializerMethodField()
+    language = LanguageSerializer()
+    country = CountrySerializer()
+    event_details = EventDetailSerializer(many=True, read_only=True)
+    keywords = KeywordSerializer(many=True, read_only=True)
 
     class Meta:
         model = Event
-        fields = ('id', 'title', 'short_desc', 'created_at')
+        fields = ('id', 'title', 'short_desc', 'created_at',
+            'description', 'why_relevant', 'event_details', 'keywords',
+            'country', 'language')
+        read_only_fields = (['id', 'created_at'])
 
     def get_title(self, obj):
         return obj.description[:50] + '...'

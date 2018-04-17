@@ -25,7 +25,6 @@ from .utils import process_csv
 
 from .serializers import (
     UserRegistrationSerializer,
-    # UserLoginSerializer,
     KeywordHitsSerializer,
     CountrySerializer,
     LanguageSerializer,
@@ -51,16 +50,16 @@ class SearchByKeywordView(APIView):
     permission_classes = (AllowAny,)
 
     def get(self, request, format=None):
-        """
+        '''
         Return a list of all events matching keyword.
-        """
+        '''
         client = Elasticsearch()
-        s = Search(using=client, index="slipps", doc_type="event")
+        s = Search(using=client, index='slipps', doc_type='event')
 
         params = request.query_params
-        kw = params["kw"].lower()
+        kw = params['kw'].lower()
 
-        q = Q("nested", path="keywords", query=Q("match", **{"keywords.content": kw}))
+        q = Q('nested', path='keywords', query=Q('match', **{'keywords.content': kw}))
         s = s.query(q)
         response = s.execute()
 
@@ -76,17 +75,17 @@ class AdvancedSearchView(APIView):
     permission_classes = (AllowAny,)
 
     def get(self, request, format=None):
-        """
+        '''
         Return a list of all events matching filters.
-        """
+        '''
         client = Elasticsearch()
         s = Search(
             using = client,
-            index = "slipps",
-            doc_type = "event"
+            index = 'slipps',
+            doc_type = 'event'
         ).sort(
-            { "_score": { "order": "desc" }},
-            { "id": { "order" : "asc" }},
+            { '_score': { 'order': 'desc' }},
+            { 'id': { 'order' : 'asc' }},
         )
 
         # Filter request format
@@ -99,40 +98,40 @@ class AdvancedSearchView(APIView):
         # &keywords_and = 'kw1', 'kw2'
         # &keywords_or = 'kw3', 'kw4'
         params = {
-            "country": "",
-            "language": "",
-            "category": "",
-            "per_page": 10, #number of items per page, default is 10.
-            "page": 1,
-            "daterange": "",
-            "keywords_and": "",
-            "keywords_or": "",
+            'country': '',
+            'language': '',
+            'category': '',
+            'per_page': 10, #number of items per page, default is 10.
+            'page': 1,
+            'daterange': '',
+            'keywords_and': '',
+            'keywords_or': '',
         }
         params.update(request.query_params.dict())
 
-        country = params["country"]
-        language = params["language"]
-        category = params["category"]
-        daterange = params["daterange"].split(",")
-        and_kws = list(filter(None, params["keywords_and"].split(",")))
-        or_kws = list(filter(None, params["keywords_or"].split(",")))
+        country = params['country']
+        language = params['language']
+        category = params['category']
+        daterange = params['daterange'].split(',')
+        and_kws = list(filter(None, params['keywords_and'].split(',')))
+        or_kws = list(filter(None, params['keywords_or'].split(',')))
 
-        q = Q("match_all", **{})
+        q = Q('match_all', **{})
 
         for kw in and_kws:
-            q &= Q("nested", path="keywords", query=Q("match", **{"keywords__content": kw}))
+            q &= Q('nested', path='keywords', query=Q('match', **{'keywords__content': kw}))
 
         for kw in or_kws:
-            q |= Q("nested", path="keywords", query=Q("match", **{"keywords__content": kw}))
+            q |= Q('nested', path='keywords', query=Q('match', **{'keywords__content': kw}))
 
-        if country != "":
-            q &= Q("nested", path="country", query=Q("match", **{"country__code": country}))
+        if country != '':
+            q &= Q('nested', path='country', query=Q('match', **{'country__code': country}))
 
-        if language != "":
-            q &= Q("nested", path="language", query=Q("match", **{"language__code": language}))
+        if language != '':
+            q &= Q('nested', path='language', query=Q('match', **{'language__code': language}))
 
-        if category != "":
-            q &= Q("match", **{"field_of_study__raw": category})
+        if category != '':
+            q &= Q('match', **{'field_of_study__raw': category})
 
         s = s.query(q)
 
@@ -140,20 +139,20 @@ class AdvancedSearchView(APIView):
             try:
                 from_year = int(daterange[0])
                 print(from_year)
-                s = s.filter("range", created_at={ "gte": '{0}-01-01'.format(from_year) })
+                s = s.filter('range', created_at={ 'gte': '{0}-01-01'.format(from_year) })
             except Exception as e:
                 pass
 
             try:
                 to_year = int(daterange[1])
-                s = s.filter("range", created_at={ "lte": '{0}-12-31'.format(to_year) })
+                s = s.filter('range', created_at={ 'lte': '{0}-12-31'.format(to_year) })
             except Exception as e:
                 pass
 
         # pagination
         # s=s[from:size]
-        per_page = int(params["per_page"])
-        page = int(params["page"])
+        per_page = int(params['per_page'])
+        page = int(params['page'])
         s = s[(page-1)*per_page:page*per_page]
 
         response = s.execute()
@@ -168,16 +167,16 @@ class InitializeView(APIView):
     permission_classes = (AllowAny,)
 
     def get(self, request, format=None):
-        """
+        '''
         Return a list of all info needed to start client app.
-        """
+        '''
         # Get most searched keyword, limit 10 first records by default.
         params = {
-            "limit_result": 10
+            'limit_result': 10
         }
         params.update(request.query_params.dict())
 
-        kw_hits = KeywordHits.objects.get_popular_kws(params["limit_result"])
+        kw_hits = KeywordHits.objects.get_popular_kws(params['limit_result'])
 
         # List languages, countries for advanced search dropdown
         countries = Country.objects.raw('SELECT * FROM apiserver_country WHERE id in (SELECT DISTINCT country_id FROM apiserver_event)')
@@ -188,13 +187,34 @@ class InitializeView(APIView):
         categories = Choice.objects.filter(question_id=category_id).distinct('choice_text')
 
         return Response({
-            "keyword_hits": KeywordHitsSerializer(kw_hits, many=True).data,
-            "countries": CountrySerializer(countries, many=True).data,
-            "languages": LanguageSerializer(languages, many=True).data,
-            "categories": ChoiceSerializer(categories, many=True).data,
-            "all_keywords": KeywordSerializer(Keyword.objects.all(), many=True).data,
-            "recent_events": EventSerializer(Event.objects.order_by("-created_at")[:5], many=True).data
+            'keyword_hits': KeywordHitsSerializer(kw_hits, many=True).data,
+            'countries': CountrySerializer(countries, many=True).data,
+            'languages': LanguageSerializer(languages, many=True).data,
+            'categories': ChoiceSerializer(categories, many=True).data,
+            'all_keywords': KeywordSerializer(Keyword.objects.all(), many=True).data,
+            'recent_events': EventSerializer(Event.objects.order_by('-created_at')[:5], many=True).data
         })
+
+class EventDetailView(APIView):
+    permission_classes = (IsAuthenticatedOrReadOnly,)
+
+    def get(self, request, event_id, format=None):
+        current_user = request.user
+        # event_id = request.query_params['id']
+
+
+        event = EventSerializer(Event.objects.get(id=event_id)).data
+        print(current_user)
+        print(current_user.is_authenticated)
+
+
+        if not current_user.is_authenticated:
+            event['description'] = ''
+            event['event_details'] = []
+
+        return Response({
+            'event': event
+        })        
 
 class DocumentUploadView(APIView):
     permission_classes = (IsAuthenticated,)
@@ -207,23 +227,20 @@ class DocumentUploadView(APIView):
         lines = lines[4:-6]
 
         # NOTE: This is to save the file if needed.
-        # content = ""
+        # content = ''
         # for line in lines:
         #     content += line.decode('utf-8')
         # path = default_storage.save('tmp/{0}'.format(filename), ContentFile(content))
         # media_root = getattr(settings, 'MEDIA_ROOT', '/')
         # tmp_file = os.path.join(media_root, path)
 
-        print(request.user)
-
         processed = process_csv(lines, request.user, filename)
         return Response(status=204)
-        
 
 class UserRegistrationView(generics.CreateAPIView):
-    """
+    '''
     A viewset for viewing and editing user instances.
-    """
+    '''
     serializer_class = UserRegistrationSerializer
     queryset = User.objects.all()
     permission_classes = [AllowAny]

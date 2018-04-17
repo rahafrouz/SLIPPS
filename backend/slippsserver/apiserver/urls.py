@@ -9,6 +9,7 @@ from .views import (
 	UserRegistrationView,
 	InitializeView,
 	DocumentUploadView,
+    EventDetailView,
 )
 
 router = SimpleRouter()
@@ -21,6 +22,7 @@ urlpatterns = {
     url(r'^api/users/register', UserRegistrationView.as_view()),
     url(r'^api/users/upload/(?P<filename>[^/]+)$', DocumentUploadView.as_view()),
     url(r'^api/auth/', include('rest_auth.urls')),
+    url(r'^api/event/(?P<event_id>[^/]+)$', EventDetailView.as_view()),
 }
 
 urlpatterns = format_suffix_patterns(urlpatterns)
