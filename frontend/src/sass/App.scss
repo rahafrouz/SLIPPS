@@ -1,0 +1,191 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:300,400,400i,500,500i,600,600i,700,700i,800");
+@import 'variables';
+@import 'mixins';
+
+.App {
+  text-align: center;
+
+  .adv-search-kw .error_message {
+    margin: 0;
+  }
+
+  .advanced-search-link.toggle {
+    background: #ffffff;
+  }
+
+  .advanced-search-link.toggle:hover {
+    background-color: #e74e84;
+  }
+
+  .error-messages {
+    color: red;
+  }
+
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+
+.message {
+  margin-top: 10px;
+  display: block;
+  color: #e97d68;
+  font-weight: 600;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+
+
+.strip_list {
+  font-weight: 300;
+  margin-bottom: 25px;
+  background-color: #fff;
+  padding: 20px 15px 15px 115px;
+  @include border-radius-default;
+  position: relative;
+  @include box-shadow (0px 0px 15px 0px rgba(0, 0, 0, 0.05));
+  a.wish_bt {
+    font-size:0.7em;
+    @include rgba(bg, #000, 0.05);
+    @include border-radius(3px);
+    &:after {
+      font-family: 'ElegantIcons';
+      content: "";
+    }
+    &:hover:after {
+      content: "";
+      color: $secondary-color;
+    }
+    color: #555;
+    &:hover:after {
+      color: $secondary-color;
+    }
+  }
+  @include mobile {
+    padding: 20px 15px 15px 90px;
+  }
+  figure {
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    overflow: hidden;
+    @include border-radius(50%);
+    left: 15px;
+    top: 15px;
+    img {
+      width: auto;
+      height: 80px;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      @include transform (translate(-50%, -50%) scale(1));
+      @include mobile {
+        height: 60px;
+      }
+    }
+    @include mobile {
+      width: 60px;
+      height: 60px;
+    }
+  }
+  h3 {
+    @include fontSize(22px);
+    margin-top: 0;
+    display: inline-block;
+    margin-right: 10px;
+  }
+  p {
+    margin-bottom: 15px;
+    @include mobile {
+      @include fontSize(13px);
+    }
+  }
+  small {
+    color: #999;
+    display: block;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+  ul {
+    border-top: 1px solid $border-color;
+    margin: 15px -15px -15px -115px;
+    padding: 20px 15px;
+    @include mobile {
+      margin: 15px -15px -15px -90px;
+    }
+    li {
+      display: inline-block;
+      margin-right: 5px;
+      font-weight: 500;
+      font-size:0.7em;
+      a {
+        color: #999;
+        cursor: pointer;
+        &:hover {
+          color: $secondary-color;
+        }
+      }
+      &:after {
+        content: '|';
+        font-weight: 400;
+        margin-left: 8px;
+        color: #ccc;
+      }
+      &:last-child {
+        float: none;
+        margin-right: 0;
+        &:after{
+          content:'';
+        }
+        a {
+          border: 2px solid $secondary-color;
+          color: $secondary-color;
+          cursor: pointer;
+          padding: 5px 20px;
+          @include transition-default;
+          @include border-radius(30px);
+          &:hover {
+            background-color: $secondary-color;
+            color: #fff!important;
+          }
+        }
+      }
+      &:first-child {
+        @include tablet {
+          display: none;
+        }
+      }
+    }
+  }
+}
+

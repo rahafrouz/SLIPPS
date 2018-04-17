@@ -1,8 +1,10 @@
 from elasticsearch import Elasticsearch
 from elasticsearch_dsl import Index, DocType, Date, Integer, Keyword, Text, Nested
 from elasticsearch_dsl.connections import connections
+from django.conf import settings
 
-connections.create_connection(hosts=['localhost:9200'])
+settings.configure()
+connections.create_connection(hosts=[getattr(settings, 'ELASTIC_SEARCH_URL', 'localhost:9200')])
 
 class Country(DocType):
     name = Text(fields={'raw': Keyword()})
@@ -88,21 +90,22 @@ class TaggedKeyword(DocType):
 class Event(DocType):
     # document = models.ForeignKey(UploadedDocument, on_delete=models.SET_NULL, null=True)
     description = Text()
+    title = Text()
     why_relevant = Text()
     short_desc = Text()
     language = Nested(Language)
     country = Nested(Country)
     field_of_study = Text(fields={'raw': Keyword()})
     
-    details = Nested(
-        properties = {
-            'question_id': Integer(),
-            'question_text': Text(),
-            'question_pos': Integer(),
-            'answer_id': Integer(),
-            'answer_num': Integer(),
-            'answer_text': Text()
-        })
+    # details = Nested(
+    #     properties = {
+    #         'question_id': Integer(),
+    #         'question_text': Text(),
+    #         'question_pos': Integer(),
+    #         'answer_id': Integer(),
+    #         'answer_num': Integer(),
+    #         'answer_text': Text()
+    #     })
 
     keywords = Nested(TaggedKeyword)
     created_at = Date()
@@ -117,22 +120,20 @@ class Event(DocType):
         self.updated_at = datetime.now()
         return super().save(** kwargs)
 
+# print("==== COUNTRY =====")
+# Country.init()
 
-# create the mappings in Elasticsearch
-print("==== COUNTRY =====")
-Country.init()
+# print("==== LANGUAGE =====")
+# Language.init()
 
-print("==== LANGUAGE =====")
-Language.init()
+# print("==== QUESTION =====")
+# Question.init()
 
-print("==== QUESTION =====")
-Question.init()
+# print("==== CHOICE =====")
+# Choice.init()
 
-print("==== CHOICE =====")
-Choice.init()
+# print("==== KEYWORD =====")
+# TaggedKeyword.init()
 
-print("==== KEYWORD =====")
-TaggedKeyword.init()
-
-print("==== EVENT =====")
-Event.init()
+# print("==== EVENT =====")
+# Event.init()

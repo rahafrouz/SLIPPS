@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 // import MapView from "./MapView";
-import KeywordList from "./KeywordList";
+import KeywordList from "../KeywordList";
 
 class AdvancedSearchSuggestions extends Component {
   render() {

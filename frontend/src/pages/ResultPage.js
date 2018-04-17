@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 import agent from "../agent";
 import Navigation from "../components//Navigation";
-import AdvancedSearchResults from "../components/AdvancedSearchResults";
+import AdvancedSearchResults from "../components/AdvancedSearch/AdvancedSearchResults";
 import Footer from "../components/Footer";
 
 import { SET_KEYWORD, SEARCH_BY_KEYWORD } from "../constants/actionTypes";
@@ -13,7 +13,8 @@ import { SET_KEYWORD, SEARCH_BY_KEYWORD } from "../constants/actionTypes";
 const mapStateToProps = state => {
   return {
     keyword: state.search.keyword,
-    searchResult: state.search.searchResult
+    searchResult: state.search.searchResult,
+    currentUser: state.app.currentUser
   };
 };
 
@@ -38,11 +39,13 @@ class ResultPage extends Component {
   render() {
     var searchResult = this.props.searchResult;
     var result = searchResult != undefined && searchResult.hits ?
-      (<AdvancedSearchResults /> ) :
+      (
+        <AdvancedSearchResults showButton="True" />
+      ) :
       (<strong>you need to enter a keyword</strong>);
     return (
       <div>
-        <Navigation />
+        <Navigation currentUser={this.props.currentUser} />
         {result}
         <Footer />
       </div>

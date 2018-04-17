@@ -1,14 +1,52 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
+import csv
+import os
 
 from django.shortcuts import render
-from rest_framework import generics
+from django.conf import settings
+from django.contrib.auth import get_user_model
+from django.core.files.storage import default_storage
+from django.core.files.base import ContentFile
+
+from rest_framework import generics, viewsets, status
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticatedOrReadOnly, AllowAny, IsAuthenticated, IsAdminUser
+from rest_framework.parsers import FileUploadParser
+
+# from rest_framework.decorators import api_view, permission_classes, action
+from rest_framework.decorators import detail_route, list_route
+
 from elasticsearch_dsl import Search, Q, serializer
 from elasticsearch import Elasticsearch
 
-class SearchByKeyword(APIView):
+from .serializers import (
+    UserRegistrationSerializer,
+    # UserLoginSerializer,
+    KeywordHitsSerializer,
+    CountrySerializer,
+    LanguageSerializer,
+    ChoiceSerializer,
+    KeywordSerializer,
+    EventSerializer,
+)
+
+from .models import (
+    UserAccount,
+    KeywordHits,
+    Keyword,
+    Event,
+    Country,
+    Language,
+    Choice,
+    Keyword,
+)
+
+User = get_user_model()
+
+class SearchByKeywordView(APIView):
+    permission_classes = (AllowAny,)
 
     def get(self, request, format=None):
         """
@@ -18,18 +56,22 @@ class SearchByKeyword(APIView):
         s = Search(using=client, index="slipps", doc_type="event")
 
         params = request.query_params
+        kw = params["kw"].lower()
 
-        q = Q("nested", path="keywords", query=Q("match", **{"keywords.content": params["kw"].lower()}))
+        q = Q("nested", path="keywords", query=Q("match", **{"keywords.content": kw}))
         s = s.query(q)
         response = s.execute()
+
+        # Count number of times a keyword is searched.
+        KeywordHits.objects.save_keyword_hit(kw=kw)
 
         # TODO: Filter results based on user authentication
         # Authenticated users: full details
         # Guest users: restricted data
         return Response(response.to_dict())
 
-
-class AdvancedSearch(APIView):
+class AdvancedSearchView(APIView):
+    permission_classes = (AllowAny,)
 
     def get(self, request, format=None):
         """
@@ -44,7 +86,6 @@ class AdvancedSearch(APIView):
             { "_score": { "order": "desc" }},
             { "id": { "order" : "asc" }},
         )
-
 
         # Filter request format
         # &country = 'country_code'
@@ -112,8 +153,80 @@ class AdvancedSearch(APIView):
         per_page = int(params["per_page"])
         page = int(params["page"])
         s = s[(page-1)*per_page:page*per_page]
-        print(s.to_dict())
 
         response = s.execute()
 
+        for kw in (and_kws+or_kws):
+            KeywordHits.objects.save_keyword_hit(kw=kw)
+
         return Response(response.to_dict())
+
+class InitializeView(APIView):
+    # serializer_class = KeywordHitsSerializer
+    permission_classes = (AllowAny,)
+
+    def get(self, request, format=None):
+        """
+        Return a list of all info needed to start client app.
+        """
+        # Get most searched keyword, limit 10 first records by default.
+        params = {
+            "limit_result": 10
+        }
+        params.update(request.query_params.dict())
+
+        kw_hits = KeywordHits.objects.get_popular_kws(params["limit_result"])
+
+        # List languages, countries for advanced search dropdown
+        countries = Country.objects.raw('SELECT * FROM apiserver_country WHERE id in (SELECT DISTINCT country_id FROM apiserver_event)')
+        languages = Language.objects.raw('SELECT * FROM apiserver_language WHERE id in (SELECT DISTINCT language_id FROM apiserver_event)')
+
+        # List available categories from events to search for.
+        category_id = getattr(settings, 'SLIPPS_CATEGORY_QUESTION_ID', 1)
+        categories = Choice.objects.filter(question_id=category_id).distinct('choice_text')
+
+        return Response({
+            "keyword_hits": KeywordHitsSerializer(kw_hits, many=True).data,
+            "countries": CountrySerializer(countries, many=True).data,
+            "languages": LanguageSerializer(languages, many=True).data,
+            "categories": ChoiceSerializer(categories, many=True).data,
+            "all_keywords": KeywordSerializer(Keyword.objects.all(), many=True).data,
+            "recent_events": EventSerializer(Event.objects.order_by("-created_at")[:5], many=True).data
+        })
+
+class DocumentUploadView(APIView):
+    # TODO: Remove this afterwards.
+    permission_classes = (AllowAny,)
+    parser_classes = (FileUploadParser,)
+
+    def put(self, request, filename, format=None):
+        file_obj = request.data['file']
+
+
+        lines = file_obj.readlines()
+        lines = lines[4:-6]
+
+        content = ""
+
+        for line in lines:
+            content += line.decode('utf-8')
+
+        path = default_storage.save('tmp/{0}'.format(filename), ContentFile(content))
+        media_root = getattr(settings, 'MEDIA_ROOT', '/')
+        tmp_file = os.path.join(media_root, path)
+
+
+        # ...
+        # do some stuff with uploaded file
+        # ...
+        # pass
+        return Response(status=204)
+        
+
+class UserRegistrationView(generics.CreateAPIView):
+    """
+    A viewset for viewing and editing user instances.
+    """
+    serializer_class = UserRegistrationSerializer
+    queryset = User.objects.all()
+    permission_classes = [AllowAny]

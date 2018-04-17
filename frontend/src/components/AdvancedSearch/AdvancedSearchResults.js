@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import {withRouter} from "react-router-dom";
 
-import EventList from "./EventList";
+import EventList from "../EventList";
 import AdvancedSearchSuggestions from "./AdvancedSearchSuggestions";
 import AdvancedSearchContainer from "./AdvancedSearchContainer";
-import { TOGGLE_ADVANCED_SEARCH } from "../constants/actionTypes";
+import { TOGGLE_ADVANCED_SEARCH } from "../../constants/actionTypes";
 
 const mapStateToProps = state => {
   return {
@@ -23,14 +24,12 @@ class AdvancedSearchResults extends Component {
   constructor() {
     super();
     this.toggleHidden = this.toggleHidden.bind(this);
-  // this.setState({
-  //   AdvancedSearchisHidden: true
-  // });
   }
 
   toggleHidden(e) {
     e.preventDefault();
-    this.props.toggleAdvancedSearch({ isAvancedSearchHidden: !this.props.isAvancedSearchHidden});
+    // this.props.toggleAdvancedSearch({ isAvancedSearchHidden: !this.props.isAvancedSearchHidden});
+    this.props.history.push("/advanced-search/");
     // this.setState({
     //   isAvancedSearchHidden: !this.props.isAvancedSearchHidden
     // });
@@ -40,12 +39,13 @@ class AdvancedSearchResults extends Component {
     var NumberOfResult = this.props.results.hits.total;
     var Hits = this.props.results.hits.hits;
     var Keywords = this.props.results.hits.hits["0"]?this.props.results.hits.hits["0"]._source.keywords:{};
-    console.warn(this.props);
+              
     return (
       <main>
         <div className="bg_color_2">
           <div className="container margin_60_35">
             <div className="row">
+              {/*{button}*/}
               {/*     <div className="col-xl-12 col-lg-12">
                 {this.state.AdvancedSearchisHidden && (<div className="box_general_3 cart" >
                   <div className="form-group">
@@ -53,17 +53,9 @@ class AdvancedSearchResults extends Component {
                   </div>
                 </div>)}
               </div>*/}
-              <div className="col-xl-2 col-lg-2">
-                <ul>
-                  <li>
-                    <button className="advanced-search-link toggle" onClick={this.toggleHidden}>
-                      <a>Advanced Search</a>
-                    </button>
-                  </li>
-                </ul>
-              </div>
+              <a className="advanced-search-link" href="/advanced-search">Advanced Search</a>              
               <div className="col-xl-12 col-lg-12" >
-                {!this.props.isAvancedSearchHidden && <AdvancedSearchContainer  />}
+                {!this.props.isAvancedSearchHidden && <AdvancedSearchContainer />}
               </div>
             </div>
           </div>
@@ -94,4 +86,4 @@ class AdvancedSearchResults extends Component {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AdvancedSearchResults);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(AdvancedSearchResults));

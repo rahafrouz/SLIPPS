@@ -10,7 +10,7 @@ class DocumentContent extends Component {
             <h3>Drag file here</h3>
           </div>
           <div className="wrapper_indent">
-            <input type="file"/>
+            <input type="file" />
           </div>
         </div>
       </div>

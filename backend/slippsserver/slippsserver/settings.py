@@ -39,6 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'rest_framework.authtoken',
+    'rest_auth',
+    'rest_framework_jwt',
     'elasticsearch_dsl',
     'corsheaders',
 ]
@@ -113,6 +116,14 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+PASSWORD_HASHERS = [
+    'django.contrib.auth.hashers.BCryptSHA256PasswordHasher',
+    'django.contrib.auth.hashers.BCryptPasswordHasher',
+    'django.contrib.auth.hashers.PBKDF2PasswordHasher',
+    'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
+    'django.contrib.auth.hashers.Argon2PasswordHasher',
+]
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
@@ -139,10 +150,39 @@ ELASTIC_SEARCH_PORT = '9200'
 ELASTIC_SEARCH_URL = 'localhost:9200'
 
 # DJANGO REST FRAMEWORK SETTINGS
-# REST_FRAMEWORK = {
-#     # Use Django's standard `django.contrib.auth` permissions,
-#     # or allow read-only access for unauthenticated users.
-#     'DEFAULT_PERMISSION_CLASSES': [
-#         'rest_framework.permissions.IsAdminUser'
-#     ]
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated'
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+        # 'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+    ),
+}
+# AUTH_USER_MODEL = 'apiserver.UserAccount'
+
+
+REST_AUTH_SERIALIZERS = {
+    # You can define your custom serializers for each endpoint without overriding urls and views
+    # by adding REST_AUTH_SERIALIZERS dictionary in your django settings.
+    # 'LOGIN_SERIALIZER': 'apiserver.serializers.UserLoginSerializer',
+    # 'USER_DETAILS_SERIALIZER': 'apiserver.serializers.UserSerializer',
+}
+
+# REST_AUTH_TOKEN_MODEL = 'apiserver.models.UserToken'
+REST_USE_JWT=True
+
+# JWT_AUTH = {
+#     'JWT_PAYLOAD_GET_USERNAME_HANDLER': 'apiserver.utils.jwt_get_username_from_payload_handler',
+#     'JWT_PAYLOAD_HANDLER': 'apiserver.utils.jwt_payload_handler',
+#     'JWT_RESPONSE_PAYLOAD_HANDLER': 'apiserver.utils.jwt_response_payload_handler',
 # }
+
+# USER DEFINED SETTINGS
+VERIFICATION_CODE_EXPIRE_DAYS = 4
+SLIPPS_CATEGORY_QUESTION_ID = 1
+MEDIA_ROOT = 'media/files/'
