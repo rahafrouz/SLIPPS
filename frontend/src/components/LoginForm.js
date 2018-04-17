@@ -63,7 +63,10 @@ class LoginForm extends Component {
             
                 <div className="box_form clearfix">
                   <ListErrors errors={this.props.errors} />
-                  
+
+                  <div className="box_login box-key">
+                    <i className="pe-7s-key"></i>
+                  </div>
                   <form className="box_login last" onSubmit={this.submitForm(email, password)}>
                     <div className="form-group">
                       <input className="form-control" placeholder="Your email address"
