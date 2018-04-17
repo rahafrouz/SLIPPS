@@ -25322,6 +25322,10 @@ text-shadow: none;
   padding-top: 10px;
 }
 
+.padd-top-20 {
+  padding-top: 20px;
+}
+
 .padd-bottom-10 {
   padding-bottom: 10px;
 }
