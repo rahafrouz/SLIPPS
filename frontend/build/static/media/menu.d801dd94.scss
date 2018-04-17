@@ -1,0 +1,147 @@
+@import 'variables';
+@import 'mixins';
+
+/* All styles for screen size over 992px
+================================================== */
+@media only screen and (min-width: 992px) {
+	
+	nav#menu.main-menu {
+		display: block !important;
+	}
+	#mm-menu.main-menu {
+		display: none !important;
+	}
+	header .btn_mobile {
+		display: none !important;
+	}
+	/* Menu */
+	.main-menu {
+		position: relative;
+		z-index: 9;
+		width: auto;
+		top:11px;
+		float: right;
+		@include transition-default;
+		color: #fff;
+		ul,
+		ul li {
+			position: relative;
+			display: inline-block;
+			margin: 0;
+			padding: 0;
+			a {
+				position: relative;
+				margin: 0;
+				padding: 0;
+				display: block;
+				padding: 5px 10px;
+				white-space: nowrap;
+			}
+		}
+	}
+	/*First level styles */
+	.main-menu>ul>li span {
+		>a {
+			color: #333;
+			padding: 0 8px 17px  8px; 
+			@include fontSize(14px);
+        	font-weight: 500;
+		}
+		&:hover > a {color:$secondary-color;}
+	}
+	/* Submenu*/
+	.main-menu ul ul {
+		position: absolute;
+		z-index: 1;
+		visibility: hidden;
+		left: 3px;
+		top: 100%;
+		margin: 0;
+		display: block;
+		padding: 0;
+		background: #fff;
+		min-width: 210px;
+		@include box-shadow (0px 6px 12px 0px rgba(0, 0, 0, 0.175));
+		@include transform (translateY(20px));
+		opacity: 0;
+		@include transition-default (all, 0.2s, ease);
+		border-top: 2px solid $secondary-color;
+		li {
+			display: block;
+			height: auto;
+			padding: 0;
+			a {
+				@include fontSize(13px);
+				color: $body-text-color;
+				border-bottom: 1px solid #ededed;
+				display: block;
+				padding: 15px 10px;
+				line-height: $line-height-none;
+			}
+		}
+	}
+	.main-menu ul li:hover>ul {
+		padding: 0;
+		visibility: visible;
+		@include transform (translateY(0));
+		opacity: 1;
+	}
+	.main-menu ul ul li {
+		&:last-child a {
+			border-bottom: none;
+		}
+		&:hover>a {
+			background-color: #f9f9f9;
+			color: $secondary-color;
+			padding-left: 15px;
+			@include transition-default (all,0.3s, ease);
+		}
+	}
+}
+
+/* All styles for screen size under 991px
+================================================== */
+@media only screen and (max-width: 991px) {
+	.btn_mobile {
+		position: absolute;
+		left: 15px;
+		top: 15px;
+		width: 30px;
+		display: block;
+		z-index: 9999;
+	}
+	.hamburger-inner,
+	.hamburger-inner::before,
+	.hamburger-inner::after {
+		background-color: #333!important;
+	}
+	.hamburger--spin.is-active .hamburger-inner {
+		background-color: $secondary-color!important;
+	}
+	.hamburger--spin.is-active .hamburger-inner::before {
+		background-color: $secondary-color!important;
+	}
+	.hamburger--spin.is-active .hamburger-inner::after {
+		background-color: $secondary-color!important;
+	}
+	nav#menu {
+		display: none !important;
+	}
+	.mm-menu {
+		background: #fff!important;
+	}
+	.main-menu {
+		top: 0;
+		right: 0;
+		float: none;
+	}
+	ul.mm-listview {
+		line-height: 25px;
+		li {
+			a {
+				color: $body-text-color!important;
+				display: block;
+			}
+		}
+	}
+}
