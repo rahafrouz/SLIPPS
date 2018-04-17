@@ -22,8 +22,8 @@ class EventDescriptionContent2 extends Component {
   render() {
     var eventQuestions=null;
     var eventDescription=null;
+    var whyRelevant=null;
     var errorMessage=(<h3>You need to login to access this area.</h3>);
-
     if(this.props.EventDetail._source.details){
       eventQuestions=this.props.EventDetail._source.details.map(function(item,index){
         return (
@@ -56,9 +56,26 @@ class EventDescriptionContent2 extends Component {
               {this.props.EventDetail._source.description}
             </p>
           </div>
+          <hr/>
         </div>);
     }
 
+    if(this.props.EventDetail._source.why_relevant){
+      whyRelevant= (
+        <div className="event-description">
+          <div className="indent_title_in">
+            <i className="pe-7s-attention"></i>
+            <h3>Why Relevant?</h3>
+            <p>Information about relevance of this learning event.</p>
+          </div>
+          <div className="wrapper_indent">
+            <p>
+              {this.props.EventDetail._source.why_relevant}
+            </p>
+          </div>
+          <hr/>
+        </div>);
+    }
     console.warn(this.props);
     return (
       <div id="page">     
@@ -103,12 +120,11 @@ class EventDescriptionContent2 extends Component {
                       </div>
                     </div>
               
-                    <hr/>
                     {!eventDescription?errorMessage:(<hr/>)}
-                    {errorMessage}
+                    {whyRelevant}
                     {eventDescription}
-                    <hr/>
                     {eventQuestions}
+
                   </div>
                   {/*<!-- /section_1 -->*/}
                 </div>

@@ -21,7 +21,6 @@ class EventDescription extends Component {
         <div style={{backgroundColor: "#F5F8FA"}}>
           {console.warn(this.props.state)}
           <EventDescriptionContent2 EventDetail={this.props.location.state.EventDetail}/>
-          <EventSuggestions />
         </div>
         <Footer />
       </div>
