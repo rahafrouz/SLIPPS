@@ -14966,6 +14966,18 @@ ul.bullets li:before {
   }
 }
 
+.margin_20_35 {
+  padding-top: 20px;
+  padding-bottom: 35px;
+}
+@media (max-width: 767px) {
+  .margin_20_35 {
+    /* For less than 767px */
+    padding-top: 10px;
+    padding-bottom: 5px;
+  }
+}
+
 .margin_120 {
   padding-top: 120px;
   padding-bottom: 120px;
@@ -25291,14 +25303,14 @@ text-shadow: none;
 
 .about-title {
   text-align: left;
-  margin-left: 40px;
+  margin-left: 100px;
   margin-top: 50px;
   color: #187DC1;
 }
 
 .about-content {
   text-align: left;
-  margin-left: 40px;
-  margin-right: 40px;
+  margin-left: 100px;
+  margin-right: 100px;
   color: #5A5A5A;
 }
