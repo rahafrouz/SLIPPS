@@ -160,12 +160,10 @@ class UploadedDocument(models.Model):
     user_account = models.ForeignKey(UserAccount, on_delete=models.CASCADE)
     uploaded_at = models.DateTimeField(auto_now_add=True)
     filename = models.CharField(max_length=200)
-    file_url = models.CharField(max_length=200)
-    description = models.TextField()
+    file_url = models.CharField(max_length=200, null=True)
+    description = models.TextField(null=True)
+    processed_status = models.CharField(max_length=50)
     deleted_at = models.DateTimeField(null=True)
-
-# class EventManager(models.Manager):
-        # pass
 
 class Event(models.Model):
     document = models.ForeignKey(UploadedDocument, on_delete=models.SET_NULL, null=True)
@@ -180,8 +178,7 @@ class Event(models.Model):
     updated_at = models.DateTimeField(auto_now=True, null=True)
     deleted_at = models.DateTimeField(null=True)
     published_at = models.DateTimeField(null=True)
-
-    # objects = EventManager()
+    file_version = models.CharField(max_length=5)
 
     def publish_to_es(self):
         # create and save and article
