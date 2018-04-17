@@ -85,7 +85,7 @@ class RegisterForm extends Component {
                 </div>
                 <div className="box_feat_2">
                   <i className="pe-7s-phone" />
-                  <h3>Instantly via Mobile</h3>
+                  <h3>Access from any device</h3>
                   <p>You can access learning events any time, any where, on any device.</p>
                 </div>
               </div>

@@ -80,7 +80,7 @@ class AdvancedSearchContainer extends Component {
       (<AdvancedSearchResults /> ) :
       (<div></div>);
     return (
-      <main>
+      <main className="advanced-search-container">
         <div className="bg_color_2">
           <div className="container margin_60_35">
             <div className="col-xl-12 col-lg-12">
