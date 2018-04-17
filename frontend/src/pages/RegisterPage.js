@@ -15,8 +15,8 @@ class RegisterPage extends Component {
   render() {
     return (
       <div>
-        <RegisterForm/>
-      </div>  
+        <RegisterForm />
+      </div>
     );
   }
 }

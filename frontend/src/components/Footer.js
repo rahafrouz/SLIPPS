@@ -26,8 +26,8 @@ class Footer extends Component {
               <div className="col-lg-3 col-md-3">
                 <h5>Contact with SLIPPS</h5>
                 <ul className="contacts">
-                  <li><a href="tel://61280932400"><i className="icon_mobile"></i> +44 (0)191 215 6483</a></li>
-                  <li><a href="mailto:info@slipps.com"><i className="icon_mail_alt"></i> contact@slipps.eu </a></li>
+                  <li><a href="tel://+441912156483"><i className="icon_mobile"></i> +44 (0)191 215 6483</a></li>
+                  <li><a href="mailto:contact@slipps.eu"><i className="icon_mail_alt"></i> contact@slipps.eu </a></li>
                 </ul>
                 
               </div>
@@ -52,7 +52,6 @@ class Footer extends Component {
           </div>
         </footer>
       </div>
-    
     );
   }
 }

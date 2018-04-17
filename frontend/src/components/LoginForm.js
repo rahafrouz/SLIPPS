@@ -64,10 +64,8 @@ class LoginForm extends Component {
                 <div className="box_form clearfix">
                   <ListErrors errors={this.props.errors} />
 
-                  <div className="box_login">
-                    <a href="#0" className="social_bt facebook">Login with Facebook</a>
-                    <a href="#0" className="social_bt google">Login with Google</a>
-                    <a href="#0" className="social_bt linkedin">Login with Linkedin</a>
+                  <div className="box_login box-key">
+                    <i className="pe-7s-key"></i>
                   </div>
                   <form className="box_login last" onSubmit={this.submitForm(email, password)}>
                     <div className="form-group">
