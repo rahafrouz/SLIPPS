@@ -4,7 +4,7 @@ class AboutContent extends Component {
   render() {
     return (  
       <div>
-        <div>
+        <div className="padd-top-10">
           <h5 className="about-title">Virtual Learning Centre (VLC)</h5>
           <p className="about-content">
              VLC is a platform developed to improve patient safety by enabling students and professionals in healthcare to share learning experiences. 
@@ -26,7 +26,7 @@ Stronger collaboration is needed to improve the culture of safety in clinical te
         </div>
         <div>
           <h5 className="about-title">Developers</h5>
-          <p className="about-content">The project was developed within the framework of Running a Software Project discipline in Lappeenranta, Finland by <strong>PERCCOM</strong> Erasmus Mundus Master students</p>
+          <p className="about-content">The project was developed within the framework of Running a Software Project discipline in LUT, Finland by <strong>PERCCOM</strong> Erasmus Mundus Master students</p>
         </div>
         <div className="container margin_20_35">
           <div className="row">

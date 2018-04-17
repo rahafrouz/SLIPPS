@@ -21,6 +21,7 @@ import About from "../pages/About";
 import EventLarge from "./EventLarge.js";
 import Footer from "./Footer";
 import Navigation from "./Navigation";
+import TermsAndConditions from "./TermsAndConditions";
 
 const mapStateToProps = store => {
   return {
@@ -79,6 +80,7 @@ class App extends Component {
             <Route path="/desc" component={EventDescription} />
             <Route path="/about" component={About} />
             <Route path="/testingevents" component={EventLarge} />
+            <Route path="/terms" component={TermsAndConditions} />
           </Switch>
           <Footer />
         </div>

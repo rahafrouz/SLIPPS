@@ -11628,8 +11628,11 @@ ul#additional_links li:after {
     height: 450px;
   }
 }
+.slipps_background {
+  background: #187DC1;
+}
 .hero_home.version_1 {
-  background: #3f4079 url(./icons/hero_home_bg_1.svg) no-repeat center bottom;
+  background: #187DC1 url(./icons/hero_home_bg_1.svg) no-repeat center bottom;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -11642,8 +11645,8 @@ ul#additional_links li:after {
   }
 }
 .hero_home.version_1 .content {
-  background-color: #363768;
-  background-color: rgba(63, 64, 121, 0);
+  background-color: #187DC1;
+ /* background-color: rgba(63, 64, 121, 0);*/
 }
 .hero_home.version_2 {
   background: none;
@@ -25313,4 +25316,8 @@ text-shadow: none;
   margin-left: 100px;
   margin-right: 100px;
   color: #5A5A5A;
+}
+
+.padd-top-10 {
+  padding-top: 10px;
 }
