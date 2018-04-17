@@ -7,4 +7,3 @@ backend/slippsserver/apiserver/__pycache__
 logfile.log
 backend/dev
 backend/logstash-5.6.8
-backend/slippsserver/env
