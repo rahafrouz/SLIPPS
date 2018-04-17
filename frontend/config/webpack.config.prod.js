@@ -273,6 +273,25 @@ module.exports = {
         NODE_ENV: JSON.stringify("production")
       }
     }),
+    new webpack.LoaderOptionsPlugin({
+    options: {
+        postcss: () => {
+            return [
+                /* eslint-disable global-require */
+                require('postcss-cssnext'),
+                // ({
+                //     features: {
+                //         customProperties: {
+                //             variables: reactToolboxVariables,
+                //         },
+                //     },
+                // }),
+                require('postcss-modules-values'),
+                /* eslint-enable global-require */
+            ];
+        }
+    }
+    }),
     // Minify the code.
     new webpack.optimize.UglifyJsPlugin({
       compress: {

@@ -6,8 +6,8 @@ import { Router, Route, Switch } from "react-router";
 import { ConnectedRouter } from "react-router-redux";
 import createHistory from "history/createBrowserHistory";
 import App from "./components/App";
-import "./index.css";
 
+import "./index.scss";
 import "./sass/style.scss";
 import "./sass/menu.scss";
 import "./sass/blog.scss";
