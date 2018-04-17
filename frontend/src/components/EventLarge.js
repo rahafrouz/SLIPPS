@@ -84,10 +84,12 @@ class EventLarge extends Component {
         <figure>
           <a href="#0"><span className="pe-7s-glasses" style={{fontSize:"77px"}}></span></a>
         </figure>
-        <div onClick={this.navigateToEvent} style={{cursor:"pointer"}}>
+        <div >
           <small>{detail.language.name}</small>
           <h3>{detail.field_of_study}</h3>
-          <p onClick={this.navigateToEvent} style={{fontWeight:"300",fontSize:"0.8em"}}>{detail.title}{description}</p>
+          <p onClick={this.navigateToEvent} style={{fontWeight:"300",fontSize:"0.8em", cursor:"pointer"}}>
+            {detail.title}{description}
+          </p>
           <span className="rating"><small>{detail.created_at}</small></span>
           <div> 
             <ul>

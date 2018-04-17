@@ -60,6 +60,9 @@ class SearchByKeywordView(APIView):
         kw = params['kw'].lower()
 
         q = Q('nested', path='keywords', query=Q('match', **{'keywords.content': kw}))
+        q |= Q('match', description=kw)
+        q |= Q('match', why_relevant=kw)
+
         s = s.query(q)
         response = s.execute()
 
