@@ -12,7 +12,8 @@ const defaultState = {
   redirectTo: null,
   appName: "slipps",
   token: null,
-  initData: {}
+  initData: {},
+  appLoaded: false
 };
 
 export default (state = defaultState, action) => {
@@ -20,7 +21,7 @@ export default (state = defaultState, action) => {
   case APP_LOAD:
     return {
       ...state,
-      token: action.token || null,
+      token: action.error ? null : action.token,
       appLoaded: true,
       currentUser: action.payload[0] ? action.payload[0] : null,
       initData: action.payload[1]

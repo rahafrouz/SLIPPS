@@ -19,7 +19,7 @@ class KeywordList extends Component {
               {
                 keywords.map((kw, ind) => {
                   return (
-                    <li>
+                    <li key={kw.id}>
                       <a href={"/search/" + kw.text}>{kw.text}</a>
                       <hr></hr>
                     </li>

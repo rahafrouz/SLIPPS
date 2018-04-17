@@ -10,16 +10,16 @@ class Footer extends Component {
               <div className="col-lg-3 col-md-3">
                 <h5>About</h5>
                 <ul className="links">
-                  <li><a href="#0">About us</a></li>
-                  <li><a href="https://www.slipps.eu/" target="_blank">Terms and conditions</a></li>
+                  <li><a href="/about">About us</a></li>
+                  <li><a href="/terms" target="_blank">Terms and conditions</a></li>
                   <li><a href="https://www.slipps.eu/" target="_blank">SLIPPS Official website</a></li>
                 </ul>
               </div>
               <div className="col-lg-3 col-md-3">
                 <h5>Useful links</h5>
                 <ul className="links">
-                  <li><a href="#0">Learning Events</a></li>
-                  <li><a href="#0">Partners</a></li>
+                  <li><a href="/">Search</a></li>
+                  <li><a href="/advanced-search">Advanced Search</a></li>
                   <li><a href="/upload">Upload Document</a></li>
                 </ul>
               </div>

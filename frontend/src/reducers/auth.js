@@ -25,11 +25,6 @@ export default (state = {}, action) => {
       return { ...state, inProgress: true };
     }
     break;
-  // case ASYNC_END:
-  //   if (action.subtype === LOGIN) {
-  //     return { ...state, userInfo: action.promise.user };
-  //   }
-  //   break;
   case UPDATE_FIELD_AUTH:
     return { ...state, [action.key]: action.value };
   default:

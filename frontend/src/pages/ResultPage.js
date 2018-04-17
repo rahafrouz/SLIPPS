@@ -45,9 +45,7 @@ class ResultPage extends Component {
       (<strong>you need to enter a keyword</strong>);
     return (
       <div>
-        <Navigation currentUser={this.props.currentUser} />
         {result}
-        <Footer />
       </div>
     );
   } 

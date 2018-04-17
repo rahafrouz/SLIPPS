@@ -5,19 +5,18 @@ import { store } from "./store";
 import { Router, Route, Switch } from "react-router";
 import { ConnectedRouter } from "react-router-redux";
 import createHistory from "history/createBrowserHistory";
-
-import root from "window-or-global";
+// import root from "window-or-global";
 
 import App from "./components/App";
-import AdvancedSearch from "./pages/AdvancedSearch";
-import ResultPage from "./pages/ResultPage";
-import LoginPage from "./pages/LoginPage";
-import ProfilePage from "./pages/ProfilePage";
-import DocumentUpload from "./pages/DocumentUpload";
-import RegisterPage from "./pages/RegisterPage";
-import EventDescription from "./pages/EventDescription";
-import About from "./pages/About";
-import EventLarge from "./components/EventLarge.js";
+// import AdvancedSearch from "./pages/AdvancedSearch";
+// import ResultPage from "./pages/ResultPage";
+// import LoginPage from "./pages/LoginPage";
+// import ProfilePage from "./pages/ProfilePage";
+// import DocumentUpload from "./pages/DocumentUpload";
+// import RegisterPage from "./pages/RegisterPage";
+// import EventDescription from "./pages/EventDescription";
+// import About from "./pages/About";
+// import EventLarge from "./components/EventLarge.js";
 
 import "./index.css";
 
@@ -27,14 +26,16 @@ import "./sass/blog.scss";
 import "./sass/App.scss";
 
 const history = createHistory();
-// const Promise = root.Promise;
 ReactDOM.render(
   (
     <Provider store={store}>
       <Router history={history}>
         <div className="App">
           <Switch>
-            <Route exact path="/" component={App} />
+            <Route path="/" component={App} />
+          </Switch>
+
+          {/*<Switch>
             <Route path="/login" component={LoginPage} />
             <Route path="/register" component={RegisterPage} />
             <Route path="/profile" component={ProfilePage} />
@@ -45,7 +46,7 @@ ReactDOM.render(
             <Route path="/desc" component={EventDescription} />
             <Route path="/about" component={About} />
             <Route path="/testingevents" component={EventLarge} />
-          </Switch>
+          </Switch>*/}
         </div>
       </Router>
     </Provider>

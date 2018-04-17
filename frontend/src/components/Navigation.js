@@ -2,6 +2,13 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
 import logo from "../icons/slipps-logo.png"; // relative path to image 
+import { connect } from "react-redux";
+
+const mapStateToProps = store => {
+  return {
+    currentUser: store.app.currentUser,
+  };
+};
 
 const LoggedOutView = props => {
   if (!props.currentUser) {
@@ -96,5 +103,5 @@ class Navigation extends Component {
   }
 }
 
-export default Navigation;
+export default connect(mapStateToProps, null)(Navigation);
   

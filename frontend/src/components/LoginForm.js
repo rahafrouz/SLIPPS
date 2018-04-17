@@ -71,7 +71,8 @@ class LoginForm extends Component {
                   </div>
                   <form className="box_login last" onSubmit={this.submitForm(email, password)}>
                     <div className="form-group">
-                      <input className="form-control" placeholder="Your email address" value={email} onChange={this.changeEmail} />
+                      <input className="form-control" placeholder="Your email address"
+                        value={email} onChange={this.changeEmail} />
                     </div>
                     <div className="form-group">
                       <input type="password" className="form-control"

@@ -25,7 +25,7 @@ class MainPageNews extends Component {
                       {
                         events.map((ev, ind) => {
                           return (
-                            <EventSummary eventDetail={ev} />
+                            <EventSummary eventDetail={ev} key={ev.id}/>
                           );
                         })
                       }

@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-import Navigation from "../components//Navigation";
-import LoginForm from "../components/LoginForm";
-import Footer from "../components/Footer";
 import { connect } from "react-redux";
+
+import LoginForm from "../components/LoginForm";
 
 const mapStateToProps = state => {
   return {
@@ -14,9 +13,7 @@ class LoginPage extends Component {
   render() {
     return (
       <div>
-        <Navigation currentUser={this.props.currentUser}/>
         <LoginForm/>
-        <Footer />
       </div>
     );
   }

@@ -27,7 +27,9 @@ const requests = {
   put: (url, body) =>
     superagent.put(`${API_ROOT}${url}`, body).use(tokenPlugin).then(responseBody),
   post: (url, body) =>
-    superagent.post(`${API_ROOT}${url}`, body).use(tokenPlugin).then(responseBody)
+    superagent.post(`${API_ROOT}${url}`, body).use(tokenPlugin).then(responseBody),
+  get_without_token: url =>
+    superagent.get(`${API_ROOT}${url}`).then(responseBody),
 };
 
 const Auth = {
@@ -43,7 +45,7 @@ const Auth = {
 
 const Common = {
   getData: () =>
-    requests.get("/init"),
+    requests.get_without_token("/init"),
   uploadDoc: (data, filename) =>
     // requests.post("/users/upload", { data: data })
     superagent.put(`${API_ROOT}/users/upload/${filename}`)
