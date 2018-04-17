@@ -3,6 +3,7 @@ from elasticsearch_dsl import Index, DocType, Date, Integer, Keyword, Text, Nest
 from elasticsearch_dsl.connections import connections
 from django.conf import settings
 
+settings.configure()
 connections.create_connection(hosts=[getattr(settings, 'ELASTIC_SEARCH_URL', 'localhost:9200')])
 
 class Country(DocType):

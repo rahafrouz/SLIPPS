@@ -1,3 +1,5 @@
+from __future__ import unicode_literals
+
 from doctypes import Event
 from doctypes import Country
 from doctypes import Language

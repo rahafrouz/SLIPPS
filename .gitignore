@@ -5,8 +5,5 @@ backend/slippsserver/slippsserver/__pycache__
 backend/slippsserver/apiserver/migrations/__pycache__
 backend/slippsserver/apiserver/__pycache__
 logfile.log
-package-lock.json
-frontend/package-lock.json
-*.pyc
 backend/dev
 backend/logstash-5.6.8
