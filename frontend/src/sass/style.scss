@@ -291,11 +291,11 @@ strong {
 		}
 		&:before {
 			left: 25%;
-			background: url(../img/arrow_left.png) no-repeat 0 0;
+			background: url(/img/arrow_left.png) no-repeat 0 0;
 		}
 		&:after {
 			right: 25%;
-			background: url(../img/arrow_right.png) no-repeat 0 0;
+			background: url(/img/arrow_right.png) no-repeat 0 0;
 		}
 	}
 }
@@ -491,7 +491,7 @@ ul#top_access {
 			width: 163px;
 			height: 36px;
 			display: block;
-			background: url(../img/logo.png) no-repeat 0 0;
+			background: url(/img/logo.png) no-repeat 0 0;
 			background-size: 163px 36px;
 			text-indent: -9999px;
 		}
@@ -503,7 +503,7 @@ only screen and (-o-min-device-pixel-ratio: 2/1),
 only screen and (-webkit-min-device-pixel-ratio: 2),
 only screen and (min-device-pixel-ratio: 2) {
 	#logo_home h1 a {
-		background-image: url(../img/logo_2x.png);
+		background-image: url(/img/logo_2x.png);
 		background-size: 163px 36px;
 	}
 }
@@ -648,7 +648,7 @@ ul#additional_links {
 		height: 450px;
 	}
 	&.version_1 {
-		background: $primary-color url(../img/hero_home_bg_1.svg) no-repeat center bottom;
+		background: $primary-color url(/img/hero_home_bg_1.svg) no-repeat center bottom;
 		@include background-size(cover);
 		@include mobile {
 			height: 450px;
@@ -695,7 +695,7 @@ ul#additional_links {
 		}
 	}
 	&.version_3 {
-		background: $primary-color url(../img/hero_home_bg_1.svg) no-repeat center bottom;
+		background: $primary-color url(/img/hero_home_bg_1.svg) no-repeat center bottom;
 		@include background-size(cover);
 		@include mobile {
 			height: 450px;
@@ -862,7 +862,7 @@ ul#additional_links {
 		}
 		@include extra-small-mobile {
 			text-indent: -999px;
-			background: $third-color url(../img/search.svg) no-repeat center center;
+			background: $third-color url(/img/search.svg) no-repeat center center;
 		}
 	}
 }
@@ -882,13 +882,13 @@ ul#additional_links {
 		color: $secondary-color;
 	}
 	&#icon_1 {
-		background: #fff url(../img/icon-home-1.svg) no-repeat center 45px;
+		background: #fff url(/img/icon-home-1.svg) no-repeat center 45px;
 	}
 	&#icon_2 {
-		background: #fff url(../img/icon-home-2.svg) no-repeat center 45px;
+		background: #fff url(/img/icon-home-2.svg) no-repeat center 45px;
 	}
 	&#icon_3 {
-		background: #fff url(../img/icon-home-3.svg) no-repeat center 45px;
+		background: #fff url(/img/icon-home-3.svg) no-repeat center 45px;
 	}
 	span {
 		position: absolute;
@@ -899,7 +899,7 @@ ul#additional_links {
 		height: 70px;
 		@include border-radius(50%);
 		border: 2px solid $border-color;
-		background: #fff url(../img/arrow-gray-1.svg) no-repeat center center;
+		background: #fff url(/img/arrow-gray-1.svg) no-repeat center center;
 		display: block;
 		z-index: 9;
 		@include tablet {
@@ -1126,7 +1126,7 @@ a.box_cat_home {
 }
 
 #app_section {
-	background: $primary-color url(../img/hero_bg_1.svg) repeat fixed;
+	background: $primary-color url(/img/hero_bg_1.svg) repeat fixed;
 	padding: 90px 0 60px 0;
 	color: #fff;
 	@include tablet {
@@ -1290,7 +1290,7 @@ iframe {
 
 @media (max-width: 1024px) {
 	#hero_video {
-		background: $primary-color url(../img/hero_bg_1.svg) repeat fixed;
+		background: $primary-color url(/img/hero_bg_1.svg) repeat fixed;
 	}
 	.header-video {
 		background: none;
@@ -1816,7 +1816,7 @@ a.wish_bt {
 		border: 0;
 		width: 35px;
 		height: 35px;
-		background: url(../img/search.svg) no-repeat center right;
+		background: url(/img/search.svg) no-repeat center right;
 		cursor: pointer;
 	}
 }
@@ -2415,7 +2415,7 @@ input[type=checkbox].css-checkbox:checked+label.css-label {
 }
 
 label.css-label {
-	background-image: url(../img/checkbox.png);
+	background-image: url(/img/checkbox.png);
 	-webkit-touch-callout: none;
 	-webkit-user-select: none;
 	-khtml-user-select: none;
@@ -2875,7 +2875,7 @@ a.social_bt {
 }
 
 #hero_register {
-	background: $primary-color url(../img/hero_bg_1.svg) repeat fixed;
+	background: $primary-color url(/img/hero_bg_1.svg) repeat fixed;
 	color: #fff;
 	h1 {
 		color: #fff;
@@ -2907,7 +2907,7 @@ a.social_bt {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	background: $primary-color url(../img/hero_bg_1.svg) repeat fixed;
+	background: $primary-color url(/img/hero_bg_1.svg) repeat fixed;
 	color: #fff;
 	h2 {
 		@include fontSize(140px);
@@ -3158,7 +3158,7 @@ ul.treatments.checkout {
 }
 
 .bg_color_2 {
-	background: $primary-color url(../img/hero_bg_1.svg) repeat fixed;
+	background: $primary-color url(/img/hero_bg_1.svg) repeat fixed;
 }
 
 .form-control {

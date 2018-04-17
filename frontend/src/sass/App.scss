@@ -3,7 +3,7 @@
 @import 'mixins';
 
 .App {
-  text-align: center;
+  //text-align: center;
 
   .adv-search-kw .error_message {
     margin: 0;
@@ -189,3 +189,16 @@
   }
 }
 
+.main-navigation
+{
+  i{
+    font-size:38px;
+    color:$primary-color;
+  }
+}
+.event-title
+{
+  h3{
+    color:white;
+  }
+}

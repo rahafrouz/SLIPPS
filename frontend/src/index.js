@@ -17,14 +17,17 @@ import DocumentUpload from "./pages/DocumentUpload";
 import RegisterPage from "./pages/RegisterPage";
 import EventDescription from "./pages/EventDescription";
 import About from "./pages/About";
-
+import EventLarge from "./components/EventLarge.js";
 
 import "./index.css";
+
+import "./sass/style.scss";
+import "./sass/menu.scss";
+import "./sass/blog.scss";
 import "./sass/App.scss";
 
 const history = createHistory();
 // const Promise = root.Promise;
-
 ReactDOM.render(
   (
     <Provider store={store}>
@@ -41,6 +44,7 @@ ReactDOM.render(
             <Route path="/event/:eventid" component={EventDescription} />
             <Route path="/desc" component={EventDescription} />
             <Route path="/about" component={About} />
+            <Route path="/testingevents" component={EventLarge} />
           </Switch>
         </div>
       </Router>
