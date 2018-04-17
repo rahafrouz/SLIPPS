@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import KeywordList from "./KeywordList";
 import EventSummary from "./EventSummary";
-
 import { connect } from "react-redux";
 
 const mapStateToProps = state => {
@@ -12,8 +11,7 @@ const mapStateToProps = state => {
 
 class MainPageNews extends Component {
   render() {
-    const events = this.props.recentEvents;
-
+    const events = this.props.recentEvents.slice(0,3);
     return (
       <div>
         <div className="container margin_120_95">
