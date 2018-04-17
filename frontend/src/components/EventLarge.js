@@ -89,13 +89,15 @@ class EventLarge extends Component {
           <h3>{detail.field_of_study}</h3>
           <p onClick={this.navigateToEvent} style={{fontWeight:"300",fontSize:"0.8em"}}>{detail.title}{description}</p>
           <span className="rating"><small>{detail.created_at}</small></span>
-          <ul>
-            {
-              detail.keywords.map(function(name, index) {
-                return <li key={ index }>{name.category}: {name.content}</li>;
-              })
-            }
-          </ul>
+          <div> 
+            <ul>
+              {
+                detail.keywords.map(function(name, index) {
+                  return <li key={ index }>{name.content}</li>;
+                })
+              }
+            </ul>
+          </div>
         </div>
       </div>
     );
