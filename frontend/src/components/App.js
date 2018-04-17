@@ -3,9 +3,6 @@ import { connect } from "react-redux";
 import { push } from "react-router-redux";
 import { Route, Switch } from "react-router";
 import { withRouter } from "react-router-dom";
-
-
-// import { store } from "../store";
 import { APP_LOAD, REDIRECT} from "../constants/actionTypes";
 
 import agent from "../agent";
@@ -56,8 +53,6 @@ class App extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.redirectTo) {
-      // this.context.router.replace(nextProps.redirectTo);
-      // store.dispatch(push(nextProps.redirectTo));
       this.props.history.push(nextProps.redirectTo);
       this.props.onRedirect();
     }
@@ -76,8 +71,8 @@ class App extends Component {
             <Route path="/advanced-search" component={AdvancedSearch} />
             <Route path="/search/:keyword" component={ResultPage} />
             <Route path="/upload" component={DocumentUpload} />
-            <Route path="/event/:eventid" component={EventDescription} />
-            <Route path="/desc" component={EventDescription} />
+            <Route path="/event/:event_id" component={EventDescription} />
+            {/*<Route path="/desc" component={EventDescription} />*/}
             <Route path="/about" component={About} />
             <Route path="/testingevents" component={EventLarge} />
             <Route path="/terms" component={TermsAndConditions} />
