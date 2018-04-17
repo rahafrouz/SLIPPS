@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '7slt%cnd1*%!vtl^n&psh^m9&r-sjl6owwb-_e0=2ke6xcsu3#'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-ALLOWED_HOSTS = ["157.24.191.55"]
+ALLOWED_HOSTS = ["slipps.it.lut.fi"]
 
 
 # Application definition
@@ -143,9 +143,9 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 # PYTHON ELASTICSEARCH SETTINGS
-ELASTIC_SEARCH_HOST = '157.24.191.55'
+ELASTIC_SEARCH_HOST = 'slipps.it.lut.fi'
 ELASTIC_SEARCH_PORT = '9200'
-ELASTIC_SEARCH_URL = '157.24.191.55:9200'
+ELASTIC_SEARCH_URL = 'slipps.it.lut.fi:9200'
 
 # DJANGO REST FRAMEWORK SETTINGS
 REST_FRAMEWORK = {
