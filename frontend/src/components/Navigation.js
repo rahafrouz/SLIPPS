@@ -6,15 +6,17 @@ import logo from "../icons/slipps-logo.png"; // relative path to image
 const LoggedOutView = props => {
   if (!props.currentUser) {
     return (
-      <div className="main-menu">
+      <div className="main-menu main-navigation">
         <ul className="pull-xs-right">
           <li>
+            <i className="pe-7s-users"></i>
             <Link to="/login" className="nav-link">Login</Link>
           </li>
           {/*<li >
             <a href="/login">Login</a>
           </li>*/}
           <li>
+            <i className="pe-7s-add-user"></i>
             <Link to="/" className="nav-link">Sign up</Link>
             {/*<a href="/register">Sign up</a>*/}
           </li>

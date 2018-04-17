@@ -35,9 +35,9 @@ class EventDescriptionContent extends Component {
                 </p>
                 <ul >
                   <li><a href="#0">Please log in to see full detail</a></li>
-                  <li style={{visibility: "hidden"}}><i className='icon-download'></i><a href="#0"> Download</a></li>
-                  <li style={{visibility: "hidden"}}><i className='icon-share'></i><a href="#0"> Share</a></li>
-                  <li style={{visibility: "hidden"}}><i style={{color:"#3f4079"}}className="icon-star-empty"></i><a href="#">Save document</a></li>
+                  <li style={{visibility: "visibile"}}><i className='icon-download'></i><a href="#0"> Download</a></li>
+                  <li style={{visibility: "visible"}}><i className='icon-share'></i><a href="#0"> Share</a></li>
+                  <li style={{visibility: "visible"}}><i style={{color:"#3f4079"}}className="icon-star-empty"></i><a href="#">Save document</a></li>
                 </ul>					
               </div>
 					
