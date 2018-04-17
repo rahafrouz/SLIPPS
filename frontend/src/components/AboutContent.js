@@ -29,45 +29,45 @@ Stronger collaboration is needed to improve the culture of safety in clinical te
           <p className="about-content">The project was developed within the framework of Running a Software Project discipline in Lappeenranta, Finland by <strong>PERCCOM</strong> Erasmus Mundus Master students</p>
         </div>
         <div className="container margin_20_35">
-          <div class="row">
-            <div class="col-lg-4">
-              <div class="box_badges">
-                <div id="badge_level_2" class="disabled_badge"><img src="img/badges/badge_3.svg" alt="" width="100" height="100"/></div>
+          <div className="row">
+            <div className="col-lg-4">
+              <div className="box_badges">
+                <div id="badge_level_2" className="disabled_badge"><img src="img/badges/badge_3.svg" alt="" width="100" height="100"/></div>
                 <h3>User 1</h3>
                 <p>Lorem ipsum dolor sit amet, pro id zril molestie, cum ne omittam quaestio. Pri delectus conclusionemque te.</p>
               </div>
             </div>
-            <div class="col-lg-4">
-              <div class="box_badges">
-                <div id="badge_level_2" class="disabled_badge"><img src="img/badges/badge_3.svg" alt="" width="100" height="100"/><i class="icon-lock"></i></div>
+            <div className="col-lg-4">
+              <div className="box_badges">
+                <div id="badge_level_2" className="disabled_badge"><img src="img/badges/badge_3.svg" alt="" width="100" height="100"/><i className="icon-lock"></i></div>
                 <h3>User 2</h3>
                 <p>Lorem ipsum dolor sit amet, pro id zril molestie, cum ne omittam quaestio. Pri delectus conclusionemque te.</p>
               </div>
             </div>
-            <div class="col-lg-4">
-              <div class="box_badges">
-                <div id="badge_level_3" class="disabled_badge"><img src="img/badges/badge_3.svg" alt="" width="100" height="100"/><i class="icon-lock"></i></div>
+            <div className="col-lg-4">
+              <div className="box_badges">
+                <div id="badge_level_3" className="disabled_badge"><img src="img/badges/badge_3.svg" alt="" width="100" height="100"/><i className="icon-lock"></i></div>
                 <h3>User 3</h3>
                 <p>Lorem ipsum dolor sit amet, pro id zril molestie, cum ne omittam quaestio. Pri delectus conclusionemque te.</p>
               </div>
             </div>
-            <div class="col-lg-4">
-              <div class="box_badges">
-                <div id="badge_level_3" class="disabled_badge"><img src="img/badges/badge_3.svg" alt="" width="100" height="100"/><i class="icon-lock"></i></div>
+            <div className="col-lg-4">
+              <div className="box_badges">
+                <div id="badge_level_3" className="disabled_badge"><img src="img/badges/badge_3.svg" alt="" width="100" height="100"/><i className="icon-lock"></i></div>
                 <h3>User 4</h3>
                 <p>Lorem ipsum dolor sit amet, pro id zril molestie, cum ne omittam quaestio. Pri delectus conclusionemque te.</p>
               </div>
             </div>
-            <div class="col-lg-4">
-              <div class="box_badges">
-                <div id="badge_level_3" class="disabled_badge"><img src="img/badges/badge_3.svg" alt="" width="100" height="100"/><i class="icon-lock"></i></div>
+            <div className="col-lg-4">
+              <div className="box_badges">
+                <div id="badge_level_3" className="disabled_badge"><img src="img/badges/badge_3.svg" alt="" width="100" height="100"/><i className="icon-lock"></i></div>
                 <h3>User 5</h3>
                 <p>Lorem ipsum dolor sit amet, pro id zril molestie, cum ne omittam quaestio. Pri delectus conclusionemque te.</p>
               </div>
             </div>
-            <div class="col-lg-4">
-              <div class="box_badges">
-                <div id="badge_level_3" class="disabled_badge"><img src="img/badges/badge_3.svg" alt="" width="100" height="100"/><i class="icon-lock"></i></div>
+            <div className="col-lg-4">
+              <div className="box_badges">
+                <div id="badge_level_3" className="disabled_badge"><img src="img/badges/badge_3.svg" alt="" width="100" height="100"/><i className="icon-lock"></i></div>
                 <h3>User 6</h3>
                 <p>Lorem ipsum dolor sit amet, pro id zril molestie, cum ne omittam quaestio. Pri delectus conclusionemque te.</p>
               </div>
