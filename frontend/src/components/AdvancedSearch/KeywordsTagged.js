@@ -30,7 +30,7 @@ class KeywordsTagged extends React.Component {
     this.props.setTag({
       "tags": this.props.allTags
     });
-    this.props.enableSearchButton({ "enableSearch": true });
+    this.props.enableSearchButton({ "enableSearch": tags.length > 0 });
   }
 
   render() {

@@ -123,9 +123,13 @@ class AdvancedSearchView(APIView):
 
         for kw in and_kws:
             q &= Q('nested', path='keywords', query=Q('match', **{'keywords__content': kw}))
+            q |= Q('match', description=kw)
+            q |= Q('match', why_relevant=kw)
 
         for kw in or_kws:
             q |= Q('nested', path='keywords', query=Q('match', **{'keywords__content': kw}))
+            q |= Q('match', description=kw)
+            q |= Q('match', why_relevant=kw)
 
         if country != '':
             q &= Q('nested', path='country', query=Q('match', **{'country__code': country}))
@@ -203,13 +207,7 @@ class EventDetailView(APIView):
 
     def get(self, request, event_id, format=None):
         current_user = request.user
-        # event_id = request.query_params['id']
-
-
         event = EventSerializer(Event.objects.get(id=event_id)).data
-        print(current_user)
-        print(current_user.is_authenticated)
-
 
         if not current_user.is_authenticated:
             event['description'] = ''

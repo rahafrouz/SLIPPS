@@ -8,11 +8,11 @@ import { store } from "../store";
 import { push } from "react-router-redux";
 
 // Map data stored in state to props if you need to use it here.
-const mapStateToProps = state => {
+const mapStateToProps = store => {
   return {
-    searchResult: state.search.searchResult,
-    keyword: state.search.keyword,
-    advancedFilters: state.search.advancedFilters
+    searchResult: store.search.searchResult,
+    keyword: store.search.keyword,
+    advancedFilters: store.search.advancedFilters
   };
 };
 
@@ -30,10 +30,16 @@ class SearchContainer extends Component {
     super(props);
     this.goToSearch = this.goToSearch.bind(this);
     this.handleKeywordChanged = this.handleKeywordChanged.bind(this);
+    this.state = {
+      enableSearch: false
+    };
   }
 
   handleKeywordChanged(e) {
     this.props.setKeyword({ keyword: e.target.value });
+    this.setState({
+      enableSearch: e.target.value != ""
+    });
   }
 
   goToSearch(e) {
@@ -59,7 +65,8 @@ class SearchContainer extends Component {
               <input type="text" className=" search-query" placeholder="Ex. Well-being, Nursery, Healthcare..." 
                 onChange={this.handleKeywordChanged} />
               {/*<input type="submit" className="btn_search" value="Search"/>*/}
-              <input type="submit" onClick={this.goToSearch} className="btn_search" value="Search" />
+              <input type="submit" className="btn_search" 
+                onClick={this.goToSearch} disabled={!this.state.enableSearch} value="Search" />
             </form>
             <ul><li><a href="/advanced-search" className="advanced-search-link"> Advanced Search </a></li></ul>
           </div>

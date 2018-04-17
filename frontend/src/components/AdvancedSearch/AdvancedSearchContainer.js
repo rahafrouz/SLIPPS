@@ -197,7 +197,7 @@ class AdvancedSearchContainer extends Component {
                     <div className="col-md-6">
                       <div className="row"> 
                         <div className="col-md-12">
-                          <button onClick={this.goToSearch} className="btn_1 left">Search</button>
+                          <button onClick={this.goToSearch} className="btn_1 left" disabled={!this.props.enableSearch}>Search</button>
                         </div>
                       </div>
                     </div>

@@ -10,7 +10,7 @@ class EventList extends Component {
         { 
           this.props.Hits.map( (item) => {
             return ( 
-              <EventLarge eventDetail={item} />
+              <EventLarge eventDetail={item} key={item._source.id}/>
             );})
         }
       </div>

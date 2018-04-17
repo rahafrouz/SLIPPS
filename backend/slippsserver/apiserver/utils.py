@@ -82,8 +82,6 @@ def process_csv(reader, user, filename):
 
         # Line 3 = reader[2]: 'fi-basic-39'; 'fi-basic-6'
         kw_arr = reader[2].decode('utf-8').split(';')
-        # kw_arr = line3
-        print(kw_arr)
         for val in kw_arr:
             val = val.replace('"', '')
             text = val.split('-')
