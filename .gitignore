@@ -8,3 +8,4 @@ logfile.log
 backend/dev
 backend/logstash-5.6.8
 backend/slippsserver/env
+backend/slippsserver/logging

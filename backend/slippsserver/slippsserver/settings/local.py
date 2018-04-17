@@ -163,7 +163,6 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.BasicAuthentication',
     ),
 }
-# AUTH_USER_MODEL = 'apiserver.UserAccount'
 
 
 REST_AUTH_SERIALIZERS = {
@@ -186,3 +185,21 @@ REST_USE_JWT=True
 VERIFICATION_CODE_EXPIRE_DAYS = 4
 SLIPPS_CATEGORY_QUESTION_ID = 1
 MEDIA_ROOT = 'media/files/'
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': 'logging/debug.log',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    },
+}

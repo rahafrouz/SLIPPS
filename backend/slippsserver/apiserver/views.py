@@ -21,6 +21,8 @@ from rest_framework.decorators import detail_route, list_route
 from elasticsearch_dsl import Search, Q, serializer
 from elasticsearch import Elasticsearch
 
+from .utils import process_csv
+
 from .serializers import (
     UserRegistrationSerializer,
     # UserLoginSerializer,
@@ -195,31 +197,26 @@ class InitializeView(APIView):
         })
 
 class DocumentUploadView(APIView):
-    # TODO: Remove this afterwards.
-    permission_classes = (AllowAny,)
+    permission_classes = (IsAuthenticated,)
     parser_classes = (FileUploadParser,)
 
     def put(self, request, filename, format=None):
         file_obj = request.data['file']
 
-
         lines = file_obj.readlines()
         lines = lines[4:-6]
 
-        content = ""
+        # NOTE: This is to save the file if needed.
+        # content = ""
+        # for line in lines:
+        #     content += line.decode('utf-8')
+        # path = default_storage.save('tmp/{0}'.format(filename), ContentFile(content))
+        # media_root = getattr(settings, 'MEDIA_ROOT', '/')
+        # tmp_file = os.path.join(media_root, path)
 
-        for line in lines:
-            content += line.decode('utf-8')
+        print(request.user)
 
-        path = default_storage.save('tmp/{0}'.format(filename), ContentFile(content))
-        media_root = getattr(settings, 'MEDIA_ROOT', '/')
-        tmp_file = os.path.join(media_root, path)
-
-
-        # ...
-        # do some stuff with uploaded file
-        # ...
-        # pass
+        processed = process_csv(lines, request.user, filename)
         return Response(status=204)
         
 
