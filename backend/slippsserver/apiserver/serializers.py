@@ -203,7 +203,6 @@ class EventDetailSerializer(serializers.ModelSerializer):
         print(obj)
         queryset = Choice.objects.filter(choice_text = obj.answer)
         return ChoiceSerializer(queryset, many=True)
-        
 
 class EventSerializer(serializers.ModelSerializer):
     title = serializers.SerializerMethodField()
@@ -215,8 +214,7 @@ class EventSerializer(serializers.ModelSerializer):
     class Meta:
         model = Event
         fields = ('id', 'title', 'short_desc', 'created_at',
-            'description', 'why_relevant', 'event_details', 'keywords',
-            'country', 'language')
+            'description', 'why_relevant', 'event_details', 'keywords', 'country', 'language')
         read_only_fields = (['id', 'created_at'])
 
     def get_title(self, obj):

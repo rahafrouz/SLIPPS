@@ -64,7 +64,15 @@
   to { transform: rotate(360deg); }
 }
 
+.with-background {
+  background-color: "#F5F8FA";
+}
 
+.event-summary {
+  .summary__details {
+    cursor: pointer;
+  }
+}
 
 .strip_list {
   font-weight: 300;

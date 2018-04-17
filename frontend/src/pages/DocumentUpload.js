@@ -8,8 +8,6 @@ import { Link } from "react-router-dom";
 import { UPLOAD_DOCUMENT } from "../constants/actionTypes";
 
 import agent from "../agent";
-// import Footer from "../components/Footer";
-// import Navigation from "../components/Navigation";
 
 const mapStateToProps = store => {
   return {

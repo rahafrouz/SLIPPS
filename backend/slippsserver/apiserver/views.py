@@ -210,6 +210,7 @@ class EventDetailView(APIView):
 
         if not current_user.is_authenticated:
             event['description'] = ''
+            event['why_relevant'] = ''
             event['event_details'] = []
 
         return Response({

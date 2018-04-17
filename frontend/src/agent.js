@@ -15,8 +15,8 @@ const tokenPlugin = req => {
     req.set("Authorization", `JWT ${token}`);
   }
 };
-const API_ROOT = "http://slipps.it.lut.fi:8000/api";
-//const API_ROOT = "http://localhost:8000/api";
+// const API_ROOT = "http://slipps.it.lut.fi:8000/api";
+const API_ROOT = "http://localhost:8000/api";
 const responseBody = res => res.body;
 
 const requests = {
@@ -53,7 +53,8 @@ const Common = {
       .send(data)
       .use(tokenPlugin)
       .then(responseBody),
-
+  getEvent: (eventId) =>
+    requests.get(`/event/${eventId}`),
 };
 
 const Search = {

@@ -24,7 +24,7 @@ class EventDescriptionContent2 extends Component {
     var eventDescription=null;
     var whyRelevant=null;
     var errorMessage=(<h3>You need to login to access this area.</h3>);
-    if(this.props.EventDetail._source.details){
+    if(this.props.EventDetail._source.details) {
       eventQuestions=this.props.EventDetail._source.details.map(function(item,index){
         return (
           <div className="event-question-section">

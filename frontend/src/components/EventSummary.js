@@ -1,29 +1,41 @@
 import React, { Component } from "react";
 import {withRouter} from "react-router-dom";
 import { connect } from "react-redux";
+import { SET_EVENT_ID } from "../constants/actionTypes";
 
-const mapStateToProps = state => {
-  return {
-    currentUser: state.app.currentUser,
-  };
-};
+// const mapStateToProps = store => {
+//   return {
+//     currentUser: store.app.currentUser,
+//   };
+// };
+
+const mapDispatchToProps = dispatch => ({
+  setEventId: (payload) =>
+    dispatch({ type: SET_EVENT_ID, payload }),
+});
 
 class EventSummary extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
-    this.navigateToEvent = this.navigateToEvent.bind(this);
+    this.goToEvent = this.goToEvent.bind(this);
   }
 
-  navigateToEvent() {
-    if(this.props.eventDetail)
-    { 
-      this.props.history.push({
-        pathname: "/event/"+this.props.eventDetail.id,
-        state: {
-          eventDetail:this.props.eventDetail
-        }
-      });
-    }
+  goToEvent(e) {
+    e.preventDefault();
+
+    let eventId = this.props.eventDetail.id;
+    this.props.history.push(`/event/${eventId}`);
+    this.props.setEventId({ eventId: eventId });
+
+    // if(this.props.eventDetail)
+    // { 
+    //   this.props.history.push({
+    //     pathname: "/event/"+this.props.eventDetail.id,
+    //     state: {
+    //       eventDetail:this.props.eventDetail
+    //     }
+    //   });
+    // }
   }
   render() {
     {/*const star = this.props.currentUser ? (<i className="icon-star-empty"></i>) : (<i></i>);*/}
@@ -49,18 +61,21 @@ class EventSummary extends Component {
     //   </div>
     // );
     return ( 
-      <div className="strip_list wow fadeIn" style={{visibility:"visible"}}>
+      <div className="event-summary strip_list wow fadeIn" style={{visibility:"visible"}}>
         <figure>
-          <a href="detail-page.html"><span className="pe-7s-glasses" style={{fontSize:"77px"}}></span></a>
+          <a href="#0"><span className="pe-7s-glasses" style={{fontSize:"77px"}}></span></a>
         </figure>
-        <h3 onClick={this.navigateToEvent}>{detail.title}</h3>
-        <p onClick={this.navigateToEvent} style={{fontWeight:"300",fontSize:"0.8em"}}>{detail.title}{detail.short_desc}</p>
-        <span className="rating"><small>{detail.created_at}</small></span>
-      </div>);
+        <div className="summary__details" onClick={this.goToEvent} >
+          <h3>{detail.title}</h3>
+          <p style={{fontWeight:"300",fontSize:"0.8em"}}>{detail.title}{detail.short_desc}</p>
+          <span className="rating"><small>{detail.created_at}</small></span>
+        </div>
+      </div>
+    );
   }
 }
 
-export default connect(mapStateToProps, null)(withRouter(EventSummary));
+export default connect(null, mapDispatchToProps)(withRouter(EventSummary));
 
 
 
