@@ -94,26 +94,30 @@ class UserRegistrationManager(models.Manager):
 
         """
 
+        print(data)
+
         hash_input = (get_random_string(8) + user.email).encode('utf-8')
         verification_code = hashlib.sha1(hash_input).hexdigest()
         verification_code_expired = datetime.now() + timedelta(
             getattr(settings, 'VERIFICATION_CODE_EXPIRE_DAYS', 4)
         )
 
-        if not 'dob' in data:
-            data['dob'] = None
-        if not 'gender' in data:
-            data['gender'] = None
-        if not 'phone' in data:
-            data['phone'] = None
+        user_account = data['user_account']
+
+        if not 'dob' in user_account:
+            user_account['dob'] = None
+        if not 'gender' in user_account:
+            user_account['gender'] = None
+        if not 'phone' in user_account:
+            user_account['phone'] = None
 
         account = self.create(
             user = user,
-            dob = data['dob'],
-            gender = data['gender'],
-            occupation = data['occupation'],
-            work_place = data['work_place'],
-            phone = data['phone'],
+            dob = user_account['dob'],
+            gender = user_account['gender'],
+            occupation = user_account['occupation'],
+            work_place = user_account['work_place'],
+            phone = user_account['phone'],
             verification_code = verification_code,
             verification_code_expired = verification_code_expired
         )

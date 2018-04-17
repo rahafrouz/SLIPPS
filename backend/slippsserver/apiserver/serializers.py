@@ -60,7 +60,7 @@ class UserRegistrationSerializer(serializers.Serializer):
     class Meta:
         """Meta class to map serializer's fields with the model fields."""
         model = User
-        fields = ('id', 'username', 'email', 'password', 'first_name', 'last_name')
+        fields = ('id', 'username', 'email', 'password', 'first_name', 'last_name', 'user_account')
         read_only_fields = (['id'])
     #     fields = (
     #         'id',
