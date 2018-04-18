@@ -68,7 +68,7 @@ class ProfilePage extends Component {
                 <h2>:-( <i class="icon_error-triangle_alt"></i></h2>
                 <p>We're sorry, but you need to login to see this page</p>
                 <p>
-                  <Link to="/register" className="nav-link">Sign Up for a new account</Link>
+                  <Link to="/signup" className="nav-link">Sign Up for a new account</Link>
                   Or <Link to="/login" className="nav-link">Log In</Link>
                 </p>
               </div>
