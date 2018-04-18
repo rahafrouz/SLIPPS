@@ -209,7 +209,7 @@ class RegisterForm extends Component {
                       value={this.state.email} onChange={this.handleInputChanged} />
                   </div>
                   <div className="form-group">
-                    <label>Password (min. length: 8)</label>
+                    <label>Password (min. length: 8, should contains character and number)</label>
                     <input type="password" className="form-control" id="password1" placeholder="Your password" name="password"
                       value={this.state.password} onChange={this.handleInputChanged} />
                   </div>
