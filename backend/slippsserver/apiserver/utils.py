@@ -40,7 +40,7 @@ def process_csv(reader, user, filename):
     if len(reader) > 3:
         cur.execute(
             "INSERT INTO apiserver_uploadeddocument (filename, processed_status, uploaded_at, user_account_id) \
-            VALUES (%s, %s, %s, %s) RETURNING ID", (filename, "error", now, user.id)
+            VALUES (%s, %s, %s, %s) RETURNING ID", (filename, "error", now, user.user_account.id)
         )
 
         conn.commit()
