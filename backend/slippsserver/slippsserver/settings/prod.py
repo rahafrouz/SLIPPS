@@ -58,7 +58,8 @@ MIDDLEWARE = [
 CORS_ORIGIN_WHITELIST = (
     'localhost:3000',
     '127.0.0.1:3000',
-    'slipps.it.lut.fi'
+    'slipps.it.lut.fi',
+    'slipps.it.lut.fi:3000'
 )
 
 ROOT_URLCONF = 'slippsserver.urls'

@@ -4,6 +4,9 @@ from __future__ import unicode_literals
 from django.contrib import admin
 from datetime import datetime
 from django.contrib.admin import AdminSite
+from django.contrib.auth import get_user_model
+
+
 # import nested_admin
 
 from .models import (
@@ -20,6 +23,8 @@ from .models import (
 	UploadedDocument,
 	DownloadedDocument,
 )
+
+User = get_user_model()
 
 # ADMIN ACTIONS
 def archive_selected(modeladmin, request, queryset):
@@ -108,6 +113,13 @@ class EventAdmin(admin.ModelAdmin):
 class KeywordHitsAdmin(admin.ModelAdmin):
 	ordering = ['-hits_count']
 
+class UserAdmin(admin.ModelAdmin):
+    list_display = ('email', 'first_name', 'last_name')
+    list_filter = ('is_staff', 'is_superuser')
+
+
+# admin.site.unregister(User)
+admin.site.register(User, UserAdmin)
 
 admin.site.register(Country, CountryAdmin)
 admin.site.register(Language, LanguageAdmin)
