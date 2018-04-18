@@ -172,15 +172,15 @@ class DocumentUpload extends Component {
                   <div className="form_title">
                     <h3><strong>2</strong>Add Description</h3>
                     <p>
-                  Add description regarding the file you are uploading.
+                      Add description regarding the file you are uploading.
                     </p>
                   </div>
-                  <div className="step second-step">
+                  {/*<div className="step second-step">
                     <textarea className="document_description"
                       value={this.state.description}
                       onChange={this.handleInputChanged} name="description">
                     </textarea>
-                  </div>
+                  </div>*/}
                   <hr />
                   {/*End step */}
 
