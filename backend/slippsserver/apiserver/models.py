@@ -20,20 +20,20 @@ class Language(models.Model):
     code_3 = models.CharField(max_length=3, unique=True)
     name = models.CharField(max_length=200)
     created_at = models.DateTimeField(auto_now_add=True)
-    deleted_at = models.DateTimeField(null=True)
+    deleted_at = models.DateTimeField(null=True, blank=True)
 
 class Country(models.Model):
     code = models.CharField(max_length=2, unique=True)
     name = models.CharField(max_length=200)
     created_at = models.DateTimeField(auto_now_add=True)
-    deleted_at = models.DateTimeField(null=True)
+    deleted_at = models.DateTimeField(null=True, blank=True)
 
 class Question(models.Model):
     question_text = models.CharField(max_length=200)
     question_pos = models.IntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    deleted_at = models.DateTimeField(null=True)
+    deleted_at = models.DateTimeField(null=True, blank=True)
 
 class Choice(models.Model):
     """
@@ -44,7 +44,7 @@ class Choice(models.Model):
     choice_text = models.CharField(max_length=200)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    deleted_at = models.DateTimeField(null=True)
+    deleted_at = models.DateTimeField(null=True, blank=True)
 
     class Meta:
         unique_together = ("question", "choice_num", "choice_text")
@@ -55,7 +55,7 @@ class Keyword(models.Model):
     kw_id = models.IntegerField()
     content = models.CharField(max_length=200)
     created_at = models.DateTimeField(auto_now_add=True)
-    deleted_at = models.DateTimeField(null=True)
+    deleted_at = models.DateTimeField(null=True, blank=True)
 
 class UserRegistrationManager(models.Manager):
     @transaction.atomic
@@ -137,10 +137,10 @@ class UserAccount(models.Model):
     work_place = models.CharField(max_length=200)
     phone = models.CharField(max_length=20, null=True, blank=True)
     # is_active = models.BooleanField(default=False)
-    verification_code = models.CharField(max_length=200)
-    verification_code_expired = models.DateTimeField(null=True)
+    verification_code = models.CharField(max_length=200, blank=True)
+    verification_code_expired = models.DateTimeField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
-    deleted_at = models.DateTimeField(null=True)
+    deleted_at = models.DateTimeField(null=True, blank=True)
 
     objects = UserRegistrationManager()
 
@@ -161,16 +161,16 @@ class UserAccount(models.Model):
 # pre_save.connect(generate_verification_code, sender=UserAccount)
 
 class UploadedDocument(models.Model):
-    user_account = models.ForeignKey(UserAccount, on_delete=models.CASCADE)
+    user_account = models.ForeignKey(UserAccount, on_delete=models.CASCADE, null=True, blank=True)
     uploaded_at = models.DateTimeField(auto_now_add=True)
     filename = models.CharField(max_length=200)
     file_url = models.CharField(max_length=200, null=True)
     description = models.TextField(null=True)
     processed_status = models.CharField(max_length=50)
-    deleted_at = models.DateTimeField(null=True)
+    deleted_at = models.DateTimeField(null=True, blank=True)
 
 class Event(models.Model):
-    document = models.ForeignKey(UploadedDocument, on_delete=models.SET_NULL, null=True)
+    document = models.ForeignKey(UploadedDocument, on_delete=models.SET_NULL, null=True, blank=True)
     # ANSWER_A_EVENT_DESCRIPTION
     description = models.TextField()
     # ANSWER_B_WHY_RELEVANT
@@ -179,9 +179,9 @@ class Event(models.Model):
     language = models.ForeignKey(Language, on_delete=models.SET_NULL, null=True)
     country = models.ForeignKey(Country, on_delete=models.SET_NULL, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True, null=True)
-    deleted_at = models.DateTimeField(null=True)
-    published_at = models.DateTimeField(null=True)
+    updated_at = models.DateTimeField(auto_now=True, null=True, blank=True)
+    deleted_at = models.DateTimeField(null=True, blank=True)
+    published_at = models.DateTimeField(null=True, blank=True)
     file_version = models.CharField(max_length=5)
 
     def publish_to_es(self):
@@ -194,7 +194,7 @@ class EventKeyword(models.Model):
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
     keyword = models.ForeignKey(Keyword, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
-    deleted_at = models.DateTimeField(null=True)
+    deleted_at = models.DateTimeField(null=True, blank=True)
 
 class EventDetail(models.Model):
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
@@ -202,12 +202,12 @@ class EventDetail(models.Model):
     # answer = models.ForeignKey(Choice, on_delete = models.CASCADE)
     answer = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
-    deleted_at = models.DateTimeField(null=True)
+    deleted_at = models.DateTimeField(null=True, blank=True)
 
 class DownloadedDocument(models.Model):
     user_account = models.ForeignKey(UserAccount, on_delete=models.CASCADE)
     downloaded_at = models.DateTimeField('date downloaded')
-    deleted_at = models.DateTimeField(null=True)
+    deleted_at = models.DateTimeField(null=True, blank=True)
 
 class KeywordHitsManager(models.Manager):
     def save_keyword_hit(self, kw):

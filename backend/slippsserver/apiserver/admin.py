@@ -104,7 +104,7 @@ class EventKeywordAdmin(admin.StackedInline):
 # @admin.register(Event)
 class EventAdmin(admin.ModelAdmin):
 	# date_hierarchy = 'created_at'
-	# list_select_related = ('document', 'language', 'country')
+	list_select_related = ('language', 'country')
 	list_display = ('id', 'short_desc', 'file_version', 'created_at')
 	ordering = ['id']
 	inlines = [EventDetailAdmin, EventKeywordAdmin]
