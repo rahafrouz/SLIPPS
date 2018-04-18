@@ -21,6 +21,7 @@ const mapDispatchToProps = dispatch => ({
 
 class ProfilePage extends Component {
   render() {
+    console.warn(this.props.currentUser);
     if (this.props.inProgress) {
       return (
         <div id="preloader" class="mm-slideout">
@@ -30,21 +31,12 @@ class ProfilePage extends Component {
     } else if (this.props.currentUser) {
       return (
         <div>
-          <Navigation />
           <div style={{backgroundColor: "#F5F8FA"}}>
-            <button
-              className="btn btn-outline-danger"
-              onClick={this.props.onClickLogout}>
-                Click here to logout.
-            </button>
 
-            <UserDetails/>
-            <hr></hr>
-            <SavedEvents/>
+            <UserDetails user={this.props.currentUser}/>
             <hr></hr>
             <UploadedDocuments/>
           </div>
-          <Footer />
         </div>
       );
     }

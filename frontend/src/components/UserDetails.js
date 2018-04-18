@@ -1,5 +1,12 @@
 import React, { Component } from "react";
 import PasswordChange from "./PasswordChange";
+import { connect } from "react-redux";
+import { LOGOUT } from "../constants/actionTypes.js";
+
+
+const mapDispatchToProps = dispatch => ({
+  onClickLogout: () => dispatch({ type: LOGOUT }),
+});
 
 class UserDetails extends Component {
   render() {
@@ -21,20 +28,18 @@ class UserDetails extends Component {
                         </figure>
                       </div>
                       <div className="col-lg-7 col-md-8">
-                        <small id="profession">Profession</small>
-                        <h1 id="full_name">Name Surname</h1>
+                        <small id="profession">Greetings Dear</small>
+                        <h1 id="full_name">{this.props.user.first_name} {this.props.user.last_name}</h1>
                         <ul className="contacts">
                           <li id="username">
-                            <h6 >Username</h6>
-                            <em>user_name</em>
+                            <h6 >Username:</h6>
+                            <em>{this.props.user.username}</em>
                           </li>
                           <li id="user_email">
                             <h6>Email</h6>
-                            <em>email@slipps.fi</em>
+                            <em>{this.props.user.email}</em>
                           </li>
                           <li id="user_institution">
-                            <h6>Institution</h6> 
-                            <em>Lappeenranta University of Technology</em>
                           </li>
                         </ul>
                       </div>
@@ -43,7 +48,15 @@ class UserDetails extends Component {
                 </div>
               </div>
             </div>
-            <PasswordChange/>       
+            <aside className="col-xl-4 col-lg-4" id="sidebar">
+              <div className="box_general_3 booking">
+                <button
+                  className="btn btn-outline-danger btn_1 full-width"
+                  onClick={this.props.onClickLogout}>
+                    Click here to logout.
+                </button>
+              </div>
+            </aside>
           </div>
         </div>
       </div>
@@ -52,4 +65,5 @@ class UserDetails extends Component {
   }
 }
 
-export default UserDetails;
+export default connect(null, mapDispatchToProps)(UserDetails);
+
