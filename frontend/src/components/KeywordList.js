@@ -1,16 +1,16 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-const mapStateToProps = state => {
-  return {
-    popularKeywords: state.app.initData["keyword_hits"] || [],
-  };
-};
+// const mapStateToProps = state => {
+//   return {
+//     popularKeywords: state.app.initData["keyword_hits"] || [],
+//   };
+// };
 
 class KeywordList extends Component {
 
   render() {
-    const keywords = this.props.popularKeywords;
+    const keywords = this.props.Keywords;
     return (  
       <div className="box_general_3">         
         {
@@ -19,8 +19,8 @@ class KeywordList extends Component {
               {
                 keywords.map((kw, ind) => {
                   return (
-                    <li key={kw.id}>
-                      <a href={"/search/" + kw.text}>{kw.text}</a>
+                    <li key={ind}>
+                      <a href={"/search/" + kw.text || kw.content }>{kw.text || kw.content}</a>
                       <hr></hr>
                     </li>
                   );
@@ -33,4 +33,4 @@ class KeywordList extends Component {
     );
   }
 }
-export default connect(mapStateToProps, null)(KeywordList);
+export default KeywordList;

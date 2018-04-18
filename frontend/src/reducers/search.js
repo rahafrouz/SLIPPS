@@ -22,7 +22,8 @@ const defaultState = {
   },
   enableSearch: false,
   searchParams: {},
-  eventFull:{}
+  eventFull:{},
+  searchResult: {}
 };
 
 export default (state = defaultState, action) => {

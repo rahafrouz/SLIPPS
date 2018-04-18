@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 const mapStateToProps = state => {
   return {
     recentEvents: state.app.initData["recent_events"] || [],
+    popularKeywords: state.app.initData["keyword_hits"] || [],
   };
 };
 
@@ -35,7 +36,7 @@ class MainPageNews extends Component {
             </div>
             <div className="col-xl-4 col-lg-4">
               <h4 className="box_title">Popular Keywords</h4>
-              <KeywordList />
+              <KeywordList Keywords={this.state.popularKeywords}/>
             </div>
           </div>
         </div>
