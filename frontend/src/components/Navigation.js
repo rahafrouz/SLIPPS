@@ -24,8 +24,7 @@ const LoggedOutView = props => {
           </li>*/}
           <li>
             <i className="pe-7s-add-user"></i>
-            <Link to="/" className="nav-link">Sign up</Link>
-            {/*<a href="/register">Sign up</a>*/}
+            <Link to="/signup" className="nav-link">Signup</Link>
           </li>
           {/*<li>
             <a href="#0" ><b>ENG</b></a>

@@ -3,6 +3,8 @@ from __future__ import unicode_literals
 
 from django.contrib import admin
 from datetime import datetime
+from django.contrib.admin import AdminSite
+# import nested_admin
 
 from .models import (
 	UserAccount,
@@ -27,66 +29,95 @@ archive_selected.short_description = "Archive selected items"
 admin.site.disable_action('delete_selected')
 admin.site.add_action(archive_selected)
 
-@admin.register(Country)
+class SlippsAdmin(AdminSite):
+	site_header = 'SLIPPS Learning Center Administration'
+	site_title = 'SLIPPS Learning Center Administration'
+
+admin.site = SlippsAdmin(name='slippsadmin')
+
+
+# @admin.register(Country)
 class CountryAdmin(admin.ModelAdmin):
 	list_display = ('code', 'name', 'deleted_at')
 	ordering = ['code', 'deleted_at']
+# admin_site.register(CountryAdmin)
 
-@admin.register(Language)
+
+# @admin.register(Language)
 class LanguageAdmin(admin.ModelAdmin):
+	list_display = ('id', 'code_2', 'name')
+
 	pass
 
-@admin.register(Keyword)
+# @admin.register(Keyword)
 class KeywordAdmin(admin.ModelAdmin):
+	list_display = ('id', 'language_code', 'kw_id', 'category', 'content')
+
 	pass
 
-@admin.register(Question)
+# @admin.register(Choice)
+class ChoiceAdmin(admin.StackedInline):
+	model = Choice
+	pass
+
+# @admin.register(Question)
 class QuestionAdmin(admin.ModelAdmin):
+	list_display = ('id', 'question_text', 'question_pos')
+	ordering = ['id']
+
+	# model = Question
+	inlines = [ChoiceAdmin]
+
 	pass
 
-@admin.register(Choice)
-class ChoiceAdmin(admin.ModelAdmin):
+
+# @admin.register(UploadedDocument)
+class UploadedDocumentAdmin(admin.StackedInline):
+	model = UploadedDocument
 	pass
 
-@admin.register(UserAccount)
+
+# @admin.register(UserAccount)
 class UserAccountAdmin(admin.ModelAdmin):
+	list_display = ('id', 'user_id')
+	inlines=[UploadedDocumentAdmin]
 	pass
 
-@admin.register(DownloadedDocument)
+# @admin.register(DownloadedDocument)
 class DownloadedDocumentAdmin(admin.ModelAdmin):
 	pass
 
-@admin.register(UploadedDocument)
-class UploadedDocumentAdmin(admin.ModelAdmin):
-	pass
+# @admin.register(EventDetail)
+class EventDetailAdmin(admin.StackedInline):
+	model = EventDetail
+	# list_select_related = True
 
-@admin.register(Event)
+# @admin.register(EventKeyword)
+class EventKeywordAdmin(admin.StackedInline):
+	model = EventKeyword
+
+# @admin.register(Event)
 class EventAdmin(admin.ModelAdmin):
-	date_hierarchy = 'created_at'
-	list_select_related = ('document', 'language', 'country')
+	# date_hierarchy = 'created_at'
+	# list_select_related = ('document', 'language', 'country')
+	list_display = ('id', 'short_desc', 'file_version', 'created_at')
+	ordering = ['id']
+	inlines = [EventDetailAdmin, EventKeywordAdmin]
 
-@admin.register(EventDetail)
-class EventDetailAdmin(admin.ModelAdmin):
-	list_select_related = True
-
-@admin.register(EventKeyword)
-class EventKeywordAdmin(admin.ModelAdmin):
-	pass
-
-@admin.register(KeywordHits)
-class KeywordHitAdmin(admin.ModelAdmin):
+# @admin.register(KeywordHits)
+class KeywordHitsAdmin(admin.ModelAdmin):
 	ordering = ['-hits_count']
 
 
-# admin.site.register(Country, CountryAdmin)
-# admin.site.register(Language, LanguageAdmin)
-# admin.site.register(Keyword, KeywordAdmin)
-# admin.site.register(Question, QuestionAdmin)
+admin.site.register(Country, CountryAdmin)
+admin.site.register(Language, LanguageAdmin)
+admin.site.register(Keyword, KeywordAdmin)
+admin.site.register(Question, QuestionAdmin)
 # admin.site.register(Choice, ChoiceAdmin)
-# admin.site.register(UserAccount, UserAccountAdmin)
+admin.site.register(UserAccount, UserAccountAdmin)
 # admin.site.register(DownloadedDocument, UploadedDocumentAdmin)
 # admin.site.register(UploadedDocument, UploadedDocumentAdmin)
-# admin.site.register(Event, EventAdmin)
+admin.site.register(Event, EventAdmin)
 # admin.site.register(EventDetail, EventDetailAdmin)
 # admin.site.register(EventKeyword, EventKeywordAdmin)
-# admin.site.register(KeywordHits, KeywordHitsAdmin)
+admin.site.register(KeywordHits, KeywordHitsAdmin)

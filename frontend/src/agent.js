@@ -37,8 +37,18 @@ const Auth = {
     requests.get("/auth/user/"),
   login: (email, password) =>
     requests.post("/auth/login/", { email: email, password: password }),
-  // register: (username, email, password) =>
-  // requests.post('/users', { user: { username, email, password } }),
+  register: (data) =>
+    requests.post("/users/register", {
+      "email": data.email,
+      "first_name": data.firstName,
+      "last_name": data.lastName,
+      "username": data.email,
+      "password": data.password,
+      "user_account": {
+        "occupation": data.user_account.occupation,
+        "work_place": data.user_account.workPlace,
+      }
+    }),
   save: user =>
     requests.put(`/users/${user.id}`, { user })
 };

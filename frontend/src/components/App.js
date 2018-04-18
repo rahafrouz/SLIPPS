@@ -66,7 +66,7 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={Home} />
             <Route path="/login" component={LoginPage} />
-            <Route path="/register" component={RegisterPage} />
+            <Route path="/signup" component={RegisterPage} />
             <Route path="/profile" component={ProfilePage} />
             <Route path="/advanced-search" component={AdvancedSearch} />
             <Route path="/search/:keyword" component={ResultPage} />

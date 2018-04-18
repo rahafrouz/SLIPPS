@@ -42,7 +42,8 @@ class UserRegistrationSerializer(serializers.Serializer):
     last_name = serializers.CharField()
     username = serializers.CharField()
 
-    user_account = UserAccountSerializer()
+    user_account = UserAccountSerializer(required=False)
+
     # deleted_at = serializers.DateField(read_only=True, required=False)
     # verification_code = serializers.CharField(read_only=True, required=False)
     # verification_code_expired = serializers.DateField(read_only=True, required=False)
@@ -81,6 +82,8 @@ class UserRegistrationSerializer(serializers.Serializer):
     #     read_only_fields = (['id', 'created_at', 'is_active', 'deleted_at', 'verification_code', 'verification_code_expired'])
 
     def create(self, validated_data):
+        print(validated_data)
+
         validated_data["email"] = validated_data['username']
 
         user_account = UserAccount.objects.create_user(

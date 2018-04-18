@@ -41,15 +41,6 @@ class LoginForm extends Component {
     this.props.onUnload();
   }
 
-  // constructor(props) {
-  //   super(props);
-  //   this.goToProfile = this.goToProfile.bind(this);
-  // }
-  
-  // goToProfile() {
-  //   // this.props.history.push("/profile");
-  // }
-
   render() {
     const email = this.props.email;
     const password = this.props.password;
