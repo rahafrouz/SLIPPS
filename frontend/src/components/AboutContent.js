@@ -32,16 +32,16 @@ Stronger collaboration is needed to improve the culture of safety in clinical te
           <div className="row">
             <div className="col-lg-4">
               <div className="box_badges">
-                <div><img src="img/badges/badge_3.svg" alt="" width="100" height="100"/></div>
-                <h3>Amir RAHAFROUZ</h3>
-                <p>Lorem ipsum dolor sit amet, pro id zril molestie, cum ne omittam quaestio. Pri delectus conclusionemque te.</p>
+                <div><img src="http://res.cloudinary.com/merunur/image/upload/v1524045669/amir.png" alt="" width="150" height="180"/></div>
+                <h3 className="padd-top-20">Amir RAHAFROUZ</h3>
+                <p><i>The vision of SLIPPS project itself inspired me to do more than I can for the project, because improving the patient safety is an invaluable contribution.</i></p>
               </div>
             </div>
             <div className="col-lg-4">
               <div className="box_badges">
-                <div><img src="img/badges/badge_3.svg" alt="" width="100" height="100"/></div>
-                <h3>An PHAM</h3>
-                <p>Lorem ipsum dolor sit amet, pro id zril molestie, cum ne omittam quaestio. Pri delectus conclusionemque te.</p>
+                <div><img src="http://res.cloudinary.com/merunur/image/upload/v1524044573/an.png" alt="" width="150" height="180"/></div>
+                <h3 className="padd-top-20">An PHAM</h3>
+                <p><i>Defining the project, building its comprehensive work plan, and managing the team and helping members to use their skills were a precious experience</i></p>  
               </div>
             </div>
             <div className="col-lg-4">
@@ -53,16 +53,16 @@ Stronger collaboration is needed to improve the culture of safety in clinical te
             </div>
             <div className="col-lg-4">
               <div className="box_badges">
-                <div><img src="img/badges/badge_3.svg" alt="" width="100" height="100"/></div>
-                <h3>Ijlal Ahmed NIAZI</h3>
-                <p>Lorem ipsum dolor sit amet, pro id zril molestie, cum ne omittam quaestio. Pri delectus conclusionemque te.</p>
+                <div><img src="http://res.cloudinary.com/merunur/image/upload/v1524039196/jilly.jpg" alt="" width="150" height="180"/></div>
+                <h3 className="padd-top-20">Ijlal Ahmed NIAZI</h3>
+                <p><i>Getting to map out a project from start to finish, interacting with customers and testing the prototype gave me a good lesson on how things work professionally.</i></p>
               </div>
             </div>
             <div className="col-lg-4">
               <div className="box_badges">
-                <div><img src="img/badges/badge_3.svg" alt="" width="100" height="100"/></div>
-                <h3>Meruyert NURGAZY</h3>
-                <p><i>Here should be some cool text</i></p>
+                <div><img src="http://res.cloudinary.com/merunur/image/upload/v1524045546/meru.png" alt="" width="150" height="180"/></div>
+                <h3 className="padd-top-20">Meruyert NURGAZY</h3>
+                <p><i>The project enabled me to acquire enormous amount of a new knowledge as well as improved my teamwork, inter-personal and communicational skills</i></p>
               </div>
             </div>
             <div className="col-lg-4">
