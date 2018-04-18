@@ -14,7 +14,8 @@ import re
 
 from .models import (
     Country,
-    Language
+    Language,
+    UserAccount
 )
 
 # import the logging library
@@ -34,13 +35,13 @@ abs_file_path = os.path.join(script_dir, rel_path)
 
 def process_csv(reader, user, filename):
     # print(reader)
-    # print(user)
+    user_account = UserAccount.objects.get(user_id = user.id)
     # print(filename)
 
     if len(reader) > 3:
         cur.execute(
             "INSERT INTO apiserver_uploadeddocument (filename, processed_status, uploaded_at, user_account_id) \
-            VALUES (%s, %s, %s, %s) RETURNING ID", (filename, "error", now, user.user_account.id)
+            VALUES (%s, %s, %s, %s) RETURNING ID", (filename, "error", now, user_account.id)
         )
 
         conn.commit()
@@ -108,7 +109,7 @@ def process_csv(reader, user, filename):
 
         cur.execute(
             "INSERT INTO apiserver_uploadeddocument (filename, processed_status, uploaded_at, user_account_id) \
-            VALUES (%s, %s, %s, %s) RETURNING ID", (filename, "success", now, user.user_account.id)
+            VALUES (%s, %s, %s, %s) RETURNING ID", (filename, "success", now, user_account.id)
         )
 
         conn.commit()
@@ -117,7 +118,7 @@ def process_csv(reader, user, filename):
         logger.error(e)
         cur.execute(
             "INSERT INTO apiserver_uploadeddocument (filename, processed_status, uploaded_at, user_account_id) \
-            VALUES (%s, %s, %s, %s) RETURNING ID", (filename, "error", now, user.user_account.id)
+            VALUES (%s, %s, %s, %s) RETURNING ID", (filename, "error", now, user_account.id)
         )
 
         conn.commit()
