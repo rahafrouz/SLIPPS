@@ -108,7 +108,7 @@ def process_csv(reader, user, filename):
 
         cur.execute(
             "INSERT INTO apiserver_uploadeddocument (filename, processed_status, uploaded_at, user_account_id) \
-            VALUES (%s, %s, %s, %s) RETURNING ID", (filename, "success", now, user.id)
+            VALUES (%s, %s, %s, %s) RETURNING ID", (filename, "success", now, user.user_account.id)
         )
 
         conn.commit()
@@ -117,7 +117,7 @@ def process_csv(reader, user, filename):
         logger.error(e)
         cur.execute(
             "INSERT INTO apiserver_uploadeddocument (filename, processed_status, uploaded_at, user_account_id) \
-            VALUES (%s, %s, %s, %s) RETURNING ID", (filename, "error", now, user.id)
+            VALUES (%s, %s, %s, %s) RETURNING ID", (filename, "error", now, user.user_account.id)
         )
 
         conn.commit()
