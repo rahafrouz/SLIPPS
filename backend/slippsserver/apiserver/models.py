@@ -22,11 +22,17 @@ class Language(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     deleted_at = models.DateTimeField(null=True, blank=True)
 
+    def __str__(self):
+        return self.name
+
 class Country(models.Model):
     code = models.CharField(max_length=2, unique=True)
     name = models.CharField(max_length=200)
     created_at = models.DateTimeField(auto_now_add=True)
     deleted_at = models.DateTimeField(null=True, blank=True)
+
+    def __str__(self):
+        return self.name
 
 class Question(models.Model):
     question_text = models.CharField(max_length=200)
@@ -34,6 +40,9 @@ class Question(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     deleted_at = models.DateTimeField(null=True, blank=True)
+
+    def __str__(self):
+        return self.question_text
 
 class Choice(models.Model):
     """

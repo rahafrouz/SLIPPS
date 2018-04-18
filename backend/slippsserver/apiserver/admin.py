@@ -61,7 +61,7 @@ class KeywordAdmin(admin.ModelAdmin):
 	pass
 
 # @admin.register(Choice)
-class ChoiceAdmin(admin.StackedInline):
+class ChoiceAdmin(admin.TabularInline):
 	model = Choice
 	pass
 
@@ -77,7 +77,7 @@ class QuestionAdmin(admin.ModelAdmin):
 
 
 # @admin.register(UploadedDocument)
-class UploadedDocumentAdmin(admin.StackedInline):
+class UploadedDocumentAdmin(admin.TabularInline):
 	model = UploadedDocument
 	pass
 
@@ -93,12 +93,13 @@ class DownloadedDocumentAdmin(admin.ModelAdmin):
 	pass
 
 # @admin.register(EventDetail)
-class EventDetailAdmin(admin.StackedInline):
+class EventDetailAdmin(admin.TabularInline):
 	model = EventDetail
-	# list_select_related = True
+	list_select_related = True
+	# fields=('event__short_desc',)
 
 # @admin.register(EventKeyword)
-class EventKeywordAdmin(admin.StackedInline):
+class EventKeywordAdmin(admin.TabularInline):
 	model = EventKeyword
 
 # @admin.register(Event)
