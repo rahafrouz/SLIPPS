@@ -23,9 +23,9 @@ import logging
 # Get an instance of a logger
 logger = logging.getLogger(__name__)
 
-now = datetime.now()
+now = str(datetime.now())
 
-conn = psycopg2.connect("host=127.0.0.1 dbname=slippsdb user=postgres password=root")
+conn = psycopg2.connect("host=localhost dbname=slippsdb user=postgres password=root")
 cur = conn.cursor()
 
 script_dir = os.path.dirname(__file__) #<-- absolute dir the script is in
@@ -33,6 +33,10 @@ rel_path = "csv_samples/"
 abs_file_path = os.path.join(script_dir, rel_path)
 
 def process_csv(reader, user, filename):
+    # print(reader)
+    # print(user)
+    # print(filename)
+
     if len(reader) > 3:
         cur.execute(
             "INSERT INTO apiserver_uploadeddocument (filename, processed_status, uploaded_at, user_account_id) \
@@ -58,9 +62,18 @@ def process_csv(reader, user, filename):
         short_desc =  description[0:200] + "..."
         why_relevant = line2[1].replace('"', '')
 
+        # print(description)
+        # print(short_desc)
+        # print(why_relevant)
+        # print(country_code)
+        # print(lang_code)
+        # print(now)
+        # print(file_version)
+
+
         cur.execute(
-            "INSERT INTO apiserver_event (description, why_relevant, short_desc, country_id, language_id, created_at, updated_at, file_version) \
-            VALUES (%s, %s, %s, %s, %s, %s, %s) RETURNING ID", (description, why_relevant, short_desc, country_code, lang_code, created_at, now, file_version)
+            'INSERT INTO apiserver_event (description, why_relevant, short_desc, country_id, language_id, created_at, updated_at, file_version) \
+            VALUES (%s, %s, %s, %s, %s, %s, %s, %s) RETURNING ID', (description, why_relevant, short_desc, country_code, lang_code, now, now, str(file_version))
         )
 
         event_id = cur.fetchone()[0]

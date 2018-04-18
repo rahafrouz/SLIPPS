@@ -182,7 +182,7 @@ class Event(models.Model):
     updated_at = models.DateTimeField(auto_now=True, null=True, blank=True)
     deleted_at = models.DateTimeField(null=True, blank=True)
     published_at = models.DateTimeField(null=True, blank=True)
-    file_version = models.CharField(max_length=5)
+    file_version = models.CharField(max_length=200)
 
     def publish_to_es(self):
         # create and save and article
