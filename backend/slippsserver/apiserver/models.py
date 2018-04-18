@@ -98,9 +98,9 @@ class UserRegistrationManager(models.Manager):
 
         hash_input = (get_random_string(8) + user.email).encode('utf-8')
         verification_code = hashlib.sha1(hash_input).hexdigest()
-        verification_code_expired = datetime.now() + timedelta(
-            getattr(settings, 'VERIFICATION_CODE_EXPIRE_DAYS', 4)
-        )
+        # verification_code_expired = datetime.now() + timedelta(
+        #     getattr(settings, 'VERIFICATION_CODE_EXPIRE_DAYS', 4)
+        # )
 
         user_account = data['user_account']
 
@@ -119,7 +119,7 @@ class UserRegistrationManager(models.Manager):
             work_place = user_account['work_place'],
             phone = user_account['phone'],
             verification_code = verification_code,
-            verification_code_expired = verification_code_expired
+            # verification_code_expired = verification_code_expired
         )
 
         return account

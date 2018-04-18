@@ -239,10 +239,13 @@ class DocumentUploadView(APIView):
         processed = process_csv(lines, request.user, filename)
         return Response(status=204)
 
-class UserRegistrationView(generics.CreateAPIView):
+class UserRegistrationView(APIView):
     '''
     A viewset for viewing and editing user instances.
     '''
     serializer_class = UserRegistrationSerializer
     queryset = User.objects.all()
     permission_classes = [AllowAny]
+
+    def post(self, request, format=None):
+        UserRegistrationSerializer.create(self, request.data)

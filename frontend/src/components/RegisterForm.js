@@ -23,13 +23,13 @@ class RegisterForm extends Component {
     this.state = {
       termChecked: false,
       canSubmit: false,
-      firstName: "",
-      lastName: "",
+      first_name: "",
+      last_name: "",
       email: "",
       password: "",
       confirmPass: "",
       occupation: "",
-      workPlace: ""
+      work_place: ""
     };
   }
 
@@ -37,11 +37,11 @@ class RegisterForm extends Component {
     e.preventDefault();
     let canSubmit = 
       this.state.termChecked &&
-      this.state.firstName &&
-      this.state.lastName &&
+      this.state.first_name &&
+      this.state.last_name &&
       this.state.email &&
       this.state.occupation &&
-      this.state.workPlace &&
+      this.state.work_place &&
       this.state.password &&
       this.state.password == this.state.confirmPass;
 
@@ -50,13 +50,13 @@ class RegisterForm extends Component {
     if (canSubmit) {
       let data = {
         "email": this.state.email,
-        "first_name": this.state.firstName,
-        "last_name": this.state.lastName,
+        "first_name": this.state.first_name,
+        "last_name": this.state.last_name,
         "username": this.state.email,
         "password": this.state.password,
         "user_account": {
           "occupation": this.state.occupation,
-          "work_place": this.state.workPlace,
+          "work_place": this.state.work_place,
         }
       };
 
@@ -68,11 +68,11 @@ class RegisterForm extends Component {
   handleCheck(e) {
     let canSubmit = 
       e.target.checked &&
-      this.state.firstName &&
-      this.state.lastName &&
+      this.state.first_name &&
+      this.state.last_name &&
       this.state.email &&
       this.state.occupation &&
-      this.state.workPlace &&
+      this.state.work_place &&
       this.state.password &&
       this.state.password == this.state.confirmPass;
     this.setState({ 
@@ -89,11 +89,11 @@ class RegisterForm extends Component {
 
     let canSubmit = 
       this.state.termChecked &&
-      this.state.firstName &&
-      this.state.lastName &&
+      this.state.first_name &&
+      this.state.last_name &&
       this.state.email &&
       this.state.occupation &&
-      this.state.workPlace &&
+      this.state.work_place &&
       this.state.password &&
       this.state.password == confirmPass;
 
@@ -189,19 +189,19 @@ class RegisterForm extends Component {
                 </div>
               </div>
               {/* /col */}
-              <div className="col-lg-5 ml-auto">
+              <form className="col-lg-5 ml-auto" onSubmit={this.handleSubmit}>
                 <div className="box_form">
                   {error}
 
                   <div className="form-group">
                     <label>First Name</label>
-                    <input type="text" className="form-control" placeholder="Your name" name="firstName"
-                      value={this.state.firstName} onChange={this.handleInputChanged} />
+                    <input type="text" className="form-control" placeholder="Your name" name="first_name"
+                      value={this.state.first_name} onChange={this.handleInputChanged} />
                   </div>
                   <div className="form-group">
                     <label>Last name</label>
-                    <input type="text" className="form-control" placeholder="Your last name" name="lastName"
-                      value={this.state.lastName} onChange={this.handleInputChanged} />
+                    <input type="text" className="form-control" placeholder="Your last name" name="last_name"
+                      value={this.state.last_name} onChange={this.handleInputChanged} />
                   </div>
                   <div className="form-group">
                     <label>Email</label>
@@ -225,8 +225,8 @@ class RegisterForm extends Component {
                   </div>
                   <div className="form-group">
                     <label>Institution (or your working place)</label>
-                    <input className="form-control" id="institution" placeholder="Institution" name="workPlace"
-                      value={this.state.workPlace} onChange={this.handleInputChanged} />
+                    <input className="form-control" id="institution" placeholder="Institution" name="work_place"
+                      value={this.state.work_place} onChange={this.handleInputChanged} />
                   </div>
                   <div id="pass-info" className="clearfix"></div>
                   <div className="checkbox-holder text-left">
@@ -242,11 +242,11 @@ class RegisterForm extends Component {
                   </div>
                   <div className="form-group text-center add_top_30">
                     {/*<input className="btn_1" type="submit" value="Submit"/>*/}
-                    <button onClick={this.handleSubmit} className="btn_1" disabled={!this.state.canSubmit}>Submit</button>
+                    <button type="submit" onClick={this.handleSubmit} className="btn_1" disabled={!this.state.canSubmit}>Submit</button>
                   </div>
                 </div>
                 {/* /box_form */}
-              </div>
+              </form>
               {/* /col */}
             </div>
             {/* /row */}
