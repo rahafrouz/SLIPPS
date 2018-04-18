@@ -80,7 +80,7 @@ class LoginForm extends Component {
                 </div>
                 <p className="text-center link_bright">
                   <span>Don't have an account yet? </span>
-                  <a href="/register"><strong>Register now!</strong></a>
+                  <a href="/signup"><strong>Register now!</strong></a>
                 </p>
               </div>
             </div>
