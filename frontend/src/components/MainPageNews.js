@@ -36,7 +36,7 @@ class MainPageNews extends Component {
             </div>
             <div className="col-xl-4 col-lg-4">
               <h4 className="box_title">Popular Keywords</h4>
-              <KeywordList Keywords={this.state.popularKeywords}/>
+              <KeywordList Keywords={this.props.popularKeywords}/>
             </div>
           </div>
         </div>
