@@ -16,17 +16,30 @@ from .models import (
     Keyword,
     Event,
     EventDetail,
-    Question
+    Question,
+    UploadedDocument
 )
 
 BCRYPT_SALT = b'$2b$12$hPhtNvTYULuTMEFZHC0m/e-ThisIsOurSalt'
 User = get_user_model()
 
+class UploadedDocumentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UploadedDocument
+        fields = '__all__'
+
 class UserAccountSerializer(serializers.ModelSerializer):
+    uploaded_docs = UploadedDocumentSerializer(read_only=True)
     class Meta:
         model = UserAccount
-        fields = ('id', 'user_id', 'created_at', 'deleted_at', 'dob', 'gender', 'occupation', 'work_place', 'phone', 'verification_code', 'verification_code_expired')
+        fields = ('id', 'user_id', 'created_at', 'deleted_at', 'dob', 'gender', 'occupation', 'work_place', 'phone', 'verification_code', 'verification_code_expired', 'uploaded_docs')
         read_only_fields = (['id', 'user_id', 'created_at', 'deleted_at', 'verification_code', 'verification_code_expired'])
+
+class UserDetailSerializer(serializers.ModelSerializer):
+    user_account = UserAccountSerializer(required=False)
+    class Meta:
+        model = User
+        fields = ('id', 'username', 'email', 'first_name', 'last_name', 'user_account')
 
 class UserRegistrationSerializer(serializers.Serializer):
     # is_deleted = serializers.SerializerMethodField()

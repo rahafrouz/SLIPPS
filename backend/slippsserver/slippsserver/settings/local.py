@@ -170,7 +170,7 @@ REST_AUTH_SERIALIZERS = {
     # You can define your custom serializers for each endpoint without overriding urls and views
     # by adding REST_AUTH_SERIALIZERS dictionary in your django settings.
     # 'LOGIN_SERIALIZER': 'apiserver.serializers.UserLoginSerializer',
-    # 'USER_DETAILS_SERIALIZER': 'apiserver.serializers.UserSerializer',
+    'USER_DETAILS_SERIALIZER': 'apiserver.serializers.UserDetailSerializer',
 }
 
 # REST_AUTH_TOKEN_MODEL = 'apiserver.models.UserToken'
